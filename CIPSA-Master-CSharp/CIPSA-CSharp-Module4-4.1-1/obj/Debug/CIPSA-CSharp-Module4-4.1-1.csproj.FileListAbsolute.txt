@@ -1,0 +1,5 @@
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module4-4.1-1\bin\Debug\CIPSA-CSharp-Module4-4.1-1.exe.config
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module4-4.1-1\bin\Debug\CIPSA-CSharp-Module4-4.1-1.exe
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module4-4.1-1\bin\Debug\CIPSA-CSharp-Module4-4.1-1.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module4-4.1-1\obj\Debug\CIPSA-CSharp-Module4-4.1-1.exe
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module4-4.1-1\obj\Debug\CIPSA-CSharp-Module4-4.1-1.pdb

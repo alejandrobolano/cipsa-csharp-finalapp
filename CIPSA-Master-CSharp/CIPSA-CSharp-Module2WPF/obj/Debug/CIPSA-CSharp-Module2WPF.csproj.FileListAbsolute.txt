@@ -1,0 +1,13 @@
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\obj\Debug\MainWindow.g.cs
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\obj\Debug\App.g.cs
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\obj\Debug\CIPSA-CSharp-Module2WPF_MarkupCompile.cache
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\obj\Debug\CIPSA-CSharp-Module2WPF_MarkupCompile.lref
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\bin\Debug\CIPSA-CSharp-Module2WPF.exe.config
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\bin\Debug\CIPSA-CSharp-Module2WPF.exe
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\bin\Debug\CIPSA-CSharp-Module2WPF.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\obj\Debug\MainWindow.baml
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\obj\Debug\CIPSA-CSharp-Module2WPF.g.resources
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\obj\Debug\CIPSA_CSharp_Module2WPF.Properties.Resources.resources
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\obj\Debug\CIPSA-CSharp-Module2WPF.csproj.GenerateResource.cache
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\obj\Debug\CIPSA-CSharp-Module2WPF.exe
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\obj\Debug\CIPSA-CSharp-Module2WPF.pdb

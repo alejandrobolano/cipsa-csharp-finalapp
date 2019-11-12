@@ -3,3 +3,6 @@ C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Common\bin\Debug\CIPSA-CSharp-Common.pdb
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Common\obj\Debug\CIPSA-CSharp-Common.dll
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Common\obj\Debug\CIPSA-CSharp-Common.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Common\bin\Debug\Colorful.Console.dll
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Common\obj\Debug\CIPSA-CSharp-Common.csprojAssemblyReference.cache
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Common\obj\Debug\CIPSA-CSharp-Common.csproj.CopyComplete

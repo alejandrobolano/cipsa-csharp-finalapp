@@ -1,0 +1,11 @@
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\bin\Debug\CIPSA-CSharp-Module5-CuentaBancaria.exe.config
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\bin\Debug\CIPSA-CSharp-Module5-CuentaBancaria.exe
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\bin\Debug\CIPSA-CSharp-Module5-CuentaBancaria.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\bin\Debug\CIPSA-CSharp-Common.dll
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\bin\Debug\Colorful.Console.dll
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\bin\Debug\CIPSA-CSharp-Common.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\bin\Debug\CIPSA-CSharp-Common.dll.config
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\obj\Debug\CIPSA-CSharp-Module5-CuentaBancaria.csprojAssemblyReference.cache
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\obj\Debug\CIPSA-CSharp-Module5-CuentaBancaria.csproj.CopyComplete
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\obj\Debug\CIPSA-CSharp-Module5-CuentaBancaria.exe
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\obj\Debug\CIPSA-CSharp-Module5-CuentaBancaria.pdb

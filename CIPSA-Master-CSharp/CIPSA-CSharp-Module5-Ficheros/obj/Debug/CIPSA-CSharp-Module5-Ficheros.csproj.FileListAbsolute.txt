@@ -1,0 +1,10 @@
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-Ficheros\bin\Debug\CIPSA-CSharp-Module5-Ficheros.exe.config
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-Ficheros\bin\Debug\CIPSA-CSharp-Module5-Ficheros.exe
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-Ficheros\bin\Debug\CIPSA-CSharp-Module5-Ficheros.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-Ficheros\bin\Debug\CIPSA-CSharp-Common.dll
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-Ficheros\bin\Debug\CIPSA-CSharp-Common.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-Ficheros\bin\Debug\CIPSA-CSharp-Common.dll.config
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-Ficheros\obj\Debug\CIPSA-CSharp-Module5-Ficheros.csprojAssemblyReference.cache
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-Ficheros\obj\Debug\CIPSA-CSharp-Module5-Ficheros.csproj.CopyComplete
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-Ficheros\obj\Debug\CIPSA-CSharp-Module5-Ficheros.exe
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-Ficheros\obj\Debug\CIPSA-CSharp-Module5-Ficheros.pdb

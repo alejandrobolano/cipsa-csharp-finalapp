@@ -64,12 +64,12 @@ namespace CIPSA_CSharp_Common
             }
             catch (FileNotFoundException)
             {
-                Console.WriteLine("Fichero no encontrado");
+                Console.WriteLine("Fichero no encontrado", Color.DarkRed);
             }
             catch (Exception exception)
             {
-                Console.WriteLine("Excepcion no controlado" +
-                    $"\n {exception}");
+                Console.WriteLine("Excepcion no controlada" +
+                    $"\n {exception}", Color.DarkRed);
             }
             content = reader;
             return isRead;
@@ -94,19 +94,19 @@ namespace CIPSA_CSharp_Common
             }
             catch (DirectoryNotFoundException)
             {
-                Console.WriteLine("Fichero no encontrado");
+                Console.WriteLine("Fichero no encontrado", Color.DarkRed);
             }
             catch (PathTooLongException)
             {
-                Console.WriteLine("Path demasiado extenso");
+                Console.WriteLine("Path demasiado extenso", Color.DarkRed);
             }
             catch (ArgumentNullException)
             {
-                Console.WriteLine("Nulo");
+                Console.WriteLine("Argumento nulo", Color.DarkRed);
             }
             catch (Exception)
             {
-                Console.WriteLine("Excepcion no controlada");
+                Console.WriteLine("Excepcion no controlada", Color.DarkRed);
             }
 
             return isWrite;

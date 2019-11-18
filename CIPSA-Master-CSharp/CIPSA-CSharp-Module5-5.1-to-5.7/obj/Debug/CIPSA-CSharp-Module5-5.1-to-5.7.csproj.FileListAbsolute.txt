@@ -1,0 +1,17 @@
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\bin\Debug\CIPSA-CSharp-Module5-5.1-to-5.7.exe.config
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\bin\Debug\CIPSA-CSharp-Module5-5.1-to-5.7.exe
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\bin\Debug\CIPSA-CSharp-Module5-5.1-to-5.7.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\bin\Debug\CIPSA-CSharp-Common.dll
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\bin\Debug\CIPSA-CSharp-Module5-CuentaBancaria.exe
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\bin\Debug\CIPSA-CSharp-Module5-Ficheros.exe
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\bin\Debug\Colorful.Console.dll
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\bin\Debug\CIPSA-CSharp-Common.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\bin\Debug\CIPSA-CSharp-Common.dll.config
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\bin\Debug\CIPSA-CSharp-Module5-CuentaBancaria.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\bin\Debug\CIPSA-CSharp-Module5-CuentaBancaria.exe.config
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\bin\Debug\CIPSA-CSharp-Module5-Ficheros.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\bin\Debug\CIPSA-CSharp-Module5-Ficheros.exe.config
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\obj\Debug\CIPSA-CSharp-Module5-5.1-to-5.7.csprojAssemblyReference.cache
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\obj\Debug\CIPSA-CSharp-Module5-5.1-to-5.7.csproj.CopyComplete
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\obj\Debug\CIPSA-CSharp-Module5-5.1-to-5.7.exe
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-5.1-to-5.7\obj\Debug\CIPSA-CSharp-Module5-5.1-to-5.7.pdb

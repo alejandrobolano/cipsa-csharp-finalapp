@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CIPSA_CSharp_Module5_Ficheros
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {

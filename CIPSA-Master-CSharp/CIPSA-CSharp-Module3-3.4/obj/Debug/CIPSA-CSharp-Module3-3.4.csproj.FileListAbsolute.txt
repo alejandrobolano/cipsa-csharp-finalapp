@@ -3,3 +3,4 @@ C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module3-3.4\bin\Debug\CIPSA-CSharp-Module3-3.4.pdb
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module3-3.4\obj\Debug\CIPSA-CSharp-Module3-3.4.exe
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module3-3.4\obj\Debug\CIPSA-CSharp-Module3-3.4.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module3-3.4\obj\Debug\CIPSA-CSharp-Module3-3.4.csprojAssemblyReference.cache

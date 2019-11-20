@@ -28,7 +28,7 @@ namespace CIPSA_CSharp_Module5_Ficheros
                     var pathTo = Console.ReadLine();
                     if (!pathTo.Equals(""))
                     {
-                        if(Helper.WriteFile(pathTo, content))
+                        if(Helper.WriteFile(pathTo, content.ToUpper(), false))
                         {
                             Console.WriteLine("Se ha convertido a MAYUS correctamente el texto");
                         }

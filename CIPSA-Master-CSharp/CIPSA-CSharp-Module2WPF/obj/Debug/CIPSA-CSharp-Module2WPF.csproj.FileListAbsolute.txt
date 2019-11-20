@@ -11,3 +11,4 @@ C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\obj\Debug\CIPSA-CSharp-Module2WPF.csproj.GenerateResource.cache
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\obj\Debug\CIPSA-CSharp-Module2WPF.exe
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\obj\Debug\CIPSA-CSharp-Module2WPF.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module2WPF\obj\Debug\CIPSA-CSharp-Module2WPF.csprojAssemblyReference.cache

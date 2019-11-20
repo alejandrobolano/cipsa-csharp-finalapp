@@ -8,3 +8,4 @@ C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-Ficheros\obj\Debug\CIPSA-CSharp-Module5-Ficheros.csproj.CopyComplete
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-Ficheros\obj\Debug\CIPSA-CSharp-Module5-Ficheros.exe
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-Ficheros\obj\Debug\CIPSA-CSharp-Module5-Ficheros.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-Ficheros\bin\Debug\Colorful.Console.dll

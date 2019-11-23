@@ -21,26 +21,30 @@ namespace CIPSA._CSharp_Module6.Implementations
                 var secondValue = Util.GetSecondValue();
                 var result = firstValue + secondValue;
                 var resultToText = $"{firstValue} + {secondValue} = {decimal.Round(result, 2)}";
+                var isNecessaryCreateFile = false;
+                var isFileExist = Helper.IsFileExist(Util.USER_ADDITION_TEMP);
 
-                if (Helper.IsFileExist(Util.USER_ADDITION_TEMP))
+                if (!isFileExist)
+                {
+                    isNecessaryCreateFile = Helper.IsCanCreateFile(Util.USER_ADDITION_TEMP);
+                }
+                if(isNecessaryCreateFile)
+                    Console.WriteLine("El fichero no existía, pero se ha creado", Color.DarkOrange);
+                if (isNecessaryCreateFile || isFileExist)
                 {
                     Helper.WriteFile(Util.USER_ADDITION_TEMP, resultToText, true);
                     Console.WriteLine($"El resultado de sumar {resultToText}", Color.DarkGreen);
                     Console.WriteLine("Se ha guardado correctamente los datos en el fichero", Color.DarkGreen);
                 }
-                else
-                {
-                    Console.WriteLine("Lo siento, pero el fichero no existe", Color.DarkRed);
-                }
+
             }
             catch (Exception exception)
             {
-                Console.WriteLine("Excepcion capturada" +
-                    $"\n {exception.Message}", Color.DarkRed);
+                Console.WriteLine($"{exception.Message}", Color.DarkRed);
             }
 
 
         }
-        
+
     }
 }

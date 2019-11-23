@@ -12,12 +12,6 @@ namespace CIPSA._CSharp_Module6
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("\n ****" +
-                "\n " +
-                "\n Probar a partir del ejercicio 71" +
-                "\n " +
-                "\n ****" +
-                "\n ", Color.Aquamarine);
             Home();
         }
 
@@ -58,6 +52,7 @@ namespace CIPSA._CSharp_Module6
                 Home();
             }
         }
+        IExercisesModule6 _exercisesModule6;
         public static void GoToExercise(int exercise)
         {
             try
@@ -68,35 +63,35 @@ namespace CIPSA._CSharp_Module6
                     case 0:
                         break;
                     case 1:
-                        new ExerciseModule6(new Exercise1()).ExecuteExercise();
+                        new Exercise1().ExecuteExercise();
                         ReturnToHome();
                         break;
                     case 2:
-                        new ExerciseModule6(new Exercise2()).ExecuteExercise();
+                        new Exercise2().ExecuteExercise();
                         ReturnToHome();
                         break;
                     case 31:
-                        new ExerciseModule6(new Exercise31()).ExecuteExercise();
+                        new Exercise31().ExecuteExercise();
                         ReturnToHome();
                         break;
                     case 32:
-                        new ExerciseModule6(new Exercise32()).ExecuteExercise();
+                        new Exercise32().ExecuteExercise();
                         ReturnToHome();
                         break;
                     case 41:
-                        new ExerciseModule6(new Exercise41()).ExecuteExercise();
+                        new Exercise41().ExecuteExercise();
                         ReturnToHome();
                         break;
                     case 51:
-                        new ExerciseModule6(new Exercise51()).ExecuteExercise();
+                        new Exercise51().ExecuteExercise();
                         ReturnToHome();
                         break;
                     case 71:
-                        new ExerciseModule6(new Exercise71()).ExecuteExercise();
+                        new Exercise71().ExecuteExercise();
                         ReturnToHome();
                         break;
                     case 73:
-                        new ExerciseModule6(new Exercise73()).ExecuteExercise();
+                        new Exercise73().ExecuteExercise();
                         ReturnToHome();
                         break;
                     default:

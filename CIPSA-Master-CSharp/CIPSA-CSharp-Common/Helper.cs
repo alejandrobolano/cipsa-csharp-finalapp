@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security;
 using Console = Colorful.Console;
 
 namespace CIPSA_CSharp_Common
@@ -299,6 +296,80 @@ namespace CIPSA_CSharp_Common
                     $"\n {ioException.Message}", Color.DarkRed);
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Read x quantity {countBytes} of bytes of path, returns char[{countBytes}]
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="countBytes"></param>
+        /// <returns>char[2], byte + char </returns>
+        public static char[] ReadXCountOfBytesConvertToCharArray(string path, int countBytes)
+        {
+            var charExeArray = new char[countBytes];
+            try
+            {
+                using (var fileStream = new FileStream(path, FileMode.Open))
+                {
+                    using (var binaryReader = new BinaryReader(fileStream))
+                    {
+                        binaryReader.Read(charExeArray, 0, countBytes);
+                    }
+                }
+            }
+            catch (SecurityException exception)
+            {
+                Console.WriteLine("Acceso denegado: " +
+                    $"\n {exception.Message}", Color.DarkRed);
+                throw;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("Argumento fuera de rango", Color.DarkRed);
+                throw;
+            }
+            catch (ArgumentNullException)
+            {
+                Console.WriteLine("Argumento nulo", Color.DarkRed);
+                throw;
+            }
+            catch (ArgumentException argumentException)
+            {
+                Console.WriteLine("Exepción de argumento: " +
+                    $"\n {argumentException.Message}", Color.DarkRed);
+                throw;
+            }
+            catch (NotSupportedException notSupportedException)
+            {
+                Console.WriteLine($"Error de escritura no soportada" +
+                    $"\n {notSupportedException.Message}", Color.DarkRed);
+                throw;
+            }
+            catch (DirectoryNotFoundException)
+            {
+                Console.WriteLine("Fichero no encontrado", Color.DarkRed);
+                throw;
+            }
+            catch (PathTooLongException)
+            {
+                Console.WriteLine("Path demasiado extenso", Color.DarkRed);
+                throw;
+            }
+            catch (ObjectDisposedException objectException)
+            {
+                Console.WriteLine($"Exepción capturada:" +
+                    $"\n {objectException.Message}", Color.DarkRed);
+                throw;
+            }
+            catch (IOException ioException)
+            {
+                Console.WriteLine($"Error de escritura en el archivo {path}" +
+                    $"\n {ioException.Message}", Color.DarkRed);
+                throw;
+            }
+            
+
+            return charExeArray;
         }
 
     }

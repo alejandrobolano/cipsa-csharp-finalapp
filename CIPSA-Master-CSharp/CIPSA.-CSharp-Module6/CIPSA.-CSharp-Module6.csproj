@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IExercisesModule6.cs" />
-    <Compile Include="Exercise91.cs" />
+    <Compile Include="Implementations\Exercise91.cs" />
     <Compile Include="Implementations\Exercise1.cs" />
     <Compile Include="Implementations\Exercise31.cs" />
     <Compile Include="Implementations\Exercise32.cs" />
@@ -60,7 +60,7 @@
     <Compile Include="Implementations\ExerciseModule6.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util.cs" />
+    <Compile Include="Implementations\Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

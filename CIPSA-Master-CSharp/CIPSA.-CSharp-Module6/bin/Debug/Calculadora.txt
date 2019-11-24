@@ -1,2 +1,0 @@
-234 - 23 = 211
-Cálculo incorrecto dado que ha sido una división por cero

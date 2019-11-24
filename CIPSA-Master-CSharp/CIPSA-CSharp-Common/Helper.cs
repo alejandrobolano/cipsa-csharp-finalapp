@@ -145,6 +145,10 @@ namespace CIPSA_CSharp_Common
             return isWrite;
         }
 
+        /// <summary>
+        /// Write file while is writing in console
+        /// </summary>
+        /// <param name="filePath"></param>
         public static void WriteFileWhileWriteInConsole(string filePath)
         {
             try
@@ -186,6 +190,11 @@ namespace CIPSA_CSharp_Common
             }
         }
 
+        /// <summary>
+        /// Check if the file exist in path
+        /// </summary>
+        /// <param name="pathToCheck"></param>
+        /// <returns></returns>
         public static bool IsFileExist(string pathToCheck)
         {
             return File.Exists(pathToCheck);
@@ -235,6 +244,58 @@ namespace CIPSA_CSharp_Common
             catch (IOException ioException)
             {
                 Console.WriteLine($"Error de escritura en el archivo {filePath}" +
+                    $"\n {ioException.Message}", Color.DarkRed);
+                throw;
+            }
+        }
+
+        public static bool IsDirectoryExist(string path)
+        {
+            return Directory.Exists(path);
+        }
+
+        public static bool IsCanCreateDirectory(string path)
+        {
+            try { 
+                Directory.CreateDirectory(path);
+                return true;
+            }
+            catch (UnauthorizedAccessException unauthorized)
+            {
+                Console.WriteLine("Lo siento, ni tiene permisos:" +
+                    $"\n {unauthorized.Message}", Color.DarkRed);
+                throw;
+            }
+            catch (PathTooLongException)
+            {
+                Console.WriteLine("Path demasiado extenso", Color.DarkRed);
+                throw;
+            }
+            catch (ArgumentNullException)
+            {
+                Console.WriteLine("Argumento nulo", Color.DarkRed);
+                throw;
+            }
+            catch (ArgumentException argumentException)
+            {
+                Console.WriteLine("Exepción de argumento: " +
+                    $"\n {argumentException.Message}", Color.DarkRed);
+                throw;
+            }
+            catch (NotSupportedException notSupportedException)
+            {
+                Console.WriteLine($"Error de escritura no soportada" +
+                    $"\n {notSupportedException.Message}", Color.DarkRed);
+                throw;
+            }
+            catch (DirectoryNotFoundException)
+            {
+                Console.WriteLine("Fichero no encontrado", Color.DarkRed);
+                throw;
+            }
+            catch (IOException ioException)
+            {
+                Console.WriteLine($"Error de escritura en el archivo {path}" +
                     $"\n {ioException.Message}", Color.DarkRed);
                 throw;
             }

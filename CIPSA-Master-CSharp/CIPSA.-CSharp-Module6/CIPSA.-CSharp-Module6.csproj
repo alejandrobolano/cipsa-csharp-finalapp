@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IExercisesModule6.cs" />
+    <Compile Include="Exercise91.cs" />
     <Compile Include="Implementations\Exercise1.cs" />
     <Compile Include="Implementations\Exercise31.cs" />
     <Compile Include="Implementations\Exercise32.cs" />

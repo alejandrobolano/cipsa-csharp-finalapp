@@ -26,6 +26,11 @@ namespace CIPSA._CSharp_Module6.Implementations
 
                 if (!isFileExist)
                 {
+                    var directory = Util.USER_ADDITION_TEMP.Substring(0, Util.USER_ADDITION_TEMP.LastIndexOf('/'));
+                    if (!Helper.IsDirectoryExist(directory))
+                    {
+                        Helper.IsCanCreateDirectory(directory);
+                    }
                     isNecessaryCreateFile = Helper.IsCanCreateFile(Util.USER_ADDITION_TEMP);
                 }
                 if(isNecessaryCreateFile)

@@ -30,6 +30,7 @@ namespace CIPSA._CSharp_Module6
             $"\n 73- (5.7.3) Dado pares de números, calcular según la operación y guardarlo en un fichero {Util.USER_MATH_FILE}" +
                       "\n - Verificando que los valores de entrada sean numeros (5.7.2) -" +
                       "\n - El resultado se redondea a dos cifras decimales -" +
+            "\n 91- (5.9.1) Comprobar si el fichero es un ejecutable" +
             "\n 0- Salir");
 
             var exercise = Helper.GetNumeric(Console.ReadLine());
@@ -92,6 +93,10 @@ namespace CIPSA._CSharp_Module6
                         break;
                     case 73:
                         new Exercise73().ExecuteExercise();
+                        ReturnToHome();
+                        break;
+                    case 91:
+                        new Exercise91().ExecuteExercise();
                         ReturnToHome();
                         break;
                     default:

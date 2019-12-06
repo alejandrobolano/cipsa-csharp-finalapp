@@ -10,7 +10,7 @@ namespace CIPSA_CSharp_Common
     {
 
         /// <summary>
-        /// Validate if the value is int and return this int
+        /// Validate if the value is int and return this int. Return -1 if the value is not a number.
         /// </summary>
         /// <param name="value"></param>
         /// <returns>-1 if the value is not a number</returns>
@@ -197,6 +197,11 @@ namespace CIPSA_CSharp_Common
             return File.Exists(pathToCheck);
         }
 
+        /// <summary>
+        /// Create a simple file and return true or false if this file was created
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public static bool IsCanCreateFile(string filePath)
         {
             try
@@ -246,14 +251,25 @@ namespace CIPSA_CSharp_Common
             }
         }
 
+        /// <summary>
+        /// Check if exist path as directory
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static bool IsDirectoryExist(string path)
         {
             return Directory.Exists(path);
         }
 
+        /// <summary>
+        /// Create a directory and return true or false if this directory was created
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static bool IsCanCreateDirectory(string path)
         {
-            try { 
+            try
+            {
                 Directory.CreateDirectory(path);
                 return true;
             }
@@ -304,16 +320,17 @@ namespace CIPSA_CSharp_Common
         /// <param name="path"></param>
         /// <param name="countBytes"></param>
         /// <returns>char[2], byte + char </returns>
-        public static char[] ReadXCountOfBytesConvertToCharArray(string path, int countBytes)
+        public static char[] ReadXCountOfBytesConvertToCharArray(string path, int goToPosition, int index, int countBytes)
         {
             var charExeArray = new char[countBytes];
             try
             {
                 using (var fileStream = new FileStream(path, FileMode.Open))
                 {
+                    fileStream.Seek(goToPosition, SeekOrigin.Begin);
                     using (var binaryReader = new BinaryReader(fileStream))
                     {
-                        binaryReader.Read(charExeArray, 0, countBytes);
+                        binaryReader.Read(charExeArray, index, countBytes);
                     }
                 }
             }
@@ -367,9 +384,24 @@ namespace CIPSA_CSharp_Common
                     $"\n {ioException.Message}", Color.DarkRed);
                 throw;
             }
-            
+
 
             return charExeArray;
+        }
+
+        public static bool IsCanCreateBinaryFile(string path, int bufferLength)
+        {
+            try
+            {
+                var newFile = new BinaryWriter(new FileStream(path, FileMode.Create));
+                newFile.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
         }
 
     }

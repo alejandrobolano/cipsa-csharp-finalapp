@@ -1,5 +1,4 @@
-﻿using CIPSA._CSharp_Module6.Contracts;
-using CIPSA._CSharp_Module6.Implementations;
+﻿using CIPSA._CSharp_Module6.Implementations;
 using CIPSA_CSharp_Common;
 using System;
 using System.Collections.Generic;
@@ -31,11 +30,14 @@ namespace CIPSA._CSharp_Module6
                       "\n - Verificando que los valores de entrada sean numeros (5.7.2) -" +
                       "\n - El resultado se redondea a dos cifras decimales -" +
             "\n 91- (5.9.1) (5.10.1) Comprobar si el fichero es un ejecutable (.exe)" +
+            "\n 111- (5.11.1) Comprobar que el segundo byte es una Z sin leer el primero byte" +
+            "\n 112- (5.12) Crear, escribir y leer dato en un fichero binario" +
             "\n 0- Salir");
 
             var exercise = Helper.GetNumeric(Console.ReadLine());
             if (exercise == -1)
             {
+                Console.Clear();
                 Home();
             }
 
@@ -96,6 +98,14 @@ namespace CIPSA._CSharp_Module6
                         break;
                     case 91:
                         new Exercise91().ExecuteExercise();
+                        ReturnToHome();
+                        break;
+                    case 111:
+                        new Exercise111().ExecuteExercise();
+                        ReturnToHome();
+                        break;
+                    case 112:
+                        new Exercise112().ExecuteExercise();
                         ReturnToHome();
                         break;
                     default:

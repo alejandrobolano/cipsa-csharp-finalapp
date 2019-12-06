@@ -1,12 +1,11 @@
-﻿using CIPSA._CSharp_Module6.Contracts;
-using CIPSA_CSharp_Common;
+﻿using CIPSA_CSharp_Common;
 using System;
 using System.Drawing;
 using Console = Colorful.Console;
 
 namespace CIPSA._CSharp_Module6.Implementations
 {
-    public class Exercise71 : IExercisesModule6
+    public class Exercise71
     {
         public void ExecuteExercise()
         {

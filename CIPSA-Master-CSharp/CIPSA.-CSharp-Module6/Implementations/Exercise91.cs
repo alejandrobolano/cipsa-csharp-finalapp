@@ -1,5 +1,4 @@
-﻿using CIPSA._CSharp_Module6.Contracts;
-using CIPSA_CSharp_Common;
+﻿using CIPSA_CSharp_Common;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -8,7 +7,7 @@ using Console = Colorful.Console;
 
 namespace CIPSA._CSharp_Module6.Implementations
 {
-    class Exercise91 : IExercisesModule6
+    class Exercise91
     {
         public void ExecuteExercise()
         {
@@ -35,8 +34,8 @@ namespace CIPSA._CSharp_Module6.Implementations
         private static bool IsExeFile(string path)
         {
             string[] variables = new string[2] { "M", "Z" };
-            var foo = Helper.ReadXCountOfBytesConvertToCharArray(path,2);
-            return foo[0].ToString().Equals(variables[0]) && foo[1].ToString().Equals(variables[1]);
+            var bytesCharArray = Helper.ReadXCountOfBytesConvertToCharArray(path,0,2,0);
+            return bytesCharArray[0].ToString().Equals(variables[0]) && bytesCharArray[1].ToString().Equals(variables[1]);
         }
 
 

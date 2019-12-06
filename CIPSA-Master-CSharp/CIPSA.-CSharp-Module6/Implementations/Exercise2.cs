@@ -1,5 +1,4 @@
-﻿using CIPSA._CSharp_Module6.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CIPSA._CSharp_Module6.Implementations
 {
-    public class Exercise2 : IExercisesModule6
+    public class Exercise2 
     {
         public void ExecuteExercise()
         {

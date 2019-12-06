@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Security;
 using Console = Colorful.Console;
 
@@ -402,6 +403,11 @@ namespace CIPSA_CSharp_Common
                 return false;
             }
 
+        }
+
+        public static bool IsBiggerThan(int valueInserted, int valueToCompare)
+        {
+            return valueInserted > valueToCompare;
         }
 
     }

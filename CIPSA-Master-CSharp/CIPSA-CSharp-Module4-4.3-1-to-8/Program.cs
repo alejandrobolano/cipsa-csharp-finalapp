@@ -178,7 +178,7 @@ namespace CIPSA_CSharp_Module4_4._3_1_to_8
                 var celsius = input ? ConvertFahrenheitToCelsius(fahrenheit) : throw new FormatException();
                 Console.WriteLine(celsius);
             }
-            catch (FormatException e)
+            catch (FormatException)
             {
                 Console.WriteLine("Ha introducido algún caracter inválido para poder convertir");
                 ReturnToHome();

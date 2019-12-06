@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Security;
@@ -48,10 +50,10 @@ namespace CIPSA_CSharp_Common
         /// <returns></returns>
         public static decimal GetDecimal(string value)
         {
-            var result = 0.0m;
+            decimal result;
             try
             {
-                if (value == "" || value == null || !decimal.TryParse(value, out result))
+                if (string.IsNullOrEmpty(value) || !decimal.TryParse(value, out result))
                 {
                     return -1;
                 }
@@ -99,10 +101,11 @@ namespace CIPSA_CSharp_Common
         /// </summary>
         /// <param name="pathToWrite"></param>
         /// <param name="content"></param>
+        /// <param name="append"></param>
         /// <returns>return true if the file was write</returns>
         public static bool WriteFile(string pathToWrite, string content, bool append)
         {
-            bool isWrite = false;
+            bool isWrite;
             try
             {
                 using (var writer = new StreamWriter(pathToWrite, append))
@@ -318,7 +321,9 @@ namespace CIPSA_CSharp_Common
         /// Read x quantity {countBytes} of bytes of path, returns char[{countBytes}]
         /// </summary>
         /// <param name="path"></param>
+        /// <param name="index"></param>
         /// <param name="countBytes"></param>
+        /// <param name="goToPosition"></param>
         /// <returns>char[2], byte + char </returns>
         public static char[] ReadXCountOfBytesConvertToCharArray(string path, int goToPosition, int index, int countBytes)
         {
@@ -403,6 +408,46 @@ namespace CIPSA_CSharp_Common
             }
 
         }
+
+        public static bool IsBiggerThan(int valueInserted, int valueToCompare)
+        {
+            return valueInserted > valueToCompare;
+        }
+
+        public static decimal GetMaxNumber(ArrayList elements)
+        {
+            var bigNumber = decimal.MinValue;
+
+            foreach (var item in elements)
+            {
+                bigNumber = Math.Max(Convert.ToDecimal(item), bigNumber);
+            }
+
+            return bigNumber;
+        }
+        public static decimal GetMinNumber(ArrayList elements)
+        {
+            var minNumber = decimal.MaxValue;
+
+            foreach (var item in elements)
+            {
+                minNumber = Math.Min(Convert.ToDecimal(item), minNumber);
+            }
+
+            return minNumber;
+        }
+        public static decimal GetTotalSumNumber(ArrayList elements)
+        {
+            decimal sumNumber = 0;
+
+            foreach (var item in elements)
+            {
+                sumNumber += Convert.ToDecimal(item);
+            }
+
+            return sumNumber;
+        }
+
 
     }
 }

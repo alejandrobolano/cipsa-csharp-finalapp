@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Implementations\Exercise2.cs" />
     <Compile Include="Implementations\Exercise1.cs" />
+    <Compile Include="Implementations\Exercise4.cs" />
     <Compile Include="Implementations\Util.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

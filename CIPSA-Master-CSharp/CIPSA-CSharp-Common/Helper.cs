@@ -422,7 +422,7 @@ namespace CIPSA_CSharp_Common
             {
                 bigNumber = Math.Max(Convert.ToDecimal(item), bigNumber);
             }
-
+            
             return bigNumber;
         }
         public static decimal GetMinNumber(ArrayList elements)

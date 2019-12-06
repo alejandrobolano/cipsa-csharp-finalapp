@@ -50,6 +50,7 @@
     <Compile Include="Implementations\Exercise2.cs" />
     <Compile Include="Implementations\Exercise1.cs" />
     <Compile Include="Implementations\Exercise4.cs" />
+    <Compile Include="Implementations\Exercise6.cs" />
     <Compile Include="Implementations\Exercise5.cs" />
     <Compile Include="Implementations\Util.cs" />
     <Compile Include="Program.cs" />

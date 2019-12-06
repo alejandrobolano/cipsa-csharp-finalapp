@@ -47,7 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IExercisesModule6.cs" />
+    <Compile Include="Implementations\Exercise112.cs" />
+    <Compile Include="Implementations\Exercise111.cs" />
+    <Compile Include="Implementations\Exercise91.cs" />
     <Compile Include="Implementations\Exercise1.cs" />
     <Compile Include="Implementations\Exercise31.cs" />
     <Compile Include="Implementations\Exercise32.cs" />
@@ -56,10 +58,9 @@
     <Compile Include="Implementations\Exercise71.cs" />
     <Compile Include="Implementations\Exercise73.cs" />
     <Compile Include="Implementations\Exercise2.cs" />
-    <Compile Include="Implementations\ExerciseModule6.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util.cs" />
+    <Compile Include="Implementations\Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

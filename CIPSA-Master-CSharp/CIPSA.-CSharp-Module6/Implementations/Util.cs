@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CIPSA._CSharp_Module6
+namespace CIPSA._CSharp_Module6.Implementations
 {
     class Util
     {

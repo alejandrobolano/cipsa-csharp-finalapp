@@ -1,5 +1,4 @@
-﻿using CIPSA._CSharp_Module6.Contracts;
-using CIPSA_CSharp_Common;
+﻿using CIPSA_CSharp_Common;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,7 +9,7 @@ using Console = Colorful.Console;
 
 namespace CIPSA._CSharp_Module6.Implementations
 {
-    public class Exercise51 : IExercisesModule6
+    public class Exercise51
     {
         public void ExecuteExercise()
         {
@@ -21,26 +20,35 @@ namespace CIPSA._CSharp_Module6.Implementations
                 var secondValue = Util.GetSecondValue();
                 var result = firstValue + secondValue;
                 var resultToText = $"{firstValue} + {secondValue} = {decimal.Round(result, 2)}";
+                var isNecessaryCreateFile = false;
+                var isFileExist = Helper.IsFileExist(Util.USER_ADDITION_TEMP);
 
-                if (Helper.IsFileExist(Util.USER_ADDITION_TEMP))
+                if (!isFileExist)
+                {
+                    var directory = Util.USER_ADDITION_TEMP.Substring(0, Util.USER_ADDITION_TEMP.LastIndexOf('/'));
+                    if (!Helper.IsDirectoryExist(directory))
+                    {
+                        Helper.IsCanCreateDirectory(directory);
+                    }
+                    isNecessaryCreateFile = Helper.IsCanCreateFile(Util.USER_ADDITION_TEMP);
+                }
+                if(isNecessaryCreateFile)
+                    Console.WriteLine("El fichero no existía, pero se ha creado", Color.DarkOrange);
+                if (isNecessaryCreateFile || isFileExist)
                 {
                     Helper.WriteFile(Util.USER_ADDITION_TEMP, resultToText, true);
                     Console.WriteLine($"El resultado de sumar {resultToText}", Color.DarkGreen);
                     Console.WriteLine("Se ha guardado correctamente los datos en el fichero", Color.DarkGreen);
                 }
-                else
-                {
-                    Console.WriteLine("Lo siento, pero el fichero no existe", Color.DarkRed);
-                }
+
             }
             catch (Exception exception)
             {
-                Console.WriteLine("Excepcion capturada" +
-                    $"\n {exception.Message}", Color.DarkRed);
+                Console.WriteLine($"{exception.Message}", Color.DarkRed);
             }
 
 
         }
-        
+
     }
 }

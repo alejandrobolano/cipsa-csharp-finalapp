@@ -23,6 +23,7 @@ namespace CIPSA_CSharp_Module7Console
             $"\n 1- Recitar el abecedario (castellano) de la A a la Z" +
             $"\n 2- Revertir lista de 10 números introducidos por el usuario (Incluye el ejercicio 3, mostrar los mayores que 22)" +
             $"\n 4- Buscar números repetidos dentro de un array con números aleatorio," +
+            $"\n 5- Sumar y encontrar el mayor y menor de una lista dada por el usuario" +
             "\n 0- Salir");
 
             var exercise = Helper.GetNumeric(Console.ReadLine());
@@ -65,6 +66,10 @@ namespace CIPSA_CSharp_Module7Console
                         break;
                     case 4:
                         new Exercise4().ExecuteExercise();
+                        ReturnToHome();
+                        break;
+                    case 5:
+                        new Exercise5().ExecuteExercise();
                         ReturnToHome();
                         break;
                     default:

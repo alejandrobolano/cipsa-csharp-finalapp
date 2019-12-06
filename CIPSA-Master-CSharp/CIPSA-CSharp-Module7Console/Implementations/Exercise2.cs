@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -14,18 +15,18 @@ namespace CIPSA_CSharp_Module7Console.Implementations
     {
         public void ExecuteExercise()
         {
-            var elements = new List<int>();
-            var elementsGreaterThan = new List<int>();
+            var elements = new ArrayList();
+            var elementsGreaterThan = new ArrayList();
             var valueToCompare = 22;
             Console.WriteLine("Ingrese 10 números al azar para mostrarlo de manera inversa");
-            SaveTenNumbersIn(elements);
+            Util.SaveQuantityNumbersIn(elements,10);
             elements.Reverse();
             Console.WriteLine("A continuación se muestra la lista de número introducidos de manera inversa", Color.DarkGreen);
 
             foreach (var element in elements)
             {
                 Console.WriteLine(element);
-                if (Helper.IsBiggerThan(element, valueToCompare))
+                if (Helper.IsBiggerThan(Convert.ToInt32(element), valueToCompare))
                 {
                     elementsGreaterThan.Add(element);
                 }
@@ -40,7 +41,7 @@ namespace CIPSA_CSharp_Module7Console.Implementations
             else if (countBigger == 1)
             {
                 Console.WriteLine($"En los números introducidos, sólo existe {countBigger} número mayor que {valueToCompare}" +
-                                  $" y ese número es: {elementsGreaterThan.FirstOrDefault()}", Color.DarkBlue);
+                                  $" y ese número es: {elementsGreaterThan[0]}", Color.DarkBlue);
             }
             else
             {
@@ -52,28 +53,5 @@ namespace CIPSA_CSharp_Module7Console.Implementations
             }
         }
 
-        private static void SaveTenNumbersIn(List<int> elementList)
-        {
-            var realCount = 0;
-            var unrealCount = 0;
-            bool showNotification = false;
-            while (realCount < 10)
-            {
-                var element = Helper.GetNumeric(Console.ReadLine());
-                if (element != -1)
-                {
-                    elementList.Add(element);
-                    realCount++;
-                }
-
-                if (unrealCount >= 10 && !showNotification)
-                {
-                    Console.WriteLine("El ciclo se repite hasta que haya 10 números enteros escritos", Color.DarkRed);
-                    showNotification = true;
-                }
-
-                unrealCount++;
-            }
-        }
     }
 }

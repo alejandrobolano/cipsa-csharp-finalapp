@@ -22,7 +22,7 @@ namespace CIPSA_CSharp_Common
             int result;
             try
             {
-                if (value == "" || value == null)
+                if (string.IsNullOrEmpty(value))
                 {
                     return -1;
                 }

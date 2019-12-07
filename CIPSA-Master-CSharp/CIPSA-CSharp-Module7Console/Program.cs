@@ -26,6 +26,7 @@ namespace CIPSA_CSharp_Module7Console
             $"\n 5- Sumar y encontrar el mayor y menor de una lista dada por el usuario" +
             $"\n 6- Dado dos series de números introducidos, realizar una comparativa" +
             $"\n 7- Leer X elementos pares de un array y copiar la mitad para un lado y la otra mitad hacia el otro lado" +
+            $"\n 8- " +
             "\n 0- Salir");
 
             var exercise = Helper.GetNumeric(Console.ReadLine());
@@ -80,6 +81,10 @@ namespace CIPSA_CSharp_Module7Console
                         break;
                     case 7:
                         new Exercise7().ExecuteExercise();
+                        ReturnToHome();
+                        break;
+                    case 8:
+                        new Exercise8().ExecuteExercise();
                         ReturnToHome();
                         break;
                     default:

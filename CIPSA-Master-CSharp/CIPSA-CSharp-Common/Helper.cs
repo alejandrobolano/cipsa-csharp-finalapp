@@ -22,7 +22,7 @@ namespace CIPSA_CSharp_Common
             int result;
             try
             {
-                if (value == "" || value == null)
+                if (string.IsNullOrEmpty(value))
                 {
                     return -1;
                 }
@@ -418,9 +418,24 @@ namespace CIPSA_CSharp_Common
         {
             var bigNumber = decimal.MinValue;
 
-            foreach (var item in elements)
+            try
             {
-                bigNumber = Math.Max(Convert.ToDecimal(item), bigNumber);
+                foreach (var item in elements)
+                {
+                    bigNumber = Math.Max(Convert.ToDecimal(item), bigNumber);
+                }
+            }
+            catch (FormatException formatException)
+            {
+                Console.WriteLine($"Formato incorrecto: {formatException}", Color.DarkRed);
+            }
+            catch (InvalidCastException invalidCastException)
+            {
+                Console.WriteLine($"Excepción por casteo inválido: {invalidCastException}", Color.DarkRed);
+            }
+            catch (OverflowException overflowException)
+            {
+                Console.WriteLine($"Excepción por número demasiado grande: {overflowException}", Color.DarkRed);
             }
 
             return bigNumber;
@@ -429,9 +444,24 @@ namespace CIPSA_CSharp_Common
         {
             var minNumber = decimal.MaxValue;
 
-            foreach (var item in elements)
+            try
             {
-                minNumber = Math.Min(Convert.ToDecimal(item), minNumber);
+                foreach (var item in elements)
+                {
+                    minNumber = Math.Min(Convert.ToDecimal(item), minNumber);
+                }
+            }
+            catch (FormatException formatException)
+            {
+                Console.WriteLine($"Formato incorrecto: {formatException}", Color.DarkRed);
+            }
+            catch (InvalidCastException invalidCastException)
+            {
+                Console.WriteLine($"Excepción por casteo inválido: {invalidCastException}", Color.DarkRed);
+            }
+            catch (OverflowException overflowException)
+            {
+                Console.WriteLine($"Excepción por número demasiado grande: {overflowException}", Color.DarkRed);
             }
 
             return minNumber;
@@ -440,12 +470,33 @@ namespace CIPSA_CSharp_Common
         {
             decimal sumNumber = 0;
 
-            foreach (var item in elements)
+            try
             {
-                sumNumber += Convert.ToDecimal(item);
+                foreach (var item in elements)
+                {
+                    sumNumber += Convert.ToDecimal(item);
+                }
+            }
+            catch (FormatException formatException)
+            {
+                Console.WriteLine($"Formato incorrecto: {formatException}", Color.DarkRed);
+            }
+            catch (InvalidCastException invalidCastException)
+            {
+                Console.WriteLine($"Excepción por casteo inválido: {invalidCastException}", Color.DarkRed);
+            }
+            catch (OverflowException overflowException)
+            {
+                Console.WriteLine($"Excepción por número demasiado grande: {overflowException}", Color.DarkRed);
             }
 
+
             return sumNumber;
+        }
+
+        public static bool IsPairNumber(int number)
+        {
+            return number % 2 == 0;
         }
 
 

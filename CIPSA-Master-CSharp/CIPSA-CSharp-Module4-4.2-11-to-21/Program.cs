@@ -301,8 +301,7 @@ namespace CIPSA_CSharp_Module4_4._2_11_to_21
         private static void Exercise14()
         {
             Console.WriteLine("¿Cuántos números quiere introducir?");
-            int numbers;
-            Int32.TryParse(Console.ReadLine(), out numbers);
+            int.TryParse(Console.ReadLine(), out var numbers);
             var negativeCount = 0;
             List<decimal> negativesList = new List<decimal>();
             for (int i = 0; i < numbers; i++)

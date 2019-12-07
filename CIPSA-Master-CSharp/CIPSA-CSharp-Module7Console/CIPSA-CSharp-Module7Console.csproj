@@ -52,6 +52,7 @@
     <Compile Include="Implementations\Exercise4.cs" />
     <Compile Include="Implementations\Exercise6.cs" />
     <Compile Include="Implementations\Exercise5.cs" />
+    <Compile Include="Implementations\Exercise7.cs" />
     <Compile Include="Implementations\Util.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

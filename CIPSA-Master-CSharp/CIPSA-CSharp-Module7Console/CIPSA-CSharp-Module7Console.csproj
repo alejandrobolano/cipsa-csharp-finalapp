@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\CustomComparer.cs" />
+    <Compile Include="Implementations\Exercise10.cs" />
     <Compile Include="Implementations\Exercise2.cs" />
     <Compile Include="Implementations\Exercise1.cs" />
     <Compile Include="Implementations\Exercise4.cs" />
@@ -54,6 +56,7 @@
     <Compile Include="Implementations\Exercise5.cs" />
     <Compile Include="Implementations\Exercise7.cs" />
     <Compile Include="Implementations\Exercise8.cs" />
+    <Compile Include="Implementations\Exercise9.cs" />
     <Compile Include="Implementations\Util.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

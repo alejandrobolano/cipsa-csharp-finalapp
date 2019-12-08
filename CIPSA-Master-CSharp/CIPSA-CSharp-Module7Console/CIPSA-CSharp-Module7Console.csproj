@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\CustomComparer.cs" />
+    <Compile Include="Implementations\Exercise10.cs" />
     <Compile Include="Implementations\Exercise2.cs" />
     <Compile Include="Implementations\Exercise1.cs" />
     <Compile Include="Implementations\Exercise4.cs" />

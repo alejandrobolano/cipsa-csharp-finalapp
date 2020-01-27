@@ -13,7 +13,7 @@ namespace CIPSA_CSharp_Module7Console.Implementations
         private readonly string SUSPENSE = "Cantidad de suspensos";
         public void ExecuteExercise()
         {
-            //En este ejercicio asumo que el suspenso es del 1 al 5 incluyendo y el aprobado, pues del 6-10
+            //En este ejercicio asumo que el suspenso es del 1 al 4 incluyendo y el aprobado, pues del 5-10
             var hashNotes = new Hashtable();
             LoadData(hashNotes);
             Console.WriteLine("Escriba las notas de los estudiantes");
@@ -56,9 +56,9 @@ namespace CIPSA_CSharp_Module7Console.Implementations
 
         }
 
-        private int GetAverageTotal(Hashtable hashNotes)
+        private decimal GetAverageTotal(Hashtable hashNotes)
         {
-            return ((int)hashNotes[1] * 1 +
+            return Convert.ToDecimal((int)hashNotes[1] * 1 +
                    (int)hashNotes[2] * 2 +
                    (int)hashNotes[3] * 3 +
                    (int)hashNotes[4] * 4 +
@@ -70,22 +70,22 @@ namespace CIPSA_CSharp_Module7Console.Implementations
                    (int)hashNotes[10] * 10) / (int)hashNotes[SIZE];
         }
 
-        private int GetAverageApproved(Hashtable hashNotes)
+        private decimal GetAverageApproved(Hashtable hashNotes)
         {
-            return ((int)hashNotes[6] * 6 +
+            return Convert.ToDecimal((int)hashNotes[5] * 5 +
+                   (int)hashNotes[6] * 6 +
                    (int)hashNotes[7] * 7 +
                    (int)hashNotes[8] * 8 +
                    (int)hashNotes[9] * 9 +
                    (int)hashNotes[10] * 10) / (int)hashNotes[APPROVED];
         }
 
-        private int GetAverageSuspense(Hashtable hashNotes)
+        private decimal GetAverageSuspense(Hashtable hashNotes)
         {
-            return ((int)hashNotes[1] * 1 +
+            return Convert.ToDecimal((int)hashNotes[1] * 1 +
                    (int)hashNotes[2] * 2 +
                    (int)hashNotes[3] * 3 +
-                   (int)hashNotes[4] * 4 +
-                   (int)hashNotes[5] * 5) / (int)hashNotes[SUSPENSE];
+                   (int)hashNotes[4] * 4) / (int)hashNotes[SUSPENSE];
         }
 
         //private int GetQuantityOfApproved(Hashtable hashNotes)
@@ -116,20 +116,24 @@ namespace CIPSA_CSharp_Module7Console.Implementations
                 {
                     break;
                 }
-                if (Helper.GetNumeric(value) != -1 && Convert.ToInt32(value) > 0 && Convert.ToInt32(value) <= 10)
-                {
-                    hashNotes[Convert.ToInt32(value)] = (int)hashNotes[Convert.ToInt32(value)] + 1;
-                    hashNotes[SIZE] = (int)hashNotes[SIZE] + 1;
-                    if (Convert.ToInt32(value) > 5)
-                    {
-                        hashNotes[APPROVED] = (int)hashNotes[APPROVED] + 1;
-                    }
-                    else
-                    {
-                        hashNotes[SUSPENSE] = (int)hashNotes[SUSPENSE] + 1;
-                    }
-                }
-                
+
+                if (Helper.GetNumeric(value) == -1 || Convert.ToInt32(value) <= 0 ||
+                    Convert.ToInt32(value) > 10) continue;
+                PushDataIntoHashList(hashNotes, value);
+            }
+        }
+
+        private void PushDataIntoHashList(Hashtable hashNotes, string value)
+        {
+            hashNotes[Convert.ToInt32(value)] = (int) hashNotes[Convert.ToInt32(value)] + 1;
+            hashNotes[SIZE] = (int) hashNotes[SIZE] + 1;
+            if (Convert.ToDecimal(value) > 4)
+            {
+                hashNotes[APPROVED] = (int) hashNotes[APPROVED] + 1;
+            }
+            else
+            {
+                hashNotes[SUSPENSE] = (int) hashNotes[SUSPENSE] + 1;
             }
         }
 

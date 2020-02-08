@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -36,6 +37,14 @@ namespace CIPSA_CSharp_Module9Console
                     ShowFullInfoStudent(student);
                 }
 
+            }
+            else
+            {
+                foreach (var student in students)
+                {
+                    ShowBasicInfoStudentWithSubjects(student);
+                }
+                
             }
         }
 
@@ -170,6 +179,33 @@ namespace CIPSA_CSharp_Module9Console
                               $"\n Edad: {student.Age}" +
                               $"\n Nota del examen: {student.ExamNote}" +
                               $"\n ", Color.DarkGreen);
+
+            ShowSubjects(student);
+            Console.WriteLine();
+        }
+        private static void ShowBasicInfoStudentWithSubjects(Student student)
+        {
+            Console.WriteLine($"Datos del estudiante:" +
+                              $"\n Nombre: {student.Name}" +
+                              $"\n Apellido: {student.LastName}" +
+                              $"\n Sexo: {student.Sex.ToString().ToUpper()}" +
+                              $"\n Edad: {student.Age}" +
+                              $"\n ", Color.DarkGreen);
+
+            ShowSubjects(student);
+            Console.WriteLine();
+        }
+
+        private static void ShowSubjects(Student student)
+        {
+            Console.WriteLine($"Asignaturas que se encuentra el estudiante {student.Name}: ", Color.DarkGreen);
+            foreach (var key in student.Subjects.Keys)
+            {
+                foreach (var value in (List<string>) student.Subjects[key])
+                {
+                    Console.WriteLine($"Area de {key} : {value}", Color.DarkOliveGreen);
+                }
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace CIPSA_CSharp_Module9Console.Logicals
         public char Sex { get; set; }
         public int Age { get; set; }
         public int ExamNote { get; set; }
+        public Hashtable Subjects { get; }
 
         public Student()
         {
@@ -21,6 +23,7 @@ namespace CIPSA_CSharp_Module9Console.Logicals
             Sex = char.MinValue;
             Age = 0;
             ExamNote = 0;
+            Subjects = SubjectsHashtable();
         }
 
         public Student(string name, string lastName, char sex, int age)
@@ -29,6 +32,39 @@ namespace CIPSA_CSharp_Module9Console.Logicals
             LastName = lastName;
             Sex = sex;
             Age = age;
+            Subjects = SubjectsHashtable();
+        }
+
+        public Hashtable SubjectsHashtable()
+        {
+            var subjectsOfCiencias = new List<string>()
+            {
+                "Filosofía",
+                "Lengua",
+                "Matemáticas"
+            };
+            var subjectsOfHumanidades = new List<string>()
+            {
+                "Economía",
+                "Geografía",
+                "Griego",
+                "Historia del Arte"
+            };
+            var subjectsOfArtes = new List<string>()
+            {
+                "Historia del mundo",
+                "Artes escénicas",
+                "Diseño"
+            };
+
+            var subjects = new Hashtable
+            {
+                {AreasHighSchool.Ciencias.ToString(), subjectsOfCiencias },
+                {AreasHighSchool.Humanidades, subjectsOfHumanidades},
+                {AreasHighSchool.Artes, subjectsOfArtes},
+            };
+
+            return subjects;
         }
 
 

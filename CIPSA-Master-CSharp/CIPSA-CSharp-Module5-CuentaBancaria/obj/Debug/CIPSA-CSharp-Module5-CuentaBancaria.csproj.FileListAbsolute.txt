@@ -9,3 +9,4 @@ C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\obj\Debug\CIPSA-CSharp-Module5-CuentaBancaria.csproj.CopyComplete
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\obj\Debug\CIPSA-CSharp-Module5-CuentaBancaria.exe
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\obj\Debug\CIPSA-CSharp-Module5-CuentaBancaria.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module5-CuentaBancaria\obj\Debug\CIPSA-CSharp-Module5-CuentaBancaria.csproj.CoreCompileInputs.cache

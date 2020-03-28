@@ -3,3 +3,4 @@ C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module4-4.2-11-to-21\bin\Debug\CIPSA-CSharp-Module4-4.2-11-to-21.pdb
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module4-4.2-11-to-21\obj\Debug\CIPSA-CSharp-Module4-4.2-11-to-21.exe
 C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module4-4.2-11-to-21\obj\Debug\CIPSA-CSharp-Module4-4.2-11-to-21.pdb
+C:\Users\alejandrobm\Desktop\Personal\C#Net\Git\CIPSA-Master-CSharp\CIPSA-CSharp-Module4-4.2-11-to-21\obj\Debug\CIPSA-CSharp-Module4-4.2-11-to-21.csproj.CoreCompileInputs.cache

@@ -47,17 +47,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logicals\Student.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Implementations\ClassroomHelper.cs" />
+    <Compile Include="Implementations\SchoolHelper.cs" />
+    <Compile Include="Implementations\StudentHelper.cs" />
+    <Compile Include="Models\AreasHighSchool.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\Classroom.cs" />
+    <Compile Include="Module9Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Implementations\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CIPSA-CSharp-Common\CIPSA-CSharp-Common.csproj">
       <Project>{D6AC6AD6-2BAE-4F4E-8715-DF9BB99395A0}</Project>

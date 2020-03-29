@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using CIPSA_CSharp_Module9Console.Models;
 
@@ -10,6 +11,7 @@ namespace CIPSA_CSharp_Module9Console.Implementations
 {
     internal class SchoolHelper
     {
+        #region Métodos para el inicio de la app
         public static void ConsoleWriteLine(string message, Color color)
         {
             Console.WriteLine(message, color);
@@ -22,15 +24,46 @@ namespace CIPSA_CSharp_Module9Console.Implementations
             Colorful.Console.WriteLine("║  Aplicación de consola de gestión de Escuela                                ║");
             Colorful.Console.WriteLine("║                                                                             ║");
             Colorful.Console.WriteLine("║  Relación entre objetos:                                                    ║");
-            Colorful.Console.WriteLine("║    * Alumno   1 ------ * Clase                                              ║");
+            Colorful.Console.WriteLine("║    * Alumno   * ------ 1 Clase                                              ║");
             Colorful.Console.WriteLine("║    * Alumno   1 ------ * Asignaturas                                        ║");
             Colorful.Console.WriteLine("║       - Para este ejemplo se usó una asignación simple                      ║");
+            Colorful.Console.WriteLine("║    * Academia 1 ------ * Clase                                              ║");
             Colorful.Console.WriteLine("║                                                                             ║");
             Colorful.Console.WriteLine("║  Nota: Suposición en que las aulas son nombradas y no enumeradas            ║");
             Colorful.Console.WriteLine("║                                                                             ║");
             Colorful.Console.WriteLine("╚═════════════════════════════════════════════════════════════════════════════╝");
+            ShowSpinner();
         }
 
+        private static void ShowSpinner()
+        {
+            var counter = 0;
+            for (var i = 0; i < 50; i++)
+            {
+                switch (counter % 4)
+                {
+                    case 0:
+                        Console.Write("/");
+                        break;
+                    case 1:
+                        Console.Write("-");
+                        break;
+                    case 2:
+                        Console.Write("\\");
+                        break;
+                    case 3:
+                        Console.Write("|");
+                        break;
+                }
+
+                Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+                counter++;
+                Thread.Sleep(50);
+            }
+        }
+        #endregion
+
+        #region Métodos para rellenar objetos por defecto para la respuesta de los ejercicios del módulo 9
         public static List<Subject> FillSubjects()
         {
             var subjects = new List<Subject>()
@@ -89,6 +122,7 @@ namespace CIPSA_CSharp_Module9Console.Implementations
 
             return subjects;
         }
+        #endregion
 
         public static string GetStringToEvaluate(string message)
         {
@@ -104,5 +138,6 @@ namespace CIPSA_CSharp_Module9Console.Implementations
                 return stringToEvaluate;
             }
         }
+
     }
 }

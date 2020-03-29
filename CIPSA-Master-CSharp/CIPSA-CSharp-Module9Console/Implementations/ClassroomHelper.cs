@@ -9,6 +9,33 @@ namespace CIPSA_CSharp_Module9Console.Implementations
 {
     public class ClassroomHelper
     {
+        #region Métodos para rellenar objetos por defecto para la respuesta de los ejercicios del módulo 9
+        public static List<Classroom> FillClassroomsExample()
+        {
+            return new List<Classroom>
+            {
+                new Classroom
+                {
+                    Number = 99,
+                    NameClass = "Alfa"
+                },
+                new Classroom
+                {
+                    Number = 98,
+                    NameClass = "Beta"
+                }
+            }; 
+        }
+        public static Classroom FillClassroomExample()
+        {
+            return new Classroom
+            {
+                Number = 97,
+                NameClass = "Salsa"
+            };
+        }
+        #endregion
+
         public static Classroom GetClassroom(int number, List<Classroom> classrooms)
         {
             return classrooms.FirstOrDefault(classroom => classroom.Number == number) ;
@@ -17,7 +44,12 @@ namespace CIPSA_CSharp_Module9Console.Implementations
         {
             return classrooms.FirstOrDefault(classroom => classroom.NameClass.ToLowerInvariant().Equals(nameClass.ToLowerInvariant())) ;
         }
-
+        public static bool AddStudent(Classroom classroom, Student student)
+        {
+            if (classroom == null || student == null) return false;
+            student.Classroom = classroom;
+            return true;
+        }
 
     }
 }

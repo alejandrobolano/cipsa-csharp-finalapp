@@ -7,19 +7,16 @@ namespace CIPSA_CSharp_Module9Console.Models
 {
     public class Student
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public char Sex { get; set; }
         public int Age { get; set; }
         public int ExamNote { get; set; }
         public List<Subject> Subjects { get; }
-
         public Classroom Classroom { get; set; }
 
         public Student()
         {
-            Id = Guid.NewGuid();
             Name = string.Empty;
             LastName = string.Empty;
             Sex = char.MinValue;
@@ -30,7 +27,6 @@ namespace CIPSA_CSharp_Module9Console.Models
 
         public Student(string name, string lastName, char sex, int age)
         {
-            Id = Guid.NewGuid();
             Name = name;
             LastName = lastName;
             Sex = sex;

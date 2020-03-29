@@ -50,10 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\AcademyHelper.cs" />
     <Compile Include="Implementations\ClassroomHelper.cs" />
     <Compile Include="Implementations\SchoolHelper.cs" />
     <Compile Include="Implementations\StudentHelper.cs" />
     <Compile Include="Models\AreasHighSchool.cs" />
+    <Compile Include="Models\Academy.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Classroom.cs" />
     <Compile Include="Models\Subject.cs" />

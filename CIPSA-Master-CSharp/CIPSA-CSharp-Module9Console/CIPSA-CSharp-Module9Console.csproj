@@ -36,6 +36,9 @@
     <Reference Include="Colorful.Console, Version=1.2.10.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Colorful.Console.1.2.10\lib\net461\Colorful.Console.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -53,6 +56,7 @@
     <Compile Include="Models\AreasHighSchool.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Classroom.cs" />
+    <Compile Include="Models\Subject.cs" />
     <Compile Include="Module9Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

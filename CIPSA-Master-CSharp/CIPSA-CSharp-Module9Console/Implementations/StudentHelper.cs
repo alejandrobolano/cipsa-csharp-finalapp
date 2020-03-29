@@ -55,12 +55,9 @@ namespace CIPSA_CSharp_Module9Console.Implementations
         public static void ShowSubjects(Student student)
         {
             SchoolHelper.ConsoleWriteLine($"Asignaturas que se encuentra el estudiante {student.Name}: ", Color.DarkGreen);
-            foreach (var key in student.Subjects.Keys)
+            foreach (var value in student.Subjects)
             {
-                foreach (var value in (List<string>)student.Subjects[key])
-                {
-                    SchoolHelper.ConsoleWriteLine($"Area de {key} : {value}", Color.DarkOliveGreen);
-                }
+                SchoolHelper.ConsoleWriteLine($"Area de {value.Area.ToString()} : {value.Name}", Color.DarkOliveGreen);
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using CIPSA_CSharp_Common;
@@ -21,10 +22,11 @@ namespace CIPSA_CSharp_Module9Console
         private static void Main(string[] args)
         {
             _classrooms = new List<Classroom>();
+            SchoolHelper.ShowInformationAboutApp();
             AddClassroom();
             BasicWorkWithStudents();
         }
-
+        
         private static void AddStudentToClassroom(Student student)
         {
             while (true)
@@ -62,7 +64,6 @@ namespace CIPSA_CSharp_Module9Console
 
         private static void AddClassroom()
         {
-            //Partiendo de que las aulas son nombradas y no enumeradas
             SchoolHelper.ConsoleWriteLine("Antes de todo, escriba las aulas que existen: ",Color.White);
             var numberIterator = 1;
             while (true)
@@ -209,7 +210,7 @@ namespace CIPSA_CSharp_Module9Console
                               $"\n Clase: {classroom}" +
                               $"\n ", Color.DarkBlue);
 
-            if (showSubjects && student.Subjects.Count > 0)
+            if (showSubjects && student.Subjects.Any())
             {
                 StudentHelper.ShowSubjects(student);
                 Console.WriteLine();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using CIPSA_CSharp_Module9Console.Models;
 
@@ -29,6 +30,34 @@ namespace CIPSA_CSharp_Module9Console.Implementations
             Colorful.Console.WriteLine("║  Nota: Suposición en que las aulas son nombradas y no enumeradas            ║");
             Colorful.Console.WriteLine("║                                                                             ║");
             Colorful.Console.WriteLine("╚═════════════════════════════════════════════════════════════════════════════╝");
+            ShowSpinner();
+        }
+
+        private static void ShowSpinner()
+        {
+            var counter = 0;
+            for (var i = 0; i < 50; i++)
+            {
+                switch (counter % 4)
+                {
+                    case 0:
+                        Console.Write("/");
+                        break;
+                    case 1:
+                        Console.Write("-");
+                        break;
+                    case 2:
+                        Console.Write("\\");
+                        break;
+                    case 3:
+                        Console.Write("|");
+                        break;
+                }
+
+                Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+                counter++;
+                Thread.Sleep(50);
+            }
         }
 
         public static List<Subject> FillSubjects()
@@ -103,6 +132,20 @@ namespace CIPSA_CSharp_Module9Console.Implementations
 
                 return stringToEvaluate;
             }
+        }
+
+        public static decimal GetAverageOfNotes(List<Student> students)
+        {
+            return Convert.ToDecimal(students.Sum(student => student.ExamNote))/students.Count;
+        }
+
+        public static int GetMensQuantity(List<Student> students)
+        {
+            return students.Count(student => student.Sex.ToString().ToUpperInvariant().Equals("H"));
+        }
+        public static int GetWomensQuantity(List<Student> students)
+        {
+            return students.Count(student => student.Sex.ToString().ToUpperInvariant().Equals("M"));
         }
     }
 }

@@ -1,0 +1,24 @@
+﻿<Window x:Class="CIPSA_CSharp_Module10WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CIPSA_CSharp_Module10WPF"
+        mc:Ignorable="d"
+        Title="Ejercicio 9 del Módulo 10" Height="254.334" Width="586.333" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="0,0,21.667,13.667">
+        <Label Content="Frase 1:" Height="30" Margin="10,10,473,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.594,-0.189"/>
+        <TextBox Name="PhraseForSearchText" Height="30" Margin="122,10,31,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="PhraseForSearchText_TextChanged"/>
+
+        <Label Content="Palabra a buscar:" Height="30" Margin="10,49,442,0" VerticalAlignment="Top" RenderTransformOrigin="0.594,-0.189"/>
+        <TextBox Name="WordForDeleteText" Height="30" Margin="122,49,281,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="WordForDeleteText_TextChanged"/>
+        <Button Content="Buscar y eliminar" Name="SearchAndDeleteButton" IsEnabled="False" HorizontalAlignment="Left" Height="30" Margin="404,45,0,0" VerticalAlignment="Top" Width="124" Click="SearchAndDeleteButton_Click"/>
+        <Label Content="Frase 1:" Height="30" Margin="10,96,473,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.594,-0.189"/>
+        <TextBox Name="FirstPhraseForConcatText" Height="30" Margin="122,96,31,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="FirstPhraseForConcatText_TextChanged"/>
+        <Label Content="Frase 2:" Height="30" Margin="10,135,443,0" VerticalAlignment="Top" RenderTransformOrigin="0.594,-0.189"/>
+        <TextBox Name="SecondPhraseForConcatText" Height="30" Margin="122,135,31,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="SecondPhraseForConcatText_TextChanged"/>
+        <Button Content="Concatenar" Name="ConcatButton" IsEnabled="False" HorizontalAlignment="Left" Height="32" Margin="404,170,0,0" VerticalAlignment="Top" Width="124" Click="ConcatButton_Click"/>
+        <CheckBox Name="ShowWhiteSpaceCheckBox" IsChecked="False" Content="Agregar espacio en blanco al concatenar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="122,179,0,0"/>
+
+    </Grid>
+</Window>

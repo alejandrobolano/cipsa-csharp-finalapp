@@ -11,6 +11,7 @@ namespace CIPSA_CSharp_Module9Console.Implementations
 {
     internal class SchoolHelper
     {
+        #region Métodos para el inicio de la app
         public static void ConsoleWriteLine(string message, Color color)
         {
             Console.WriteLine(message, color);
@@ -23,9 +24,10 @@ namespace CIPSA_CSharp_Module9Console.Implementations
             Colorful.Console.WriteLine("║  Aplicación de consola de gestión de Escuela                                ║");
             Colorful.Console.WriteLine("║                                                                             ║");
             Colorful.Console.WriteLine("║  Relación entre objetos:                                                    ║");
-            Colorful.Console.WriteLine("║    * Alumno   1 ------ * Clase                                              ║");
+            Colorful.Console.WriteLine("║    * Alumno   * ------ 1 Clase                                              ║");
             Colorful.Console.WriteLine("║    * Alumno   1 ------ * Asignaturas                                        ║");
             Colorful.Console.WriteLine("║       - Para este ejemplo se usó una asignación simple                      ║");
+            Colorful.Console.WriteLine("║    * Academia 1 ------ * Clase                                              ║");
             Colorful.Console.WriteLine("║                                                                             ║");
             Colorful.Console.WriteLine("║  Nota: Suposición en que las aulas son nombradas y no enumeradas            ║");
             Colorful.Console.WriteLine("║                                                                             ║");
@@ -59,7 +61,9 @@ namespace CIPSA_CSharp_Module9Console.Implementations
                 Thread.Sleep(50);
             }
         }
+        #endregion
 
+        #region Métodos para rellenar objetos por defecto para la respuesta de los ejercicios del módulo 9
         public static List<Subject> FillSubjects()
         {
             var subjects = new List<Subject>()
@@ -118,6 +122,7 @@ namespace CIPSA_CSharp_Module9Console.Implementations
 
             return subjects;
         }
+        #endregion
 
         public static string GetStringToEvaluate(string message)
         {
@@ -134,18 +139,5 @@ namespace CIPSA_CSharp_Module9Console.Implementations
             }
         }
 
-        public static decimal GetAverageOfNotes(List<Student> students)
-        {
-            return Convert.ToDecimal(students.Sum(student => student.ExamNote))/students.Count;
-        }
-
-        public static int GetMensQuantity(List<Student> students)
-        {
-            return students.Count(student => student.Sex.ToString().ToUpperInvariant().Equals("H"));
-        }
-        public static int GetWomensQuantity(List<Student> students)
-        {
-            return students.Count(student => student.Sex.ToString().ToUpperInvariant().Equals("M"));
-        }
     }
 }

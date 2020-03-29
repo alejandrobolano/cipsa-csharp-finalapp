@@ -27,9 +27,41 @@ namespace CIPSA_CSharp_Module9Console
             SchoolHelper.ShowInformationAboutApp();
             AddClassroom(true);
             BasicWorkWithStudents();
+
+            #region Ejercicio 6
             ShowAverageOfExamNotes();
             ShowQuantityBySex();
             AddMoreStudents();
+            #endregion
+
+            #region Ejercicio 7
+            ShowInformationOfExampleOfAcademy();
+            #endregion
+
+        }
+
+        private static void ShowInformationOfExampleOfAcademy()
+        {
+            Console.WriteLine("¿Desea mostrar la información cargada por defecto de la Academia? si(s) / no(n)");
+            var decision = Console.ReadLine()?.ToLower();
+            if (decision != null && (decision.Equals("s") || decision.Equals("si")))
+            {
+                var academies = AcademyHelper.FillAcademies();
+                var students = StudentHelper.FillStudentsExample();
+
+                var averageOfClassrooms = AcademyHelper.GetAverageOfClassroom(academies);
+                var quantityOfClassrooms = AcademyHelper.GetQuantityOfClassroom(academies);
+                SchoolHelper.ConsoleWriteLine($"El promedio de aulas por academias es de: {averageOfClassrooms} " +
+                                              $"para un total de {quantityOfClassrooms} aulas y {academies.Count} academias",Color.Aquamarine);
+
+                var mensQuantity = AcademyHelper.GetMensQuantity(academies, students);
+                var womensQuantity = AcademyHelper.GetWomensQuantity(academies, students);
+
+                SchoolHelper.ConsoleWriteLine($"El promedio en general de hombre es de: {mensQuantity} " +
+                                              $"y de mujeres es de: {womensQuantity}", Color.Aquamarine);
+
+
+            }
         }
 
         private static void AddMoreStudents()
@@ -60,7 +92,7 @@ namespace CIPSA_CSharp_Module9Console
 
         private static void ShowAverageOfExamNotes()
         {
-            var average = SchoolHelper.GetAverageOfNotes(_students);
+            var average = StudentHelper.GetAverageOfNotes(_students);
             if (average == 0) return;
             Console.WriteLine("¿Quiere ver el promedio de las notas de los exámenes? si(s) / no(n)");
             var decision = Console.ReadLine()?.ToLower();
@@ -76,8 +108,8 @@ namespace CIPSA_CSharp_Module9Console
             var decision = Console.ReadLine()?.ToLower();
             if (decision != null && (decision.Equals("s") || decision.Equals("si")))
             {
-                var mens = SchoolHelper.GetMensQuantity(_students);
-                var womens = SchoolHelper.GetWomensQuantity(_students);
+                var mens = StudentHelper.GetMensQuantity(_students);
+                var womens = StudentHelper.GetWomensQuantity(_students);
                 SchoolHelper.ConsoleWriteLine($"La cantidad de hombres que hay es: {mens}" +
                                               $" y la cantidad de mujeres es: {womens}" +
                                               $" para un total de {_students.Count} estudiantes", Color.White);
@@ -115,7 +147,7 @@ namespace CIPSA_CSharp_Module9Console
                             continue;
                         }
                     }
-                    StudentHelper.AddStudentToClassroom(classroom, student);
+                    ClassroomHelper.AddStudent(classroom, student);
                 }
                 break;
             }

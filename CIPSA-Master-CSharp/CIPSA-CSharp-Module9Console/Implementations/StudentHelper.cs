@@ -12,45 +12,70 @@ namespace CIPSA_CSharp_Module9Console.Implementations
 {
     public class StudentHelper
     {
-
-        public static Hashtable SubjectsHashtable()
+        #region Métodos para rellenar objetos por defecto para la respuesta de los ejercicios del módulo 9
+        public static List<Student> FillStudentsExample()
         {
-            var subjectsOfCiencias = new List<string>()
-            {
-                "Filosofía",
-                "Lengua",
-                "Matemáticas"
+            var classrooms = ClassroomHelper.FillClassroomsExample();
+            return new List<Student>{
+                new Student
+                {
+                    Name = "Alejandro",
+                    LastName = "Bolaño",
+                    Age = 27,
+                    Sex = 'H',
+                    ExamNote = 10,
+                    Classroom = classrooms.FirstOrDefault(classroom => classroom.Number == 99)
+                },
+                new Student
+                {
+                    Name = "Fernanda",
+                    LastName = "Perez",
+                    Age = 25,
+                    Sex = 'M',
+                    ExamNote = 6,
+                    Classroom = classrooms.FirstOrDefault(classroom => classroom.Number == 98)
+                },
+                new Student
+                {
+                    Name = "Susana",
+                    LastName = "Gonzalez",
+                    Age = 26,
+                    Sex = 'M',
+                    ExamNote = 7,
+                    Classroom = classrooms.FirstOrDefault(classroom => classroom.Number == 98)
+                },
+                new Student
+                {
+                    Name = "Lia",
+                    LastName = "Bolaño",
+                    Age = 23,
+                    Sex = 'M',
+                    ExamNote = 10,
+                    Classroom = classrooms.FirstOrDefault(classroom => classroom.Number == 99)
+                },
+                new Student
+                {
+                    Name = "Leydi",
+                    LastName = "Bolaño",
+                    Age = 24,
+                    Sex = 'M',
+                    ExamNote = 8,
+                    Classroom = classrooms.FirstOrDefault(classroom => classroom.Number == 99)
+                },
+                new Student
+                {
+                    Name = "Manuel",
+                    LastName = "Méndez",
+                    Age = 27,
+                    Sex = 'H',
+                    ExamNote = 10,
+                    Classroom = classrooms.FirstOrDefault(classroom => classroom.Number == 99)
+                },
             };
-            var subjectsOfHumanidades = new List<string>()
-            {
-                "Economía",
-                "Geografía",
-                "Griego",
-                "Historia del Arte"
-            };
-            var subjectsOfArtes = new List<string>()
-            {
-                "Historia del mundo",
-                "Artes escénicas",
-                "Diseño"
-            };
-
-            var subjects = new Hashtable
-            {
-                {AreasHighSchool.Ciencias.ToString(), subjectsOfCiencias },
-                {AreasHighSchool.Humanidades, subjectsOfHumanidades},
-                {AreasHighSchool.Artes, subjectsOfArtes},
-            };
-
-            return subjects;
         }
+        
+        #endregion
 
-        public static bool AddStudentToClassroom(Classroom classroom, Student student)
-        {
-            if (classroom == null || student == null) return false;
-            student.Classroom = classroom;
-            return true;
-        }
 
         public static void ShowSubjects(Student student)
         {
@@ -60,7 +85,6 @@ namespace CIPSA_CSharp_Module9Console.Implementations
                 SchoolHelper.ConsoleWriteLine($"Area de {value.Area.ToString()} : {value.Name}", Color.DarkOliveGreen);
             }
         }
-
         public static int GetAgeToEvaluate(string message)
         {
             while (true)
@@ -80,7 +104,6 @@ namespace CIPSA_CSharp_Module9Console.Implementations
                 return Convert.ToInt32(evaluateAge);
             }
         }
-
         public static char GetSexToEvaluate(string message)
         {
             while (true)
@@ -100,6 +123,24 @@ namespace CIPSA_CSharp_Module9Console.Implementations
 
                 return sexResult;
             }
+        }
+        public static decimal GetAverageOfNotes(List<Student> students)
+        {
+            return Convert.ToDecimal(students.Sum(student => student.ExamNote)) / students.Count;
+        }
+
+        public static int GetMensQuantity(List<Student> students)
+        {
+            return students.Count(student => student.Sex.ToString().ToUpperInvariant().Equals("H"));
+        }
+        public static int GetWomensQuantity(List<Student> students)
+        {
+            return students.Count(student => student.Sex.ToString().ToUpperInvariant().Equals("M"));
+        }
+
+        public static List<Student> GetStudentsByClassroom(List<Student> students, Classroom classroom)
+        {
+            return students.Where(student => student.Classroom.Equals(classroom)).ToList();
         }
     }
 }

@@ -1,0 +1,59 @@
+﻿<mah:MetroWindow x:Class="VideoClub.WPF.Views.RentalsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VideoClub.WPF.Views"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:properties="clr-namespace:VideoClub.WPF.Properties"
+        mc:Ignorable="d" Height="450" Width="800"
+        Title="Rentas"  
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        ResizeMode="NoResize" 
+        BorderThickness="0" 
+        GlowBrush="Black"
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="CenterScreen">
+
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <TextBlock Name="DateNowTextBlock" Loaded="DateNowTextBlock_OnLoaded" Margin="4 0 0 0" VerticalAlignment="Center" />
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" Name="LoadingPanel">
+            <TextBlock HorizontalAlignment="Center" Text="Cargando datos de la base de datos"/>
+            <mah:MetroProgressBar Name="MetroProgressBar"  Width="350" HorizontalAlignment="Center" Height="23" IsIndeterminate="True" />
+        </StackPanel>
+
+        <DataGrid Name="RentalsDataGrid" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserAddRows="False"
+                  Loaded="RentalsDataGrid_OnLoadedDataGrid" AutoGenerateColumns="False" IsReadOnly="True"
+                  Margin="10,15,10,0" SelectionMode="Single">
+            <DataGrid.Resources>
+                <Style x:Key="CenterCellAligned" TargetType="DataGridCell" BasedOn="{StaticResource MetroDataGridCell}">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Título del Prodcuto" Binding="{Binding ProductTitle}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Id del Producto" Binding="{Binding ProductId}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Acreditación" Binding="{Binding ClientAccreditation}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Id del Cliente" Binding="{Binding ClientId}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Fecha de Inicio" Binding="{Binding StartRental, StringFormat={}{0:dd/MM/yyyy}}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Fecha Final" Binding="{Binding FinishRental, StringFormat={}{0:dd/MM/yyyy}}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Button" Click="DeleteButton_OnClick" Background="Transparent">
+                                <iconPacks:PackIconModern Foreground="White" Width="16" Height="16" Kind="Delete" VerticalAlignment="Center"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</mah:MetroWindow>

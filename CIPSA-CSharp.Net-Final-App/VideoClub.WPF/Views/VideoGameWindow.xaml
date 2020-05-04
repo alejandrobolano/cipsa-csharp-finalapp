@@ -1,0 +1,94 @@
+﻿<mah:MetroWindow x:Class="VideoClub.WPF.Views.VideoGameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VideoClub.WPF.Views"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:properties="clr-namespace:VideoClub.WPF.Properties"
+        mc:Ignorable="d" Height="450" Width="800"
+        Title="Formulario de Video juegos"  
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        ResizeMode="NoResize" 
+        BorderThickness="0" 
+        GlowBrush="Black"
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="CenterScreen">
+
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <TextBlock Name="DateNowTextBlock" Loaded="DateNowTextBlock_OnLoaded" Margin="4 0 0 0" VerticalAlignment="Center" />
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+
+    <StackPanel Orientation="Vertical">
+        <Grid>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Name="MainPanel" IsEnabled="False" Margin="10,15,0,0">
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <Label Content="Título" Width="64" />
+                    <TextBox Name="TitleText"  Height="23" TextWrapping="Wrap" Text="" Width="220"  MaxLines="1"
+                         mah:TextBoxHelper.Watermark="título" mah:TextBoxHelper.ClearTextButton="True" Margin="5,0,0,0"/>
+                    <Label Content="Precio" Width="67"/>
+                    <mah:NumericUpDown Name="PriceNumeric" Minimum="0" Maximum="99" StringFormat="€ 0.00" NumericInputMode="Decimal" Width="95" />
+                    <Label Content="Cantidad de discos" Margin="5,0,0,0"/>
+                    <mah:NumericUpDown Name="QuantityNumeric" Minimum="0" Maximum="10" Interval="1" InterceptManualEnter="False" NumericInputMode="Numbers" Width="75"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <Label Content="Plataforma"/>
+                    <ComboBox Name="PlatformDropDown" Width="115" Loaded="PlatformDropDown_OnLoadedDropDown_OnLoaded"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,10,15,10">
+                <Button Name="NewButton" Content="Nuevo" Click="NewButton_OnClick" 
+                    Style="{DynamicResource SquareButtonStyle}" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
+                <Button Name="AddButton" Content="Agregar"  Click="AddButton_OnClick" IsEnabled="False"
+                    Style="{DynamicResource SquareButtonStyle}" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
+                <Button Name="UpdateButton" Content="Actualizar" Click="UpdateButton_OnClick" IsEnabled="False"
+                    Style="{DynamicResource SquareButtonStyle}" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
+                <Button Name="DeleteButton" Content="Eliminar"  Click="DeleteButton_OnClick" IsEnabled="False"
+                    Style="{DynamicResource SquareButtonStyle}" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Orientation="Vertical" Name="LoadingPanel">
+            <TextBlock HorizontalAlignment="Center" Text="Cargando datos de la base de datos"/>
+            <mah:MetroProgressBar Name="MetroProgressBar"  Width="350" HorizontalAlignment="Center" Height="23" IsIndeterminate="True" />
+        </StackPanel>
+
+        <DataGrid Name="VideoGameDataGrid" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserAddRows="False"
+                  Loaded="VideoGameDataGrid_OnLoadedDataGrid" AutoGenerateColumns="False" IsReadOnly="True"
+                  Margin="10,15,10,0" SelectionMode="Single" MouseDoubleClick="VideoGameDataGrid_OnMouseDoubleClick">
+            <DataGrid.Resources>
+                <Style x:Key="CenterCellAligned" TargetType="DataGridCell" BasedOn="{StaticResource MetroDataGridCell}">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Título" Binding="{Binding Title}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Discos" Binding="{Binding QuantityDisc}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Estado" Binding="{Binding StateDescription}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Precio" Binding="{Binding Price, StringFormat=€ 0.00}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Plataforma" Binding="{Binding PlatformDescription}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="DeleteButtonDataGrid" Click="UpdateButtonDataGrid_OnClick" Background="Transparent">
+                                <iconPacks:PackIconModern Foreground="White" Width="16" Height="16" Kind="Edit" VerticalAlignment="Center"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Button" Click="DeleteButton_OnClick" Background="Transparent">
+                                <iconPacks:PackIconModern Foreground="White" Width="16" Height="16" Kind="Delete" VerticalAlignment="Center"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</mah:MetroWindow>

@@ -1,0 +1,104 @@
+﻿<mah:MetroWindow x:Class="VideoClub.WPF.Views.ClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VideoClub.WPF.Views"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:properties="clr-namespace:VideoClub.WPF.Properties"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d" Height="550" Width="850"
+        Title="Formulario de Clientes"  
+        ResizeMode="NoResize" 
+        BorderThickness="0" 
+        GlowBrush="Black"
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="CenterScreen">
+
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <TextBlock Name="DateNowTextBlock" Loaded="DateNowTextBlock_OnLoaded" Margin="4 0 0 0" VerticalAlignment="Center" />
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Name="MainPanel" IsEnabled="False" Margin="0,15,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <Label Content="Nombre" Width="64" />
+                <TextBox Name="NameText"  Height="23" TextWrapping="Wrap" Text="" Width="120"  MaxLines="1"/>
+                <Label Content="Apellidos" Width="67"/>
+                <TextBox Name="LastNameText" Height="23" TextWrapping="Wrap" Text="" Width="120"  MaxLines="1"/>
+                <Label Content="Acreditación" Width="106"/>
+                <ComboBox Name="AccreditationDropDown" Width="76" Loaded="AccreditationDropDown_OnLoaded"/>
+                <TextBox Name="AccreditationText" Height="23" TextWrapping="Wrap" Text="" Width="106" Margin="10,0,0,0"  MaxLines="1" MaxLength="9"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <Label Content="Teléfono 1" />
+                <TextBox Name="PhoneContactText" Height="23" TextWrapping="Wrap" Text="" Width="120"  MaxLines="1" MaxLength="9" />
+                <Label Content="Teléfono 2"/>
+                <TextBox Name="PhoneAuxText" Height="23" TextWrapping="Wrap" Text="" Width="120" MaxLines="1" MaxLength="9"/>
+                <Label Content="Correo electrónico"/>
+                <TextBox Name="EmailText" Height="23" TextWrapping="Wrap" Text="" Width="192" MaxLines="1"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <Label Content="Dirección" />
+                <TextBox Name="AddressText"  Height="23" TextWrapping="Wrap" Text="" Width="320" MaxLines="1" Margin="5,0,0,0"/>
+                <StackPanel Name="VipPanel" Orientation="Horizontal" Margin="100,0,10,0" HorizontalAlignment="Right" IsEnabled="False">
+                    <Label Content="VIP" HorizontalAlignment="Right"/>
+                    <CheckBox Name="VipCheckBox"/>
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,15,10">
+            <Button Name="NewButton" Content="Nuevo" Click="NewButton_OnClickButton_Click"/>
+            <Button Name="AddButton" Content="Agregar" Click="AddButton_Click" Margin="10,0,0,0" IsEnabled="False"/>
+            <Button Name="UpdateButton" Content="Actualizar" Click="UpdateButton_Click" Margin="10,0,0,0" IsEnabled="False"/>
+            <Button Name="DeleteButton" Content="Eliminar" Click="DeleteButton_Click" Margin="10,0,0,0" IsEnabled="False"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Name="LoadingPanel">
+            <TextBlock HorizontalAlignment="Center" Text="Cargando datos de la base de datos"/>
+            <mah:MetroProgressBar Name="MetroProgressBar"  Width="350" HorizontalAlignment="Center" Height="23" IsIndeterminate="True" />
+        </StackPanel>
+
+        <DataGrid Name="ClientDataGrid" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserAddRows="False"
+                  Loaded="ClientDataGrid_OnLoadedDataGrid" AutoGenerateColumns="False" IsReadOnly="True"
+                  Margin="10,15,10,0" SelectionMode="Single" MouseDoubleClick="ClientDataGrid_OnMouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Apellidos" Binding="{Binding LastName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Dirección" Binding="{Binding Address}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Correo" Binding="{Binding Email}"></DataGridTextColumn>
+                <DataGridTextColumn Header="" Binding="{Binding AccreditationTypeDescription}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Acreditación" Binding="{Binding Accreditation}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Teléfono 1" Binding="{Binding PhoneContact}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Teléfono 2" Binding="{Binding PhoneAux}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Estado" Binding="{Binding StateDescription}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="VIP" Binding="{Binding IsVip}" IsReadOnly="True"></DataGridCheckBoxColumn>
+                <DataGridTextColumn Header="Rentas" Binding="{Binding RentalQuantity}"></DataGridTextColumn>
+                <DataGridTextColumn Header="%" Binding="{Binding Discount}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Suscripción" Binding="{Binding SubscriptionDate, StringFormat={}{0:dd/MM/yyyy}}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="DeleteButtonDataGrid" Click="UpdateButtonDataGrid_OnClick" Background="Transparent">
+                                <iconPacks:PackIconModern Foreground="White" Width="16" Height="16" Kind="Edit" VerticalAlignment="Center"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Button" Click="DeleteButtonDataGrid_OnClick" Background="Transparent">
+                                <iconPacks:PackIconModern Foreground="White" Width="16" Height="16" Kind="Delete" VerticalAlignment="Center"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </StackPanel>
+</mah:MetroWindow>

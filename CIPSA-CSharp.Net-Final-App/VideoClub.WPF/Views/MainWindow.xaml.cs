@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using MahApps.Metro.Controls;
 using VideoClub.Common.BusinessLogic.Implementations;
-using VideoClub.Common.Model.Extensions;
 
 namespace VideoClub.WPF.Views
 {

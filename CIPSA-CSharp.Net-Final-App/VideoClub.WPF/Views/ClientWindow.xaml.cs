@@ -166,6 +166,8 @@ namespace VideoClub.WPF.Views
             UpdateButton.IsEnabled = isEnabled;
             DeleteButton.IsEnabled = isEnabled;
             AddButton.IsEnabled = !isEnabled;
+            AccreditationText.IsEnabled = !isEnabled;
+            AccreditationDropDown.IsEnabled = !isEnabled;
         }
 
         private void FillFields(object sender)

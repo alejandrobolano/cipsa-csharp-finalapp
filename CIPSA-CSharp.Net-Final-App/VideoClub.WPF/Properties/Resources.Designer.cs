@@ -106,6 +106,15 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Todas las rentas.
+        /// </summary>
+        public static string ALL_RENTALS {
+            get {
+                return ResourceManager.GetString("ALL_RENTALS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cliente.
         /// </summary>
         public static string CLIENT {
@@ -268,6 +277,15 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rentas pendientes.
+        /// </summary>
+        public static string PENDING_RENTALS {
+            get {
+                return ResourceManager.GetString("PENDING_RENTALS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Plataforma.
         /// </summary>
         public static string PLATFORM {
@@ -345,6 +363,15 @@ namespace VideoClub.WPF.Properties {
         public static string RENTAL_WINDOW_TITLE {
             get {
                 return ResourceManager.GetString("RENTAL_WINDOW_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rentas visualizadas.
+        /// </summary>
+        public static string RENTALS_DISPLAYED {
+            get {
+                return ResourceManager.GetString("RENTALS_DISPLAYED", resourceCulture);
             }
         }
         

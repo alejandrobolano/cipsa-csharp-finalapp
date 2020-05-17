@@ -88,7 +88,7 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Se ha introducido correctamente la renta con ID: $.
+        ///   Looks up a localized string similar to Se ha introducido correctamente la renta.
         /// </summary>
         public static string ADDED_RENTAL_SUCCESSFUL {
             get {
@@ -120,6 +120,15 @@ namespace VideoClub.WPF.Properties {
         public static string CLIENT {
             get {
                 return ResourceManager.GetString("CLIENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id del Cliente.
+        /// </summary>
+        public static string CLIENT_ID {
+            get {
+                return ResourceManager.GetString("CLIENT_ID", resourceCulture);
             }
         }
         
@@ -183,6 +192,15 @@ namespace VideoClub.WPF.Properties {
         public static string FINISH {
             get {
                 return ResourceManager.GetString("FINISH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha de Fin.
+        /// </summary>
+        public static string FINISH_DATE {
+            get {
+                return ResourceManager.GetString("FINISH_DATE", resourceCulture);
             }
         }
         
@@ -304,11 +322,29 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Id del Producto.
+        /// </summary>
+        public static string PRODUCT_ID {
+            get {
+                return ResourceManager.GetString("PRODUCT_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Producto no disponible con ID: $.
         /// </summary>
         public static string PRODUCT_NON_AVAILABLE {
             get {
                 return ResourceManager.GetString("PRODUCT_NON_AVAILABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Título del Producto.
+        /// </summary>
+        public static string PRODUCT_TITLE {
+            get {
+                return ResourceManager.GetString("PRODUCT_TITLE", resourceCulture);
             }
         }
         
@@ -376,11 +412,38 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rentas devueltas.
+        /// </summary>
+        public static string RETURNED_RENTALS {
+            get {
+                return ResourceManager.GetString("RETURNED_RENTALS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Alquilar.
         /// </summary>
         public static string START {
             get {
                 return ResourceManager.GetString("START", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha de Inicio.
+        /// </summary>
+        public static string START_DATE {
+            get {
+                return ResourceManager.GetString("START_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estado.
+        /// </summary>
+        public static string STATE {
+            get {
+                return ResourceManager.GetString("STATE", resourceCulture);
             }
         }
         

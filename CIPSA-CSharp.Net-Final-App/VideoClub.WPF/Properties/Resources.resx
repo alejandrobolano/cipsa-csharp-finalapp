@@ -127,7 +127,7 @@
     <value>Se ha introducido correctamente la película con ID: $</value>
   </data>
   <data name="ADDED_RENTAL_SUCCESSFUL" xml:space="preserve">
-    <value>Se ha introducido correctamente la renta con ID: $</value>
+    <value>Se ha introducido correctamente la renta</value>
   </data>
   <data name="ADDED_VIDEOGAME_SUCCESSFUL" xml:space="preserve">
     <value>Se ha introducido correctamente el juego con ID: $</value>
@@ -140,6 +140,9 @@
   </data>
   <data name="CLIENTS" xml:space="preserve">
     <value>Clientes</value>
+  </data>
+  <data name="CLIENT_ID" xml:space="preserve">
+    <value>Id del Cliente</value>
   </data>
   <data name="CLIENT_WINDOW_TITLE" xml:space="preserve">
     <value>Formulario de los Clientes</value>
@@ -158,6 +161,9 @@
   </data>
   <data name="FINISH" xml:space="preserve">
     <value>Finalizar</value>
+  </data>
+  <data name="FINISH_DATE" xml:space="preserve">
+    <value>Fecha de Fin</value>
   </data>
   <data name="FINISH_RENTAL_DUE_PAYMENT" xml:space="preserve">
     <value>Ha finalizado la renta del producto con ID: $, pero tiene una deuda pendiente de pago de PRICE €</value>
@@ -198,8 +204,14 @@
   <data name="PRODUCT" xml:space="preserve">
     <value>Producto</value>
   </data>
+  <data name="PRODUCT_ID" xml:space="preserve">
+    <value>Id del Producto</value>
+  </data>
   <data name="PRODUCT_NON_AVAILABLE" xml:space="preserve">
     <value>Producto no disponible con ID: $</value>
+  </data>
+  <data name="PRODUCT_TITLE" xml:space="preserve">
+    <value>Título del Producto</value>
   </data>
   <data name="RENTALS_DISPLAYED" xml:space="preserve">
     <value>Rentas visualizadas</value>
@@ -222,8 +234,17 @@
   <data name="RENTAL_WINDOW_TITLE" xml:space="preserve">
     <value>Formulario de las rentas</value>
   </data>
+  <data name="RETURNED_RENTALS" xml:space="preserve">
+    <value>Rentas devueltas</value>
+  </data>
   <data name="START" xml:space="preserve">
     <value>Alquilar</value>
+  </data>
+  <data name="START_DATE" xml:space="preserve">
+    <value>Fecha de Inicio</value>
+  </data>
+  <data name="STATE" xml:space="preserve">
+    <value>Estado</value>
   </data>
   <data name="TITLE" xml:space="preserve">
     <value>Título</value>

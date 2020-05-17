@@ -2,6 +2,7 @@
 using AutoMapper;
 using VideoClub.Common.BusinessLogic.Contracts;
 using VideoClub.Common.BusinessLogic.Dto;
+using VideoClub.Common.Model.Enums;
 using VideoClub.Infrastructure.Repository;
 using VideoClub.Infrastructure.Repository.Entity;
 using VideoClub.Infrastructure.Repository.Implementations;
@@ -38,12 +39,12 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         #region common public methods
 
-        public bool Add(VideoGameDto model)
+        public bool Add(VideoGameDto model, out string id)
         {
             var mapper = MapperToModel();
             var videoGame = mapper.Map<VideoGameDto, VideoGame>(model);
 
-            return _videoGameRepository.Add(videoGame);
+            return _videoGameRepository.Add(videoGame, out id);
         }
 
         public bool Remove(string id)
@@ -81,6 +82,11 @@ namespace VideoClub.Common.BusinessLogic.Implementations
         #endregion
 
         #region custom public methods
+        public bool HasBeenChangeState(VideoGameDto videoGame, StateProductEnum state)
+        {
+            videoGame.State = state;
+            return Update(videoGame);
+        }
 
         #endregion
 

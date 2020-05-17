@@ -36,11 +36,11 @@ namespace VideoClub.Infrastructure.Repository.Implementations
             return result;
         }
 
-        public override bool Add(Rental model)
+        public override bool Add(Rental model, out string id)
         {
             var random = new Random();
             model.Id = Helper.GetCodeNumber(CommonHelper.Rental, 6, random);
-            return base.Add(model);
+            return base.Add(model, out id);
         }
 
         public override Rental Get(string id)

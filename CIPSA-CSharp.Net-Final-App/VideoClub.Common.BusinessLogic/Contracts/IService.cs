@@ -8,7 +8,7 @@ namespace VideoClub.Common.BusinessLogic.Contracts
 {
     public interface IService<T>
     {
-        bool Add(T model);
+        bool Add(T model, out string id);
         bool Remove(string id);
         T Get(string id);
         bool Update(T modelDto);

@@ -42,11 +42,11 @@ namespace VideoClub.Infrastructure.Repository.Implementations
                 videoGame.Title.ToLower().Equals(id.ToLower()));
         }
 
-        public override bool Add(VideoGame model)
+        public override bool Add(VideoGame model, out string id)
         {
             var random = new Random();
             model.Id = Helper.GetCodeNumber(CommonHelper.VideoGame, 6, random);
-            return base.Add(model);
+            return base.Add(model, out id);
         }
 
     }

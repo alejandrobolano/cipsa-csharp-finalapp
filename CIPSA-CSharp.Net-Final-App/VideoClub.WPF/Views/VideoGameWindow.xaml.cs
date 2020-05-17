@@ -129,7 +129,7 @@ namespace VideoClub.WPF.Views
         {
             var videoGame = new VideoGameDto();
             FillDataFromFields(videoGame);
-            return _videoGameService.Add(videoGame);
+            return _videoGameService.Add(videoGame, out _);
         }
 
         private void FillDataFromFields(VideoGameDto videoGame)

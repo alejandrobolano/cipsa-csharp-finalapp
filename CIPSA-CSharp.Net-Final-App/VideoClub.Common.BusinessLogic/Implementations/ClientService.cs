@@ -42,12 +42,12 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         #region common public methods
 
-        public bool Add(ClientDto model)
+        public bool Add(ClientDto model, out string id)
         {
             var mapper = MapperToModel();
             var client = mapper.Map<ClientDto, Client>(model);
 
-            return _clientRepository.Add(client);
+            return _clientRepository.Add(client, out id);
         }
 
         public bool Remove(string id)

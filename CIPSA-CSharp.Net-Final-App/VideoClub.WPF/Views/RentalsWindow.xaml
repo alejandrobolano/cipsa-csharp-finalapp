@@ -42,7 +42,7 @@
                     <ComboBox Name="ProductTypeComboBox" Loaded="ProductComboBox_OnLoaded" Width="100" SelectionChanged="ProductTypeComboBox_SelectionChanged"/>
                     <TextBlock Text="{x:Static properties:Resources.ID}"  VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <TextBox Name="ProductIdText"  Width="135" mah:TextBoxHelper.Watermark="PROD-XXXXX" mah:ControlsHelper.ContentCharacterCasing="Upper"
-                                 mah:TextBoxHelper.ClearTextButton="True" MaxLength="12" Margin="15,0,0,0" TextChanged="ProductIdText_TextChanged"/>
+                                 mah:TextBoxHelper.ClearTextButton="True" MaxLength="12" Margin="15,0,0,0" />
                     <TextBlock Text="{x:Static properties:Resources.TITLE}" VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <TextBox Name="TitleProductText"  Width="135" 
                                  mah:TextBoxHelper.ClearTextButton="True" MaxLength="12"/>
@@ -85,6 +85,7 @@
                 <DataGridTextColumn Header="{x:Static properties:Resources.CLIENT_ID}" Binding="{Binding ClientId}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
                 <DataGridTextColumn Header="{x:Static properties:Resources.START_DATE}" Binding="{Binding StartRental, StringFormat={}{0:dd/MM/yyyy}}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
                 <DataGridTextColumn Header="{x:Static properties:Resources.FINISH_DATE}" Binding="{Binding FinishRental, StringFormat={}{0:dd/MM/yyyy}}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.PRICE}" Binding="{Binding Price, StringFormat=€ 0.00}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
                 <DataGridTextColumn Header="{x:Static properties:Resources.STATE}" Binding="{Binding StateDescription}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
 
                 <DataGridTemplateColumn>

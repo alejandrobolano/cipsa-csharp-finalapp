@@ -23,6 +23,7 @@ namespace VideoClub.Common.Model.Exceptions
         {
             
         }
+
     }
 
     [Serializable]
@@ -33,6 +34,29 @@ namespace VideoClub.Common.Model.Exceptions
         /// </summary>
         public InvalidCompareYearException()
             : base("Imposible año de producción sea mayor que el año de compra del producto")
+        {
+
+        }
+    }
+
+    [Serializable]
+    public class InvalidZeroYearException : Exception
+    {
+        /// <summary>
+        /// Return an exception because the production´s year entered is bigger than the buy´s year
+        /// </summary>
+        public InvalidZeroYearException()
+            : base("Imposible año sea 0")
+        {
+
+        }
+
+        /// <summary>
+        /// Return an exception because the year entered is bigger than the actual year
+        /// </summary>
+        /// <param name="year"></param>
+        public InvalidZeroYearException(string year)
+            : base($"Imposible que el año introducido {year} sea 0")
         {
 
         }

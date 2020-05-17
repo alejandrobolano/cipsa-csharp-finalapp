@@ -141,6 +141,9 @@
   <data name="ALL_RENTALS" xml:space="preserve">
     <value>Todas las rentas</value>
   </data>
+  <data name="BUYER_YEAR" xml:space="preserve">
+    <value>Año de compra</value>
+  </data>
   <data name="CLIENT" xml:space="preserve">
     <value>Cliente</value>
   </data>
@@ -158,6 +161,12 @@
   </data>
   <data name="DELETE_SUCCESSFUL" xml:space="preserve">
     <value>Se ha eliminado correctamente</value>
+  </data>
+  <data name="DISC_QUANTITY" xml:space="preserve">
+    <value>Cantidad de discos</value>
+  </data>
+  <data name="DISC_QUANTITY_SHORT" xml:space="preserve">
+    <value>Discos</value>
   </data>
   <data name="EMAIL" xml:space="preserve">
     <value>Correo eléctronico</value>
@@ -234,8 +243,14 @@
   <data name="PLATFORM" xml:space="preserve">
     <value>Plataforma</value>
   </data>
+  <data name="PRICE" xml:space="preserve">
+    <value>Precio</value>
+  </data>
   <data name="PRODUCT" xml:space="preserve">
     <value>Producto</value>
+  </data>
+  <data name="PRODUCTION_YEAR" xml:space="preserve">
+    <value>Año de producción</value>
   </data>
   <data name="PRODUCT_ID" xml:space="preserve">
     <value>Id del Producto</value>
@@ -285,6 +300,9 @@
   <data name="SUBSCRIPTION" xml:space="preserve">
     <value>Suscripción</value>
   </data>
+  <data name="TIMING" xml:space="preserve">
+    <value>Duración</value>
+  </data>
   <data name="TITLE" xml:space="preserve">
     <value>Título</value>
   </data>
@@ -305,5 +323,8 @@
   </data>
   <data name="VIP" xml:space="preserve">
     <value>VIP</value>
+  </data>
+  <data name="YEAR_WATERMARK" xml:space="preserve">
+    <value>YYYY</value>
   </data>
 </root>

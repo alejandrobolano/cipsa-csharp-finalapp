@@ -35,6 +35,23 @@ namespace VideoClub.WPF.Utils
                 }
             }
         }
+        public static bool HasAnyEmptyFields(StackPanel panel)
+        {
+            for (var i = 0; i < panel.Children.Count; i++)
+            {
+                var control = panel.Children[i];
+                switch (control)
+                {
+                    case TextBox box when string.IsNullOrEmpty(box.Text):
+                    case ComboBox comboBox when string.IsNullOrEmpty(comboBox.SelectedItem.ToString()):
+                    case NumericUpDown numeric when numeric.Value == 0d:
+                        return true;
+                    case StackPanel panelChild:
+                        return HasAnyEmptyFields(panelChild);
+                }
+            }
+            return false;
+        }
         
 
         public static void HandleLogError(string errorMessage)

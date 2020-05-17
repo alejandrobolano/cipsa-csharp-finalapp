@@ -133,6 +133,15 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Año de compra.
+        /// </summary>
+        public static string BUYER_YEAR {
+            get {
+                return ResourceManager.GetString("BUYER_YEAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cliente.
         /// </summary>
         public static string CLIENT {
@@ -183,6 +192,24 @@ namespace VideoClub.WPF.Properties {
         public static string DELETE_SUCCESSFUL {
             get {
                 return ResourceManager.GetString("DELETE_SUCCESSFUL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cantidad de discos.
+        /// </summary>
+        public static string DISC_QUANTITY {
+            get {
+                return ResourceManager.GetString("DISC_QUANTITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discos.
+        /// </summary>
+        public static string DISC_QUANTITY_SHORT {
+            get {
+                return ResourceManager.GetString("DISC_QUANTITY_SHORT", resourceCulture);
             }
         }
         
@@ -412,6 +439,15 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Precio.
+        /// </summary>
+        public static string PRICE {
+            get {
+                return ResourceManager.GetString("PRICE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Producto.
         /// </summary>
         public static string PRODUCT {
@@ -444,6 +480,15 @@ namespace VideoClub.WPF.Properties {
         public static string PRODUCT_TITLE {
             get {
                 return ResourceManager.GetString("PRODUCT_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Año de producción.
+        /// </summary>
+        public static string PRODUCTION_YEAR {
+            get {
+                return ResourceManager.GetString("PRODUCTION_YEAR", resourceCulture);
             }
         }
         
@@ -565,6 +610,15 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Duración.
+        /// </summary>
+        public static string TIMING {
+            get {
+                return ResourceManager.GetString("TIMING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Título.
         /// </summary>
         public static string TITLE {
@@ -624,6 +678,15 @@ namespace VideoClub.WPF.Properties {
         public static string VIP {
             get {
                 return ResourceManager.GetString("VIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to YYYY.
+        /// </summary>
+        public static string YEAR_WATERMARK {
+            get {
+                return ResourceManager.GetString("YEAR_WATERMARK", resourceCulture);
             }
         }
     }

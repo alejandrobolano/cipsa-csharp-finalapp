@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Reflection;
-using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
+using VideoClub.Common.Model.Utils;
 
 namespace VideoClub.Infrastructure.Repository.Utils
 {
     public class Helper
     {
-        public static readonly string Separator = "-";
         
         public static readonly log4net.ILog Log = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         //public static readonly Assembly assembly = Assembly.Load("VideoClub.Infrastructure.Repository");
@@ -25,7 +20,7 @@ namespace VideoClub.Infrastructure.Repository.Utils
                 .Select(s => s[random.Next(s.Length)])
                 .ToArray());
 
-            return model + Separator + result;
+            return model + CommonHelper.Separator + result;
         }
     }
 }

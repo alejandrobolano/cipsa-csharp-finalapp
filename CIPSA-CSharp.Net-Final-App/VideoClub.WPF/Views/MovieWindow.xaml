@@ -46,10 +46,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
                         <TextBlock Text="{x:Static properties:Resources.PRODUCTION_YEAR}" VerticalAlignment="Center"  Margin="15,0,5,0"/>
-                        <TextBox Name="ProductionYearText" mah:TextBoxHelper.Watermark="yyyy" Width="65" PreviewTextInput="NumberValidationTextBox"
+                        <TextBox Name="ProductionYearText"  mah:TextBoxHelper.Watermark="{x:Static properties:Resources.YEAR_WATERMARK}"
+                                 Width="65" PreviewTextInput="NumberValidationTextBox"
                                  mah:TextBoxHelper.ClearTextButton="True" MaxLength="4" Margin="5,0,0,0"/>
                         <TextBlock Text="{x:Static properties:Resources.BUYER_YEAR}" VerticalAlignment="Center"  Margin="15,0,5,0"/>
-                        <TextBox Name="BuyYearText" mah:TextBoxHelper.Watermark="yyyy" Width="65" PreviewTextInput="NumberValidationTextBox"
+                        <TextBox Name="BuyYearText" mah:TextBoxHelper.Watermark="{x:Static properties:Resources.YEAR_WATERMARK}" Width="65" PreviewTextInput="NumberValidationTextBox"
                                  mah:TextBoxHelper.ClearTextButton="True" MaxLength="4"/>
                     </StackPanel>
                 </StackPanel>

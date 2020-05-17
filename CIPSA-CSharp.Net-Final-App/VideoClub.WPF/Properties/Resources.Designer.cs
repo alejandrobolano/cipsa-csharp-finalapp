@@ -680,5 +680,14 @@ namespace VideoClub.WPF.Properties {
                 return ResourceManager.GetString("VIP", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to YYYY.
+        /// </summary>
+        public static string YEAR_WATERMARK {
+            get {
+                return ResourceManager.GetString("YEAR_WATERMARK", resourceCulture);
+            }
+        }
     }
 }

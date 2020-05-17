@@ -324,4 +324,7 @@
   <data name="VIP" xml:space="preserve">
     <value>VIP</value>
   </data>
+  <data name="YEAR_WATERMARK" xml:space="preserve">
+    <value>YYYY</value>
+  </data>
 </root>

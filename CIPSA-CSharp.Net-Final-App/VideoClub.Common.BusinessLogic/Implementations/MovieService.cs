@@ -13,6 +13,7 @@ namespace VideoClub.Common.BusinessLogic.Implementations
     public class MovieService : IService<MovieDto>
     {
         private readonly MovieRepository _movieRepository;
+        public static MovieService Instance { get; } = new MovieService();
         public MovieService()
         {
             var videoClubDi = new VideoClubDi(VideoClubContext.GetVideoClubContext());

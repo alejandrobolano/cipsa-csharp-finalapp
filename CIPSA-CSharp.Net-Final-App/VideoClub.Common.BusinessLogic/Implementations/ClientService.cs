@@ -16,6 +16,8 @@ namespace VideoClub.Common.BusinessLogic.Implementations
     {
         private readonly ClientRepository _clientRepository;
         private readonly RentalService _rentalService;
+        public static ClientService Instance { get; } = new ClientService();
+
         public ClientService()
         {
             var videoClubDi = new VideoClubDi(VideoClubContext.GetVideoClubContext());
@@ -142,6 +144,13 @@ namespace VideoClub.Common.BusinessLogic.Implementations
                 }
             });
 
+        }
+
+        public void AddQuantityRental(string id, int newQuantityRentals)
+        {
+            var client = Get(id);
+            client.RentalQuantity += newQuantityRentals;
+            Update(client);
         }
 
         #endregion

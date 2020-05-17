@@ -191,7 +191,7 @@ namespace VideoClub.WPF.Views
             if (isStartRental)
             {
                 var message = _resourceManager.GetResourceValue("ADDED_RENTAL_SUCCESSFUL")
-                    .Replace("PRICE", priceToPay.ToString(CultureInfo.InvariantCulture));
+                    .Replace("PRICE", decimal.Round(priceToPay,2).ToString(CultureInfo.InvariantCulture));
                 this.ShowCustomInformationMessage(_resourceManager, message);
 
             }

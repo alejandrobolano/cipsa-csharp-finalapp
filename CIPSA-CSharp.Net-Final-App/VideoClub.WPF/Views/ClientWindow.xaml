@@ -25,34 +25,34 @@
         <Grid>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Name="MainPanel" IsEnabled="False" Margin="10,15,0,0">
                 <StackPanel Orientation="Horizontal" Margin="0,10">
-                    <Label Content="{x:Static properties:Resources.NAME}" Width="64" />
+                    <TextBlock Text="{x:Static properties:Resources.NAME}" Width="55" VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <TextBox Name="NameText"  Height="23" TextWrapping="Wrap" 
                              mah:TextBoxHelper.Watermark="{x:Static properties:Resources.NAME}" Text="" Width="120"  MaxLines="1"/>
-                    <Label Content="{x:Static properties:Resources.LAST_NAME}" Width="67"/>
+                    <TextBlock Text="{x:Static properties:Resources.LAST_NAME}" Width="67" VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <TextBox Name="LastNameText" Height="23" TextWrapping="Wrap" 
                              mah:TextBoxHelper.Watermark="{x:Static properties:Resources.LAST_NAME}" Text="" Width="120"  MaxLines="1"/>
-                    <Label Content="{x:Static properties:Resources.ACCREDITATION}" Width="106"/>
+                    <TextBlock Text="{x:Static properties:Resources.ACCREDITATION}"  VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <ComboBox Name="AccreditationDropDown" Width="76" Loaded="AccreditationDropDown_OnLoaded"/>
                     <TextBox Name="AccreditationText" Height="23" TextWrapping="Wrap" 
                              mah:TextBoxHelper.Watermark="12345678Z" Text="" Width="106" Margin="10,0,0,0"  MaxLines="1" MaxLength="9"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,10">
-                    <Label Content="{x:Static properties:Resources.PHONE_1}" />
+                    <TextBlock Text="{x:Static properties:Resources.PHONE_1}" VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <TextBox Name="PhoneContactText" Height="23" TextWrapping="Wrap" 
                              mah:TextBoxHelper.Watermark="" Text="" Width="120"  MaxLines="1" MaxLength="9" />
-                    <Label Content="{x:Static properties:Resources.PHONE_2}"/>
+                    <TextBlock Text="{x:Static properties:Resources.PHONE_2}" VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <TextBox Name="PhoneAuxText" Height="23" TextWrapping="Wrap" Text="" Width="120" MaxLines="1" MaxLength="9"/>
-                    <Label Content="{x:Static properties:Resources.EMAIL}"/>
+                    <TextBlock Text="{x:Static properties:Resources.EMAIL}" VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <TextBox Name="EmailText" Height="23" TextWrapping="Wrap" 
                              mah:TextBoxHelper.Watermark="{x:Static properties:Resources.EMAIL_WATERMARK}" Text="" Width="192" MaxLines="1"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,10">
-                    <Label Content="{x:Static properties:Resources.ADDRESS}" />
+                    <TextBlock Text="{x:Static properties:Resources.ADDRESS}" VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <TextBox Name="AddressText"  Height="23" TextWrapping="Wrap" 
                              mah:TextBoxHelper.Watermark="{x:Static properties:Resources.ADDRESS_WATERMARK}" Text="" Width="320" MaxLines="1" Margin="5,0,0,0"/>
                     <StackPanel Name="VipPanel" Orientation="Horizontal" Margin="100,0,10,0" HorizontalAlignment="Right" IsEnabled="False">
-                        <Label Content="{x:Static properties:Resources.VIP}" HorizontalAlignment="Right"/>
-                        <CheckBox Name="VipCheckBox"/>
+                        <iconPacks:PackIconModern Foreground="GhostWhite" Width="16" Height="16" Kind="User" VerticalAlignment="Center"/>
+                        <mah:ToggleSwitch Name="VipCheckBox" OnLabel="{x:Static properties:Resources.VIP}" OffLabel=""/>
                     </StackPanel>
 
                 </StackPanel>

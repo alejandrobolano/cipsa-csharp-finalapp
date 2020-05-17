@@ -10,7 +10,7 @@
                  mc:Ignorable="d"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  xmlns:properties="clr-namespace:VideoClub.WPF.Properties"
-                 Title="{x:Static properties:Resources.Title}" Height="450" Width="800"
+                 Title="{x:Static properties:Resources.MAIN_TITLE}" Height="450" Width="800"
                  ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Controls:MetroWindow.RightWindowCommands>
@@ -38,7 +38,7 @@
     </Controls:MetroWindow.RightWindowCommands>
 
     <Grid HorizontalAlignment="Left" Height="422"  VerticalAlignment="Top" Width="795" Margin="0,0,-0.333,0">
-        <Controls:Tile Title="Crear renta rápida" Click="ButtonRentalsWindows_OnClick"
+        <Controls:Tile Title="Crear renta rápida" Click="StartRentalsWindows_OnClick"
                        Background="YellowGreen" ToolTip="Gestione todas las rentas"
                        HorizontalTitleAlignment="Center" Margin="40,36,428,246" Width="Auto">
             <iconPacks:PackIconModern Width="60"
@@ -47,7 +47,7 @@
         </Controls:Tile>
         <Controls:Tile Title="Crear devolución rápida" 
                        Background="Beige" ToolTip="Gestione todas las rentas"
-                       HorizontalTitleAlignment="Center" Margin="428,36,41,246" Width="Auto">
+                       HorizontalTitleAlignment="Center" Margin="428,36,41,246" Width="Auto" Click="FinishRentalsWindows_OnClick">
             <iconPacks:PackIconModern Width="60"
                                       Height="60"
                                       Kind="InboxOut" />

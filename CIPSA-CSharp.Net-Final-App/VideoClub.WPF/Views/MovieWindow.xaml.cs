@@ -9,6 +9,7 @@ using MahApps.Metro.Controls;
 using VideoClub.Common.BusinessLogic.Dto;
 using VideoClub.Common.BusinessLogic.Implementations;
 using VideoClub.Common.Model.Extensions;
+using VideoClub.WPF.Utils;
 
 namespace VideoClub.WPF.Views
 {
@@ -46,6 +47,7 @@ namespace VideoClub.WPF.Views
         {
             ChangeEnabledToButtons(true);
             FillFields(sender);
+            MainPanel.IsEnabled = true;
         }
 
         private void UpdateButtonDataGrid_OnClick(object sender, RoutedEventArgs e)
@@ -83,7 +85,6 @@ namespace VideoClub.WPF.Views
         {
             MovieSelected(sender);
             FillDataFromDataGrid();
-            MainPanel.IsEnabled = true;
         }
 
         private void MovieSelected(object sender)

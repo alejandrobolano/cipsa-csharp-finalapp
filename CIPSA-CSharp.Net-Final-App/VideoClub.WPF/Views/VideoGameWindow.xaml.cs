@@ -11,6 +11,7 @@ using VideoClub.Common.BusinessLogic.Dto;
 using VideoClub.Common.BusinessLogic.Implementations;
 using VideoClub.Common.Model.Enums;
 using VideoClub.Common.Model.Extensions;
+using VideoClub.WPF.Utils;
 
 namespace VideoClub.WPF.Views
 {

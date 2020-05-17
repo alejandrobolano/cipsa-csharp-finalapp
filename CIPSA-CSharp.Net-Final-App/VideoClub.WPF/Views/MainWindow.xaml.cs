@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using MahApps.Metro.Controls;
 using VideoClub.Common.BusinessLogic.Implementations;
+using VideoClub.Common.Model.Enums;
 
 namespace VideoClub.WPF.Views
 {
@@ -69,8 +70,6 @@ namespace VideoClub.WPF.Views
             //    Platform = GamePlatformEnum.Wii
             //};
 
-            //var metroWindow = (Application.Current.MainWindow as MetroWindow);
-            //metroWindow.ShowMessageAsync("Actualizacion", $"Nuevo nombre: ...");
         }
 
         private void ButtonMovieWindows_OnClick(object sender, RoutedEventArgs e)
@@ -93,9 +92,15 @@ namespace VideoClub.WPF.Views
             videoGameWindows.Show();
         }
 
-        private void ButtonRentalsWindows_OnClick(object sender, RoutedEventArgs e)
+        private void StartRentalsWindows_OnClick(object sender, RoutedEventArgs e)
         {
-            var rentalsWindow = new RentalsWindow();
+            var rentalsWindow = new RentalsWindow(StateProductEnum.Available);
+            rentalsWindow.Show();
+        }
+
+        private void FinishRentalsWindows_OnClick(object sender, RoutedEventArgs e)
+        {
+            var rentalsWindow = new RentalsWindow(StateProductEnum.NonAvailable);
             rentalsWindow.Show();
         }
     }

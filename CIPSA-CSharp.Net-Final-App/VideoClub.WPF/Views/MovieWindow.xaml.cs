@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Resources;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +23,7 @@ namespace VideoClub.WPF.Views
         private MovieService _movieService;
         private IList<MovieDto> _movies;
         private MovieDto _movieSelected;
+        private readonly ResourceManager _resourceManager = Properties.Resources.ResourceManager;
         public MovieWindow()
         {
             InitializeComponent();
@@ -123,14 +125,16 @@ namespace VideoClub.WPF.Views
         private void FillDataFromFields(MovieDto movie)
         {
             movie.Title = TitleText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter();
-            movie.Price = Convert.ToDecimal(PriceNumeric.Value);
-            movie.QuantityDisc = Convert.ToInt32(QuantityNumeric.Value);
-            movie.ProductionYear = Convert.ToInt32(ProductionYearText.Text);
-            movie.BuyYear = Convert.ToInt32(BuyYearText.Text);
+            movie.Price = Convert.ToDecimal(PriceNumeric?.Value);
+            movie.QuantityDisc = Convert.ToInt32(QuantityNumeric?.Value);
+            int.TryParse(ProductionYearText?.Text, out var productionYear);
+            movie.ProductionYear = productionYear;
+            int.TryParse(BuyYearText?.Text, out var buyYear);
+            movie.BuyYear = buyYear;
             var durationTimeSpan = new TimeSpan(
-                Convert.ToInt32(HourDurationNumeric.Value),
-                Convert.ToInt32(MinuteDurationNumeric.Value),
-                Convert.ToInt32(SecondDurationNumeric.Value)
+                Convert.ToInt32(HourDurationNumeric?.Value),
+                Convert.ToInt32(MinuteDurationNumeric?.Value),
+                Convert.ToInt32(SecondDurationNumeric?.Value)
                 );
             movie.Duration = durationTimeSpan;
         }
@@ -153,18 +157,43 @@ namespace VideoClub.WPF.Views
 
         private async void AddButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (CheckFields()) return;
             if (AddMovie())
             {
                 await LoadDataGrid();
+            }
+            else
+            {
+                this.ShowGenericErrorMessage(_resourceManager);
+                HelperWindow.HandleLogError(string.Empty);
             }
         }
 
         private async void UpdateButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (CheckFields()) return;
+
             if (UpdateMovie())
             {
                 await LoadDataGrid();
             }
+            else
+            {
+                this.ShowGenericErrorMessage(_resourceManager);
+                HelperWindow.HandleLogError(string.Empty);
+            }
+        }
+
+        private bool CheckFields()
+        {
+            if (HelperWindow.HasAnyEmptyFields(MainPanel))
+            {
+                this.ShowGenericErrorDataMessage(_resourceManager);
+                HelperWindow.HandleLogError(string.Empty);
+                return true;
+            }
+
+            return false;
         }
 
         private async void DeleteButton_OnClick(object sender, RoutedEventArgs e)

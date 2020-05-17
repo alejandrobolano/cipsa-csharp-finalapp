@@ -1,10 +1,19 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Diagnostics;
+using System.Reflection;
+using System.Resources;
+using System.Windows;
+using System.Windows.Controls;
+using log4net;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
-namespace VideoClub.WPF
+namespace VideoClub.WPF.Utils
 {
     public class HelperWindow
     {
+        public static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         public static void ClearFields(StackPanel panel)
         {
             foreach (var control in panel.Children)
@@ -26,5 +35,20 @@ namespace VideoClub.WPF
                 }
             }
         }
+        
+
+        public static void HandleLogError(string errorMessage)
+        {
+            var callStack = new StackFrame(1, true);
+            Log.Error($"{errorMessage}" +
+                      $"\n {callStack.GetFileName()} {callStack.GetFileLineNumber()}");
+        }
+        public static void HandleLogInfo(string infoMessage)
+        {
+            Log.Info(infoMessage);
+        }
+
     }
+    
+   
 }

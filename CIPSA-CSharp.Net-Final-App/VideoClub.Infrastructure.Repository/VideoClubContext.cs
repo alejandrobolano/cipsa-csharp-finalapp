@@ -17,7 +17,7 @@ namespace VideoClub.Infrastructure.Repository
         {
             return _videoClubContext ?? (_videoClubContext = new VideoClubContext());
         }
-        public VideoClubContext() : base($"name=VideoClubConnection")
+        public VideoClubContext() : base($"name={Helper.Connection}")
         {
             var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }

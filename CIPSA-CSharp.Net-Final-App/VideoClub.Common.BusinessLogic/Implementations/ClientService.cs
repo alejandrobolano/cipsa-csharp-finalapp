@@ -87,25 +87,16 @@ namespace VideoClub.Common.BusinessLogic.Implementations
         #region custom public methods
         public void UpdateDiscount(ClientDto client)
         {
-            var quantityRentalMonth = 0; //Change this
-            switch (quantityRentalMonth)
-            {
-                case 5:
-                    client.Discount = 10;
-                    break;
-                case 10:
-                    client.Discount = 15;
-                    break;
-                case 15:
-                    client.Discount = 20;
-                    break;
-                case 20:
-                    client.Discount = 25;
-                    break;
-                case 30:
-                    client.Discount = 50;
-                    break;
-            }
+            var quantityRentalMonth = 0;
+            if (quantityRentalMonth >= 5 && quantityRentalMonth < 10)
+                client.Discount = 10;
+            else if (quantityRentalMonth >= 10 && quantityRentalMonth < 15)
+                client.Discount = 15;
+            else if (quantityRentalMonth >= 15 && quantityRentalMonth < 20)
+                client.Discount = 20;
+            else if (quantityRentalMonth >= 20 && quantityRentalMonth < 30)
+                client.Discount = 25;
+            else if (quantityRentalMonth >= 30) client.Discount = 50;
         }
 
         public void UpdateClientsForVip()

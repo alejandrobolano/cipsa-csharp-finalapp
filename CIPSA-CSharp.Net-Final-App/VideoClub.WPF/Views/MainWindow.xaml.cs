@@ -94,13 +94,13 @@ namespace VideoClub.WPF.Views
 
         private void StartRentalsWindows_OnClick(object sender, RoutedEventArgs e)
         {
-            var rentalsWindow = new RentalsWindow(StateProductEnum.Available);
+            var rentalsWindow = new RentalsWindow(StateRentalEnum.All);
             rentalsWindow.Show();
         }
 
         private void FinishRentalsWindows_OnClick(object sender, RoutedEventArgs e)
         {
-            var rentalsWindow = new RentalsWindow(StateProductEnum.NonAvailable);
+            var rentalsWindow = new RentalsWindow(StateRentalEnum.Activated);
             rentalsWindow.Show();
         }
     }

@@ -29,22 +29,23 @@ namespace VideoClub.WPF.Views
         private IList<RentalDto> _rentals;
         private RentalDto _rentalSelected;
         private IList<string> _itemsProductType;
-        private IDictionary<StateProductEnum, string> _itemsStateProduct;
+        private IDictionary<StateRentalEnum, string> _itemsStateRental;
         private readonly ResourceManager _resourceManager = Properties.Resources.ResourceManager;
-        private StateProductEnum _stateProduct;
-        public RentalsWindow(StateProductEnum stateProduct)
+        private StateRentalEnum _stateRental;
+        public RentalsWindow(StateRentalEnum stateRental)
         {
             InitializeComponent();
             InitializeData();
             InitializeVariables();
-            _stateProduct = stateProduct;
+            _stateRental = stateRental;
         }
 
         private void InitializeVariables()
         {
-            _clientService = new ClientService();
-            _movieService = new MovieService();
-            _videoGameService = new VideoGameService();
+            _clientService = ClientService.Instance;
+            _movieService = MovieService.Instance;
+            _videoGameService = VideoGameService.Instance;
+            _rentalService = RentalService.Instance;
         }
         private void InitializeData()
         {
@@ -54,10 +55,11 @@ namespace VideoClub.WPF.Views
                 {ProductTypeEnum.VideoGame.ToString()},
                 {ProductTypeEnum.Movie.ToString()}
             };
-            _itemsStateProduct = new Dictionary<StateProductEnum, string>
+            _itemsStateRental = new Dictionary<StateRentalEnum, string>
             {
-                {StateProductEnum.Available,_resourceManager.GetResourceValue("ALL_RENTALS") },
-                {StateProductEnum.NonAvailable,_resourceManager.GetResourceValue("PENDING_RENTALS") }
+                {StateRentalEnum.All,_resourceManager.GetResourceValue("ALL_RENTALS") },
+                {StateRentalEnum.Activated,_resourceManager.GetResourceValue("PENDING_RENTALS") },
+                {StateRentalEnum.Returned,_resourceManager.GetResourceValue("RETURNED_RENTALS") }
             };
         }
 
@@ -84,11 +86,19 @@ namespace VideoClub.WPF.Views
 
         private void LoadingData()
         {
-            _rentalService = new RentalService();
+            switch (_stateRental)
+            {
+                case StateRentalEnum.Activated:
+                    _rentals = _rentalService.GetRentalsByState(StateRentalEnum.Activated, StateProductEnum.NonAvailable);
+                    break;
+                case StateRentalEnum.Returned:
+                    _rentals = _rentalService.GetRentalsByState(StateRentalEnum.Returned);
+                    break;
+                default: _rentals = _rentalService.All();
+                    break;
+            }
 
-            _rentals = _stateProduct == StateProductEnum.Available 
-                ? _rentalService.All() 
-                : _rentalService.GetRentalsByState(_stateProduct);
+            
         }
         private async Task LoadingDataTask()
         {
@@ -130,11 +140,10 @@ namespace VideoClub.WPF.Views
 
             if (HandlePossibleUnsatisfactoryMessages(client, product)) return;
 
-            var quantity = Convert.ToDouble(QuantityNumeric.Value);
-            var finishRental = _todayDateTime.AddDays(quantity);
+            var quantity = Convert.ToInt32(QuantityNumeric.Value);
 
-            var rental = TryAddRentalForStart(client, product, finishRental, out var isStartRental);
-            ShowMessageOfStartProcess(isStartRental, rental);
+            var isStartRental = TryAddRentalForStart(client, product, quantity);
+            ShowMessageOfStartProcess(isStartRental);
             await LoadDataGrid();
         }
 
@@ -143,6 +152,7 @@ namespace VideoClub.WPF.Views
             if (client == null || product == null)
             {
                 this.ShowGenericErrorDataMessage(_resourceManager);
+                HelperWindow.HandleLogError(string.Empty);
                 return true;
             }
 
@@ -176,23 +186,22 @@ namespace VideoClub.WPF.Views
             }
         }
 
-        private void ShowMessageOfStartProcess(bool isStartRental, RentalDto rental)
+        private void ShowMessageOfStartProcess(bool isStartRental)
         {
             if (isStartRental)
             {
-                var message = _resourceManager.GetResourceValue("ADDED_RENTAL_SUCCESSFUL")
-                    ?.Replace("$", rental.Id);
+                var message = _resourceManager.GetResourceValue("ADDED_RENTAL_SUCCESSFUL");
                 this.ShowCustomInformationMessage(_resourceManager, message);
 
             }
             else
             {
-                this.ShowGenericErrorDataMessage(_resourceManager);
+                this.ShowGenericErrorMessage(_resourceManager);
+                HelperWindow.HandleLogError(string.Empty);
             }
         }
 
-        private RentalDto TryAddRentalForStart(ClientDto client, ProductDto product, DateTime finishRental,
-            out bool isStartRental)
+        private bool TryAddRentalForStart(ClientDto client, ProductDto product, int quantityRental)
         {
             var rental = new RentalDto
             {
@@ -200,11 +209,9 @@ namespace VideoClub.WPF.Views
                 ClientId = client.Id,
                 ProductId = product.Id,
                 ProductTitle = product.Title,
-                StartRental = _todayDateTime,
-                FinishRental = finishRental
+                StartRental = _todayDateTime
             };
-            isStartRental = _rentalService.StartRentalProduct(rental, StateProductEnum.NonAvailable);
-            return rental;
+            return _rentalService.StartRentalProduct(rental, quantityRental, StateProductEnum.NonAvailable);
         }
 
 
@@ -244,27 +251,28 @@ namespace VideoClub.WPF.Views
 
         private string GetProductParam()
         {
-            var productId = ProductIdText.Text;
-            var productTitle = TitleProductText.Text;
+            var productId = ProductIdText.Text.ToUpperInvariant();
+            var productTitle = TitleProductText.Text.ToUpperInvariant();
             var productParam = string.IsNullOrEmpty(productId) ? productTitle : productId;
             return productParam;
         }
 
         private string GetClientParam()
         {
-            var clientId = ClientIdText.Text;
-            var clientAccreditation = AccreditationClientText.Text;
+            var clientId = ClientIdText.Text.ToUpperInvariant();
+            var clientAccreditation = AccreditationClientText.Text.ToUpperInvariant();
 
 
             var clientParam = string.IsNullOrEmpty(clientId) ? clientAccreditation : clientId;
             return clientParam;
         }
 
-        private void FinishRentalButton_OnClick(object sender, RoutedEventArgs e)
+        private async void FinishRentalButton_OnClick(object sender, RoutedEventArgs e)
         {
 
             var clientParam = GetClientParam();
             var product = GetProductOfParam();
+            if (product == null || string.IsNullOrEmpty(clientParam)) return;
             if (product.State.Equals(StateProductEnum.Available))
             {
                 this.ShowInformationMessage(_resourceManager, "RENTAL_RETURNED");
@@ -286,10 +294,13 @@ namespace VideoClub.WPF.Views
                         ?.Replace("$", product.Id);
                     this.ShowCustomInformationMessage(_resourceManager, message);
                 }
+
+                await LoadDataGrid();
             }
             else
             {
                 this.ShowGenericErrorDataMessage(_resourceManager);
+                HelperWindow.HandleLogError(string.Empty);
             }
         }
 
@@ -375,16 +386,21 @@ namespace VideoClub.WPF.Views
         private void ProductStateComboBox_OnLoaded(object sender, RoutedEventArgs e)
         {
             var combo = (ComboBox) sender;
-            combo.ItemsSource = _itemsStateProduct.Values;
-            combo.SelectedItem = _itemsStateProduct[_stateProduct];
+            combo.ItemsSource = _itemsStateRental.Values;
+            combo.SelectedItem = _itemsStateRental[_stateRental];
         }
 
         private async void ProductStateComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var stateEnumSelected = _itemsStateProduct.FirstOrDefault(x => x.Value.Equals(((ComboBox)sender).SelectedValue)).Key;
-            if (stateEnumSelected.Equals(_stateProduct)) return;
-            _stateProduct = stateEnumSelected;
+            var stateEnumSelected = _itemsStateRental.FirstOrDefault(x => x.Value.Equals(((ComboBox)sender).SelectedValue)).Key;
+            if (stateEnumSelected.Equals(_stateRental)) return;
+            _stateRental = stateEnumSelected;
             await LoadDataGrid();
+        }
+
+        private void ProductIdText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var foo = e;
         }
     }
 }

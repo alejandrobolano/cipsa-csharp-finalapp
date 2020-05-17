@@ -34,7 +34,7 @@
                     <TextBox Name="AccreditationClientText"  Height="23" TextWrapping="Wrap" Text="" MaxLength="9" Width="135"  MaxLines="1" mah:TextBoxHelper.ClearTextButton="True" />
 
                     <TextBlock Text="{x:Static properties:Resources.RENTAL_DAYS}"  VerticalAlignment="Center"  Margin="15,0,5,0"/>
-                    <mah:NumericUpDown Name="QuantityNumeric" Minimum="1" Maximum="10" Interval="1"  Width="80" />
+                    <mah:NumericUpDown Name="QuantityNumeric" Value="1" Minimum="1" Maximum="10" Interval="1"  Width="80" />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,10">
@@ -42,7 +42,7 @@
                     <ComboBox Name="ProductTypeComboBox" Loaded="ProductComboBox_OnLoaded" Width="100" SelectionChanged="ProductTypeComboBox_SelectionChanged"/>
                     <TextBlock Text="{x:Static properties:Resources.ID}"  VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <TextBox Name="ProductIdText"  Width="135" mah:TextBoxHelper.Watermark="PROD-XXXXX" mah:ControlsHelper.ContentCharacterCasing="Upper"
-                                 mah:TextBoxHelper.ClearTextButton="True" MaxLength="12" Margin="15,0,0,0"/>
+                                 mah:TextBoxHelper.ClearTextButton="True" MaxLength="12" Margin="15,0,0,0" TextChanged="ProductIdText_TextChanged"/>
                     <TextBlock Text="{x:Static properties:Resources.TITLE}" VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <TextBox Name="TitleProductText"  Width="135" 
                                  mah:TextBoxHelper.ClearTextButton="True" MaxLength="12"/>
@@ -78,13 +78,14 @@
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Título del Producto" Binding="{Binding ProductTitle}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Id del Producto" Binding="{Binding ProductId}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Acreditación" Binding="{Binding ClientAccreditation}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Id del Cliente" Binding="{Binding ClientId}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Fecha de Inicio" Binding="{Binding StartRental, StringFormat={}{0:dd/MM/yyyy}}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Fecha Final" Binding="{Binding FinishRental, StringFormat={}{0:dd/MM/yyyy}}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.ID}" Binding="{Binding Id}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.PRODUCT_TITLE}" Binding="{Binding ProductTitle}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.PRODUCT_ID}" Binding="{Binding ProductId}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.ACCREDITATION}" Binding="{Binding ClientAccreditation}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.CLIENT_ID}" Binding="{Binding ClientId}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.START_DATE}" Binding="{Binding StartRental, StringFormat={}{0:dd/MM/yyyy}}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.FINISH_DATE}" Binding="{Binding FinishRental, StringFormat={}{0:dd/MM/yyyy}}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.STATE}" Binding="{Binding StateDescription}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
 
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

@@ -119,7 +119,7 @@ namespace VideoClub.WPF.Views
         {
             var movie = new MovieDto();
             FillDataFromFields(movie);
-            return _movieService.Add(movie);
+            return _movieService.Add(movie, out _);
         }
 
         private void FillDataFromFields(MovieDto movie)

@@ -43,7 +43,7 @@ namespace VideoClub.Infrastructure.Repository.Implementations
                 videoGame.Title.ToLower().Equals(id.ToLower()));
         }
 
-        public override bool Add(Movie model)
+        public override bool Add(Movie model, out string id)
         {
             var random = new Random();
             model.Id = Helper.GetCodeNumber(CommonHelper.Movie, 6, random);
@@ -54,10 +54,11 @@ namespace VideoClub.Infrastructure.Repository.Implementations
             catch(Exception exception)
             {
                 exception.CustomDescription();
+                id = string.Empty;
                 return false;
             }
 
-            return base.Add(model);
+            return base.Add(model, out id);
         }
         private static void ValidateYears(Movie model)
         {

@@ -82,7 +82,7 @@ namespace VideoClub.WPF.Views
         {
             var client = new ClientDto();
             FillDataFromFields(client);
-            return _clientService.Add(client);
+            return _clientService.Add(client, out _);
         }
 
         private void FillDataFromFields(ClientDto client)

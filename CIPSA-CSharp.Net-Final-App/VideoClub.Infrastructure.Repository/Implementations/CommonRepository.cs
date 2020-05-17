@@ -46,9 +46,10 @@ namespace VideoClub.Infrastructure.Repository.Implementations
             return result;
         }
 
-        public virtual bool Add(T model)
+        public virtual bool Add(T model, out string id)
         {
             var result = false;
+            id = model.Id;
             try
             {
                 _videoClubContext.Entry(model).State = EntityState.Added;

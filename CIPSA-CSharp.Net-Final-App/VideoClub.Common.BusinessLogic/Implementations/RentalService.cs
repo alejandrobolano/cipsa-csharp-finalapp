@@ -54,17 +54,18 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         #region common public methods
 
-        public bool Add(RentalDto model)
+        public bool Add(RentalDto model, out string id)
         {
             var mapper = MapperToModel();
             var rental = mapper.Map<RentalDto, Rental>(model);
-
-            return _rentalRepository.Add(rental);
+            return _rentalRepository.Add(rental, out id);
         }
 
         public bool Remove(string id)
         {
-            return _rentalRepository.Remove(id);
+            var rentalDto = Get(id);
+            HasBeenChangeStateProduct(rentalDto, StateProductEnum.Available, out var hasChange);
+            return hasChange && _rentalRepository.Remove(id);
         }
 
         public RentalDto Get(string id)

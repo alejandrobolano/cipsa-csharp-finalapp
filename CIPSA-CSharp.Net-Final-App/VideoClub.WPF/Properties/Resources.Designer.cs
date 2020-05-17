@@ -106,6 +106,24 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dirección.
+        /// </summary>
+        public static string ADDRESS {
+            get {
+                return ResourceManager.GetString("ADDRESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mi calle, 08000, Barcelona, España.
+        /// </summary>
+        public static string ADDRESS_WATERMARK {
+            get {
+                return ResourceManager.GetString("ADDRESS_WATERMARK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Todas las rentas.
         /// </summary>
         public static string ALL_RENTALS {
@@ -151,11 +169,47 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Eliminar.
+        /// </summary>
+        public static string DELETE {
+            get {
+                return ResourceManager.GetString("DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha eliminado correctamente.
         /// </summary>
         public static string DELETE_SUCCESSFUL {
             get {
                 return ResourceManager.GetString("DELETE_SUCCESSFUL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correo eléctronico.
+        /// </summary>
+        public static string EMAIL {
+            get {
+                return ResourceManager.GetString("EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correo.
+        /// </summary>
+        public static string EMAIL_SHORT {
+            get {
+                return ResourceManager.GetString("EMAIL_SHORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to micorreo@dominio.es.
+        /// </summary>
+        public static string EMAIL_WATERMARK {
+            get {
+                return ResourceManager.GetString("EMAIL_WATERMARK", resourceCulture);
             }
         }
         
@@ -241,6 +295,15 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apellidos.
+        /// </summary>
+        public static string LAST_NAME {
+            get {
+                return ResourceManager.GetString("LAST_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cargando datos de la base de datos.
         /// </summary>
         public static string LOADING_DATA_DB {
@@ -286,6 +349,15 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nombre.
+        /// </summary>
+        public static string NAME {
+            get {
+                return ResourceManager.GetString("NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nuevo.
         /// </summary>
         public static string NEW {
@@ -300,6 +372,33 @@ namespace VideoClub.WPF.Properties {
         public static string PENDING_RENTALS {
             get {
                 return ResourceManager.GetString("PENDING_RENTALS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to %.
+        /// </summary>
+        public static string PERCENT {
+            get {
+                return ResourceManager.GetString("PERCENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teléfono 1.
+        /// </summary>
+        public static string PHONE_1 {
+            get {
+                return ResourceManager.GetString("PHONE_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teléfono 2.
+        /// </summary>
+        public static string PHONE_2 {
+            get {
+                return ResourceManager.GetString("PHONE_2", resourceCulture);
             }
         }
         
@@ -403,6 +502,15 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rentas.
+        /// </summary>
+        public static string RENTALS {
+            get {
+                return ResourceManager.GetString("RENTALS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rentas visualizadas.
         /// </summary>
         public static string RENTALS_DISPLAYED {
@@ -444,6 +552,15 @@ namespace VideoClub.WPF.Properties {
         public static string STATE {
             get {
                 return ResourceManager.GetString("STATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suscripción.
+        /// </summary>
+        public static string SUBSCRIPTION {
+            get {
+                return ResourceManager.GetString("SUBSCRIPTION", resourceCulture);
             }
         }
         
@@ -498,6 +615,15 @@ namespace VideoClub.WPF.Properties {
         public static string VIDEOGAMES {
             get {
                 return ResourceManager.GetString("VIDEOGAMES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VIP.
+        /// </summary>
+        public static string VIP {
+            get {
+                return ResourceManager.GetString("VIP", resourceCulture);
             }
         }
     }

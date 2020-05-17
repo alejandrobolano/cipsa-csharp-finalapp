@@ -15,14 +15,12 @@ namespace VideoClub.Common.BusinessLogic.Implementations
     public class ClientService : IService<ClientDto>
     {
         private readonly ClientRepository _clientRepository;
-        private readonly RentalService _rentalService;
         public static ClientService Instance { get; } = new ClientService();
 
         public ClientService()
         {
             var videoClubDi = new VideoClubDi(VideoClubContext.GetVideoClubContext());
             _clientRepository = new ClientRepository(videoClubDi);
-            _rentalService = new RentalService();
         }
 
         #region private methods
@@ -137,7 +135,7 @@ namespace VideoClub.Common.BusinessLogic.Implementations
             var clients = All();
             clients.ForEach(client =>
             {
-                var rentalsByClient = _rentalService.GetRentalsByClient(client.Id);
+                var rentalsByClient = RentalService.Instance.GetRentalsByClient(client.Id);
                 if (rentalsByClient.Any(x => x.FinishRental < DateTime.Today))
                 {
                     UpdateStateClient(client, StateClientEnum.Blocked);

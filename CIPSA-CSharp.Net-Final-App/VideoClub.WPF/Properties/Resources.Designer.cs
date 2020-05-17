@@ -88,7 +88,7 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Se ha introducido correctamente la renta.
+        ///   Looks up a localized string similar to Se ha introducido correctamente la renta. El total ha pagar es de PRICE.
         /// </summary>
         public static string ADDED_RENTAL_SUCCESSFUL {
             get {

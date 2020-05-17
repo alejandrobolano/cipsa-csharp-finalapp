@@ -127,7 +127,7 @@
     <value>Se ha introducido correctamente la película con ID: $</value>
   </data>
   <data name="ADDED_RENTAL_SUCCESSFUL" xml:space="preserve">
-    <value>Se ha introducido correctamente la renta</value>
+    <value>Se ha introducido correctamente la renta. El total ha pagar es de PRICE</value>
   </data>
   <data name="ADDED_VIDEOGAME_SUCCESSFUL" xml:space="preserve">
     <value>Se ha introducido correctamente el juego con ID: $</value>

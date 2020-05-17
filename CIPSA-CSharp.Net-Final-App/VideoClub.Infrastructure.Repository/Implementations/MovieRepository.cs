@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using VideoClub.Common.Model.Exceptions;
 using VideoClub.Common.Model.Utils;
 using VideoClub.Infrastructure.Repository.Entity;
 using VideoClub.Infrastructure.Repository.Extensions;
@@ -15,7 +16,7 @@ namespace VideoClub.Infrastructure.Repository.Implementations
         {
             _videoClubContext = videoClubDi.VideoClubContext;
         }
-        
+
         public override bool Remove(string id)
         {
             var result = false;
@@ -37,8 +38,8 @@ namespace VideoClub.Infrastructure.Repository.Implementations
 
         public override Movie Get(string id)
         {
-            return _videoClubContext.Set<Movie>().FirstOrDefault(videoGame => 
-                videoGame.Id.ToLower().Equals(id.ToLower()) || 
+            return _videoClubContext.Set<Movie>().FirstOrDefault(videoGame =>
+                videoGame.Id.ToLower().Equals(id.ToLower()) ||
                 videoGame.Title.ToLower().Equals(id.ToLower()));
         }
 
@@ -46,7 +47,36 @@ namespace VideoClub.Infrastructure.Repository.Implementations
         {
             var random = new Random();
             model.Id = Helper.GetCodeNumber(CommonHelper.Movie, 6, random);
+            try
+            {
+                ValidateYears(model);
+            }
+            catch(Exception exception)
+            {
+                exception.CustomDescription();
+                return false;
+            }
+
             return base.Add(model);
+        }
+        private static void ValidateYears(Movie model)
+        {
+            if (model.ProductionYear > model.BuyYear)
+            {
+                throw new InvalidCompareYearException();
+            }
+
+            var yearActual = DateTime.Today.Year;
+            if (model.ProductionYear > yearActual)
+            {
+                throw new InvalidYearException(model.ProductionYear);
+            }
+
+            if (model.BuyYear > yearActual)
+            {
+                throw new InvalidYearException(model.BuyYear);
+            }
+
         }
 
 

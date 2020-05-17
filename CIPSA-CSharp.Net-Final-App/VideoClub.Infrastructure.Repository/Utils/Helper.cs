@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using VideoClub.Common.Model.Utils;
@@ -21,6 +22,13 @@ namespace VideoClub.Infrastructure.Repository.Utils
                 .ToArray());
 
             return model + CommonHelper.Separator + result;
+        }
+
+        public static void HandleLogError(string errorMessage)
+        {
+            var callStack = new StackFrame(1, true);
+            Log.Error($"{errorMessage}" +
+                      $"\n {callStack.GetFileName()} {callStack.GetFileLineNumber()}");
         }
     }
 }

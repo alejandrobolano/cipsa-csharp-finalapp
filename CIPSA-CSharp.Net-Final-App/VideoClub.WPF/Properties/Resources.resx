@@ -132,6 +132,12 @@
   <data name="ADDED_VIDEOGAME_SUCCESSFUL" xml:space="preserve">
     <value>Se ha introducido correctamente el juego con ID: $</value>
   </data>
+  <data name="ADDRESS" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="ADDRESS_WATERMARK" xml:space="preserve">
+    <value>Mi calle, 08000, Barcelona, España</value>
+  </data>
   <data name="ALL_RENTALS" xml:space="preserve">
     <value>Todas las rentas</value>
   </data>
@@ -147,8 +153,20 @@
   <data name="CLIENT_WINDOW_TITLE" xml:space="preserve">
     <value>Formulario de los Clientes</value>
   </data>
+  <data name="DELETE" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
   <data name="DELETE_SUCCESSFUL" xml:space="preserve">
     <value>Se ha eliminado correctamente</value>
+  </data>
+  <data name="EMAIL" xml:space="preserve">
+    <value>Correo eléctronico</value>
+  </data>
+  <data name="EMAIL_SHORT" xml:space="preserve">
+    <value>Correo</value>
+  </data>
+  <data name="EMAIL_WATERMARK" xml:space="preserve">
+    <value>micorreo@dominio.es</value>
   </data>
   <data name="ERROR" xml:space="preserve">
     <value>Error</value>
@@ -177,6 +195,9 @@
   <data name="INFORMATION" xml:space="preserve">
     <value>Información</value>
   </data>
+  <data name="LAST_NAME" xml:space="preserve">
+    <value>Apellidos</value>
+  </data>
   <data name="LOADING_DATA_DB" xml:space="preserve">
     <value>Cargando datos de la base de datos</value>
   </data>
@@ -192,11 +213,23 @@
   <data name="MOVIE_WINDOW_TITLE" xml:space="preserve">
     <value>Formulario de las Películas</value>
   </data>
+  <data name="NAME" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
   <data name="NEW" xml:space="preserve">
     <value>Nuevo</value>
   </data>
   <data name="PENDING_RENTALS" xml:space="preserve">
     <value>Rentas pendientes</value>
+  </data>
+  <data name="PERCENT" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="PHONE_1" xml:space="preserve">
+    <value>Teléfono 1</value>
+  </data>
+  <data name="PHONE_2" xml:space="preserve">
+    <value>Teléfono 2</value>
   </data>
   <data name="PLATFORM" xml:space="preserve">
     <value>Plataforma</value>
@@ -212,6 +245,9 @@
   </data>
   <data name="PRODUCT_TITLE" xml:space="preserve">
     <value>Título del Producto</value>
+  </data>
+  <data name="RENTALS" xml:space="preserve">
+    <value>Rentas</value>
   </data>
   <data name="RENTALS_DISPLAYED" xml:space="preserve">
     <value>Rentas visualizadas</value>
@@ -246,6 +282,9 @@
   <data name="STATE" xml:space="preserve">
     <value>Estado</value>
   </data>
+  <data name="SUBSCRIPTION" xml:space="preserve">
+    <value>Suscripción</value>
+  </data>
   <data name="TITLE" xml:space="preserve">
     <value>Título</value>
   </data>
@@ -263,5 +302,8 @@
   </data>
   <data name="VIDEOGAME_WINDOW_TITLE" xml:space="preserve">
     <value>Formulario de los Video juegos</value>
+  </data>
+  <data name="VIP" xml:space="preserve">
+    <value>VIP</value>
   </data>
 </root>

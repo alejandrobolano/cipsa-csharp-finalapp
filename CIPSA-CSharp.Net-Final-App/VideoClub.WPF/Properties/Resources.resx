@@ -117,10 +117,121 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClientWindowTitle" xml:space="preserve">
-    <value>Formulario de Clientes</value>
+  <data name="ACCREDITATION" xml:space="preserve">
+    <value>Acreditación</value>
   </data>
-  <data name="Title" xml:space="preserve">
+  <data name="ADD" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
+  <data name="ADDED_MOVIE_SUCCESSFUL" xml:space="preserve">
+    <value>Se ha introducido correctamente la película con ID: $</value>
+  </data>
+  <data name="ADDED_RENTAL_SUCCESSFUL" xml:space="preserve">
+    <value>Se ha introducido correctamente la renta con ID: $</value>
+  </data>
+  <data name="ADDED_VIDEOGAME_SUCCESSFUL" xml:space="preserve">
+    <value>Se ha introducido correctamente el juego con ID: $</value>
+  </data>
+  <data name="CLIENT" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="CLIENTS" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="CLIENT_WINDOW_TITLE" xml:space="preserve">
+    <value>Formulario de los Clientes</value>
+  </data>
+  <data name="DELETE_SUCCESSFUL" xml:space="preserve">
+    <value>Se ha eliminado correctamente</value>
+  </data>
+  <data name="ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ERROR_DATA_MESSAGE" xml:space="preserve">
+    <value>Se ha producido un error en los datos introducidos</value>
+  </data>
+  <data name="ERROR_MESSAGE" xml:space="preserve">
+    <value>Se ha producido un error</value>
+  </data>
+  <data name="FINISH" xml:space="preserve">
+    <value>Finalizar</value>
+  </data>
+  <data name="FINISH_RENTAL_DUE_PAYMENT" xml:space="preserve">
+    <value>Ha finalizado la renta del producto con ID: $, pero tiene una deuda pendiente de pago de PRICE €</value>
+  </data>
+  <data name="FINISH_RENTAL_SUCCESSFUL" xml:space="preserve">
+    <value>Ha finalizado la renta del producto correctamente con ID: $. Se ha cambiado al estado "Disponible"</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="INFORMATION" xml:space="preserve">
+    <value>Información</value>
+  </data>
+  <data name="LOADING_DATA_DB" xml:space="preserve">
+    <value>Cargando datos de la base de datos</value>
+  </data>
+  <data name="MAIN_TITLE" xml:space="preserve">
     <value>Version Original</value>
+  </data>
+  <data name="MOVIE" xml:space="preserve">
+    <value>Película</value>
+  </data>
+  <data name="MOVIES" xml:space="preserve">
+    <value>Películas</value>
+  </data>
+  <data name="MOVIE_WINDOW_TITLE" xml:space="preserve">
+    <value>Formulario de las Películas</value>
+  </data>
+  <data name="NEW" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="PLATFORM" xml:space="preserve">
+    <value>Plataforma</value>
+  </data>
+  <data name="PRODUCT" xml:space="preserve">
+    <value>Producto</value>
+  </data>
+  <data name="PRODUCT_NON_AVAILABLE" xml:space="preserve">
+    <value>Producto no disponible con ID: $</value>
+  </data>
+  <data name="RENTAL_DAYS" xml:space="preserve">
+    <value>Días del alquiler</value>
+  </data>
+  <data name="RENTAL_NON_AVAILABLE" xml:space="preserve">
+    <value>El producto con ID: $ no se encuentra disponible por lo que no se puede proceder con la renta</value>
+  </data>
+  <data name="RENTAL_PRODUCT_BAD_STATE" xml:space="preserve">
+    <value>El producto con ID: $ se encuentra en mal estado por lo que no se puede proceder con la renta</value>
+  </data>
+  <data name="RENTAL_PRODUCT_LOST" xml:space="preserve">
+    <value>El producto con ID: $ se encuentra perdido por lo que no se puede proceder con la renta</value>
+  </data>
+  <data name="RENTAL_RETURNED" xml:space="preserve">
+    <value>El producto se ha devuelto anteriormente</value>
+  </data>
+  <data name="RENTAL_WINDOW_TITLE" xml:space="preserve">
+    <value>Formulario de las rentas</value>
+  </data>
+  <data name="START" xml:space="preserve">
+    <value>Alquilar</value>
+  </data>
+  <data name="TITLE" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="UPDATE" xml:space="preserve">
+    <value>Modificar</value>
+  </data>
+  <data name="UPDATE_SUCCESSFUL" xml:space="preserve">
+    <value>Se ha actualizado correctamente</value>
+  </data>
+  <data name="VIDEOGAME" xml:space="preserve">
+    <value>Video juego</value>
+  </data>
+  <data name="VIDEOGAMES" xml:space="preserve">
+    <value>Video juegos</value>
+  </data>
+  <data name="VIDEOGAME_WINDOW_TITLE" xml:space="preserve">
+    <value>Formulario de los Video juegos</value>
   </data>
 </root>

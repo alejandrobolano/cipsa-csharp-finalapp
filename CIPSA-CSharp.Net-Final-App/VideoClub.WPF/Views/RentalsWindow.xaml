@@ -25,24 +25,25 @@
         <Grid>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Name="MainPanel"  Margin="10,15,0,0">
                 <StackPanel Orientation="Horizontal" Margin="0,10">
-                    <Label Content="{x:Static properties:Resources.CLIENT}" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
-                    <Label Content="ID"/>
+                    <TextBlock Text="{x:Static properties:Resources.CLIENT}" mah:ControlsHelper.ContentCharacterCasing="Upper"
+                               VerticalAlignment="Center"  Margin="15,0,5,0"/>
+                    <TextBlock Text="{x:Static properties:Resources.ID}"  VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <TextBox Name="ClientIdText" mah:TextBoxHelper.Watermark="CLI-XXXXXX"  Width="135"
                              mah:TextBoxHelper.ClearTextButton="True" MaxLength="12" Margin="5,0,0,0" Loaded="ClientIdText_OnLoaded"/>
-                    <Label Content="{x:Static properties:Resources.ACCREDITATION}"/>
+                    <TextBlock Text="{x:Static properties:Resources.ACCREDITATION}"  VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <TextBox Name="AccreditationClientText"  Height="23" TextWrapping="Wrap" Text="" MaxLength="9" Width="135"  MaxLines="1" mah:TextBoxHelper.ClearTextButton="True" />
 
-                    <Label Content="{x:Static properties:Resources.RENTAL_DAYS}" Margin="15,0,0,0"/>
+                    <TextBlock Text="{x:Static properties:Resources.RENTAL_DAYS}"  VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <mah:NumericUpDown Name="QuantityNumeric" Minimum="1" Maximum="10" Interval="1"  Width="80" />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,10">
-                    <Label Content="{x:Static properties:Resources.PRODUCT}" Margin="15,0,0,0" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
+                    <TextBlock Text="{x:Static properties:Resources.PRODUCT}"  VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <ComboBox Name="ProductTypeComboBox" Loaded="ProductComboBox_OnLoaded" Width="99" SelectionChanged="ProductTypeComboBox_SelectionChanged"/>
-                    <Label Content="{x:Static properties:Resources.ID}" Margin="15,0,0,0"/>
-                    <TextBox Name="ProductIdText"  Width="135" mah:TextBoxHelper.Watermark="PROD-XXXXX"
+                    <TextBlock Text="{x:Static properties:Resources.ID}"  VerticalAlignment="Center"  Margin="15,0,5,0"/>
+                    <TextBox Name="ProductIdText"  Width="135" mah:TextBoxHelper.Watermark="PROD-XXXXX" mah:ControlsHelper.ContentCharacterCasing="Upper"
                                  mah:TextBoxHelper.ClearTextButton="True" MaxLength="12" Margin="15,0,0,0"/>
-                    <Label Content="{x:Static properties:Resources.TITLE}" Margin="15,0,0,0"/>
+                    <TextBlock Text="{x:Static properties:Resources.TITLE}" VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <TextBox Name="TitleProductText"  Width="135" 
                                  mah:TextBoxHelper.ClearTextButton="True" MaxLength="12"/>
                 </StackPanel>
@@ -61,6 +62,7 @@
             <TextBlock HorizontalAlignment="Center" Text="{x:Static properties:Resources.LOADING_DATA_DB}"/>
             <mah:MetroProgressBar Name="MetroProgressBar"  Width="350" HorizontalAlignment="Center" Height="23" IsIndeterminate="True" />
         </StackPanel>
+        <StackPanel Orientation="Horizontal"></StackPanel>
 
         <DataGrid Name="RentalsDataGrid" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserAddRows="False"
                   Loaded="RentalsDataGrid_OnLoadedDataGrid" AutoGenerateColumns="False" IsReadOnly="True"

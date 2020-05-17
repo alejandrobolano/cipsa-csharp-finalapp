@@ -29,6 +29,7 @@ namespace VideoClub.WPF.Views
         private IList<RentalDto> _rentals;
         private RentalDto _rentalSelected;
         private IList<string> _itemsProductType;
+        private IDictionary<StateProductEnum, string> _itemsStateProduct;
         private readonly ResourceManager _resourceManager = Properties.Resources.ResourceManager;
         private StateProductEnum _stateProduct;
         public RentalsWindow(StateProductEnum stateProduct)
@@ -53,6 +54,11 @@ namespace VideoClub.WPF.Views
                 {ProductTypeEnum.VideoGame.ToString()},
                 {ProductTypeEnum.Movie.ToString()}
             };
+            _itemsStateProduct = new Dictionary<StateProductEnum, string>
+            {
+                {StateProductEnum.Available,_resourceManager.GetResourceValue("ALL_RENTALS") },
+                {StateProductEnum.NonAvailable,_resourceManager.GetResourceValue("PENDING_RENTALS") }
+            };
         }
 
         private void DateNowTextBlock_OnLoaded(object sender, RoutedEventArgs e)
@@ -69,9 +75,11 @@ namespace VideoClub.WPF.Views
         private async Task LoadDataGrid()
         {
             LoadingPanel.Visibility = Visibility.Visible;
+            StateProductPanel.Visibility = Visibility.Collapsed;
             await LoadingDataTask();
             RentalsDataGrid.ItemsSource = _rentals;
             LoadingPanel.Visibility = Visibility.Hidden;
+            StateProductPanel.Visibility = Visibility.Visible;
         }
 
         private void LoadingData()
@@ -289,7 +297,7 @@ namespace VideoClub.WPF.Views
         {
             var items = new List<string> { string.Empty };
             items.AddRange(_itemsProductType.ToList());
-            ProductTypeComboBox.ItemsSource = items;
+            ((ComboBox)sender).ItemsSource = items;
         }
 
         private void ClientIdText_OnLoaded(object sender, RoutedEventArgs e)
@@ -362,6 +370,21 @@ namespace VideoClub.WPF.Views
             QuantityNumeric.Value = quantityRentalDays;
 
 
+        }
+
+        private void ProductStateComboBox_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var combo = (ComboBox) sender;
+            combo.ItemsSource = _itemsStateProduct.Values;
+            combo.SelectedItem = _itemsStateProduct[_stateProduct];
+        }
+
+        private async void ProductStateComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var stateEnumSelected = _itemsStateProduct.FirstOrDefault(x => x.Value.Equals(((ComboBox)sender).SelectedValue)).Key;
+            if (stateEnumSelected.Equals(_stateProduct)) return;
+            _stateProduct = stateEnumSelected;
+            await LoadDataGrid();
         }
     }
 }

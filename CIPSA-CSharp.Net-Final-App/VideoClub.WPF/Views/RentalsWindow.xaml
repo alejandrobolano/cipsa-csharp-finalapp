@@ -39,7 +39,7 @@
 
                 <StackPanel Orientation="Horizontal" Margin="0,10">
                     <TextBlock Text="{x:Static properties:Resources.PRODUCT}"  VerticalAlignment="Center"  Margin="15,0,5,0"/>
-                    <ComboBox Name="ProductTypeComboBox" Loaded="ProductComboBox_OnLoaded" Width="99" SelectionChanged="ProductTypeComboBox_SelectionChanged"/>
+                    <ComboBox Name="ProductTypeComboBox" Loaded="ProductComboBox_OnLoaded" Width="100" SelectionChanged="ProductTypeComboBox_SelectionChanged"/>
                     <TextBlock Text="{x:Static properties:Resources.ID}"  VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <TextBox Name="ProductIdText"  Width="135" mah:TextBoxHelper.Watermark="PROD-XXXXX" mah:ControlsHelper.ContentCharacterCasing="Upper"
                                  mah:TextBoxHelper.ClearTextButton="True" MaxLength="12" Margin="15,0,0,0"/>
@@ -58,11 +58,16 @@
             </StackPanel>
         </Grid>
 
-        <StackPanel Orientation="Vertical" Name="LoadingPanel">
-            <TextBlock HorizontalAlignment="Center" Text="{x:Static properties:Resources.LOADING_DATA_DB}"/>
-            <mah:MetroProgressBar Name="MetroProgressBar"  Width="350" HorizontalAlignment="Center" Height="23" IsIndeterminate="True" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal"></StackPanel>
+        <Grid>
+            <StackPanel Orientation="Vertical" Name="LoadingPanel">
+                <TextBlock HorizontalAlignment="Center" Text="{x:Static properties:Resources.LOADING_DATA_DB}"/>
+                <mah:MetroProgressBar Name="MetroProgressBar"  Width="350" HorizontalAlignment="Center" Height="23" IsIndeterminate="True" />
+            </StackPanel>
+            <StackPanel Name="StateProductPanel" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,15,10">
+                <TextBlock Text="{x:Static properties:Resources.RENTALS_DISPLAYED}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15,0,5,0"/>
+                <ComboBox Name="ProductStateComboBox" Loaded="ProductStateComboBox_OnLoaded" Width="150" SelectionChanged="ProductStateComboBox_SelectionChanged"/>
+            </StackPanel>
+        </Grid>
 
         <DataGrid Name="RentalsDataGrid" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserAddRows="False"
                   Loaded="RentalsDataGrid_OnLoadedDataGrid" AutoGenerateColumns="False" IsReadOnly="True"

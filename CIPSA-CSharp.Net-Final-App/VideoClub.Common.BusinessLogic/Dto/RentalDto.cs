@@ -17,5 +17,6 @@ namespace VideoClub.Common.BusinessLogic.Dto
         public DateTime FinishRental { get; set; }
         public StateRentalEnum State { get; set; }
         public string StateDescription => State.GetDescription();
+        public decimal Price { get; set; }
     }
 }

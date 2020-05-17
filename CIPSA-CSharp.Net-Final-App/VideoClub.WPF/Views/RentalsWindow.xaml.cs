@@ -142,8 +142,8 @@ namespace VideoClub.WPF.Views
 
             var quantity = Convert.ToInt32(QuantityNumeric.Value);
 
-            var isStartRental = TryAddRentalForStart(client, product, quantity);
-            ShowMessageOfStartProcess(isStartRental);
+            var isStartRental = TryAddRentalForStart(client, product, quantity, out var priceToPay);
+            ShowMessageOfStartProcess(isStartRental, priceToPay);
             await LoadDataGrid();
         }
 
@@ -186,11 +186,12 @@ namespace VideoClub.WPF.Views
             }
         }
 
-        private void ShowMessageOfStartProcess(bool isStartRental)
+        private void ShowMessageOfStartProcess(bool isStartRental, decimal priceToPay)
         {
             if (isStartRental)
             {
-                var message = _resourceManager.GetResourceValue("ADDED_RENTAL_SUCCESSFUL");
+                var message = _resourceManager.GetResourceValue("ADDED_RENTAL_SUCCESSFUL")
+                    .Replace("PRICE", priceToPay.ToString(CultureInfo.InvariantCulture));
                 this.ShowCustomInformationMessage(_resourceManager, message);
 
             }
@@ -201,7 +202,7 @@ namespace VideoClub.WPF.Views
             }
         }
 
-        private bool TryAddRentalForStart(ClientDto client, ProductDto product, int quantityRental)
+        private bool TryAddRentalForStart(ClientDto client, ProductDto product, int quantityRental, out decimal priceToPay)
         {
             var rental = new RentalDto
             {
@@ -211,7 +212,7 @@ namespace VideoClub.WPF.Views
                 ProductTitle = product.Title,
                 StartRental = _todayDateTime
             };
-            return _rentalService.StartRentalProduct(rental, quantityRental, StateProductEnum.NonAvailable);
+            return _rentalService.StartRentalProduct(rental, quantityRental, StateProductEnum.NonAvailable, out priceToPay);
         }
 
 
@@ -398,9 +399,5 @@ namespace VideoClub.WPF.Views
             await LoadDataGrid();
         }
 
-        private void ProductIdText_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var foo = e;
-        }
     }
 }

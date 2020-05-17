@@ -98,35 +98,34 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         #region custom public methods
 
-        public bool StartRentalProduct(RentalDto rentalDto, int quantityRental, StateProductEnum stateNew)
+        public bool StartRentalProduct(RentalDto rentalDto, int quantityRental, StateProductEnum stateNew, out decimal price)
         {
             bool result;
+            price = 0;
             try
             {
                 var finishRental = rentalDto.StartRental.AddDays(quantityRental);
                 rentalDto.FinishRental = finishRental;
-                result = Add(rentalDto);
+                result = Add(rentalDto, out var id);
                 if (!result) return false;
 
-                if (rentalDto.ProductId.Contains(CommonHelper.Movie))
-                {
-                    var movie = MovieService.Instance.Get(rentalDto.ProductId);
-                    movie.State = stateNew;
-                    result = MovieService.Instance.Update(movie);
-                }
-                else
-                {
-                    var videoGame = VideoGameService.Instance.Get(rentalDto.ProductId);
-                    videoGame.State = stateNew;
-                    result = VideoGameService.Instance.Update(videoGame);
-                }
+                var product = HasBeenChangeStateProduct(rentalDto, stateNew, out result);
+
+                price = product.Price;
 
                 if (result)
                 {
                     ClientService.Instance.AddQuantityRental(rentalDto.ClientId, quantityRental);
-                    var rental = GetRentalByClientAndProduct(rentalDto.ClientId, rentalDto.ProductId);
-                    ChangeStateRental(rental, StateRentalEnum.Activated);
+                    var rental = Get(id);
+                    var client = ClientService.Instance.Get(rental.ClientId);
+                    price *= quantityRental;
+                    price -= price * decimal.Divide(client.Discount, 100);
+                    rental.Price = decimal.Round(price,2);
+                    rental.State = StateRentalEnum.Activated;
+                    Update(rental);
                 }
+
+
             }
             catch (Exception exception)
             {
@@ -135,6 +134,23 @@ namespace VideoClub.Common.BusinessLogic.Implementations
             }
 
             return result;
+        }
+
+        private static ProductDto HasBeenChangeStateProduct(RentalDto rentalDto, StateProductEnum stateNew, out bool result)
+        {
+            ProductDto product;
+            if (rentalDto.ProductId.Contains(CommonHelper.Movie))
+            {
+                product = MovieService.Instance.Get(rentalDto.ProductId);
+                result = MovieService.Instance.HasBeenChangeState((MovieDto) product, stateNew);
+            }
+            else
+            {
+                product = VideoGameService.Instance.Get(rentalDto.ProductId);
+                result = VideoGameService.Instance.HasBeenChangeState((VideoGameDto) product, stateNew);
+            }
+
+            return product;
         }
 
         public bool FinishRentalProduct(string idClient, string idProduct, out decimal differencePrice)
@@ -224,12 +240,12 @@ namespace VideoClub.Common.BusinessLogic.Implementations
                 if (rental.ProductId.Contains(CommonHelper.Movie))
                 {
                     var movie = MovieService.Instance.Get(rental.ProductId);
-                    CheckProductByState(stateRental,stateProduct, movie, rentalsByState, rental);
+                    CheckProductByState(stateRental, stateProduct, movie, rentalsByState, rental);
                 }
                 else
                 {
                     var videoGame = VideoGameService.Instance.Get(rental.ProductId);
-                    CheckProductByState(stateRental,stateProduct, videoGame, rentalsByState, rental);
+                    CheckProductByState(stateRental, stateProduct, videoGame, rentalsByState, rental);
                 }
             });
             return rentalsByState;

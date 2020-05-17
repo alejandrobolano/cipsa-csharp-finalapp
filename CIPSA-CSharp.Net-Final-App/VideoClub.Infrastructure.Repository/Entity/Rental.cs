@@ -33,8 +33,8 @@ namespace VideoClub.Infrastructure.Repository.Entity
         public DateTime StartRental { get; set; }
         [Required]
         public DateTime FinishRental { get; set; }
-
         public StateRentalEnum State { get; set; }
-        
+        public decimal Price { get; set; }
+
     }
 }

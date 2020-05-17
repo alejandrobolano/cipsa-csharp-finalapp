@@ -77,6 +77,10 @@
     <Compile Include="Migrations\202005141857303_Update.designer.cs">
       <DependentUpon>202005141857303_Update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005171150369_AddStateRental.cs" />
+    <Compile Include="Migrations\202005171150369_AddStateRental.designer.cs">
+      <DependentUpon>202005171150369_AddStateRental.cs</DependentUpon>
+    </Compile>
     <Compile Include="VideoClubContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005141857303_Update.resx">
       <DependentUpon>202005141857303_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005171150369_AddStateRental.resx">
+      <DependentUpon>202005171150369_AddStateRental.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,7 +7,7 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:properties="clr-namespace:VideoClub.WPF.Properties"
         mc:Ignorable="d" Height="450" Width="800"
-        Title="Rentas"  
+        Title="{x:Static properties:Resources.RENTAL_WINDOW_TITLE}"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         ResizeMode="NoResize" 
         BorderThickness="0" 
@@ -25,44 +25,46 @@
         <Grid>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Name="MainPanel"  Margin="10,15,0,0">
                 <StackPanel Orientation="Horizontal" Margin="0,10">
-                    <Label Content="Cliente" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
+                    <Label Content="{x:Static properties:Resources.CLIENT}" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
                     <Label Content="ID"/>
-                    <TextBox Name="ClientIdText"  Width="135"
-                             mah:TextBoxHelper.ClearTextButton="True" MaxLength="12" Margin="5,0,0,0"/>
-                    <Label Content="Acreditación"/>
+                    <TextBox Name="ClientIdText" mah:TextBoxHelper.Watermark="CLI-XXXXXX"  Width="135"
+                             mah:TextBoxHelper.ClearTextButton="True" MaxLength="12" Margin="5,0,0,0" Loaded="ClientIdText_OnLoaded"/>
+                    <Label Content="{x:Static properties:Resources.ACCREDITATION}"/>
                     <TextBox Name="AccreditationClientText"  Height="23" TextWrapping="Wrap" Text="" MaxLength="9" Width="135"  MaxLines="1" mah:TextBoxHelper.ClearTextButton="True" />
 
-                    <Label Content="Días para alquilar" Margin="15,0,0,0"/>
-                    <mah:NumericUpDown Name="QuantityNumeric" Minimum="0" Maximum="10" Interval="1"  Width="80" />
+                    <Label Content="{x:Static properties:Resources.RENTAL_DAYS}" Margin="15,0,0,0"/>
+                    <mah:NumericUpDown Name="QuantityNumeric" Minimum="1" Maximum="10" Interval="1"  Width="80" />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,10">
-                    <Label Content="Producto" Margin="15,0,0,0" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
-                    <ComboBox Name="ProductTypeComboBox" Loaded="ProductComboBox_OnLoaded" Width="99"/>
-                    <Label Content="ID" Margin="15,0,0,0"/>
-                    <TextBox Name="ProductIdText"  Width="135"
+                    <Label Content="{x:Static properties:Resources.PRODUCT}" Margin="15,0,0,0" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
+                    <ComboBox Name="ProductTypeComboBox" Loaded="ProductComboBox_OnLoaded" Width="99" SelectionChanged="ProductTypeComboBox_SelectionChanged"/>
+                    <Label Content="{x:Static properties:Resources.ID}" Margin="15,0,0,0"/>
+                    <TextBox Name="ProductIdText"  Width="135" mah:TextBoxHelper.Watermark="PROD-XXXXX"
                                  mah:TextBoxHelper.ClearTextButton="True" MaxLength="12" Margin="15,0,0,0"/>
-                    <Label Content="Título" Margin="15,0,0,0"/>
+                    <Label Content="{x:Static properties:Resources.TITLE}" Margin="15,0,0,0"/>
                     <TextBox Name="TitleProductText"  Width="135" 
                                  mah:TextBoxHelper.ClearTextButton="True" MaxLength="12"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,10,15,10">
-                <Button Name="NewButton" Content="Agregar" Click="AddButton_OnClick" 
+                <Button Name="NewButton" Content="{x:Static properties:Resources.NEW}" Click="NewButton_OnClick" 
+                        Style="{DynamicResource SquareButtonStyle}" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
+                <Button Name="StartButton" Content="{x:Static properties:Resources.START}" Click="StartRentalButton_OnClick" 
                     Style="{DynamicResource SquareButtonStyle}" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
-                <Button Name="FinishButton" Content="Finalizar"  Click="FinishButton_OnClick"
+                <Button Name="FinishButton" Content="{x:Static properties:Resources.FINISH}"  Click="FinishRentalButton_OnClick"
                     Style="{DynamicResource SquareButtonStyle}" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
             </StackPanel>
         </Grid>
 
         <StackPanel Orientation="Vertical" Name="LoadingPanel">
-            <TextBlock HorizontalAlignment="Center" Text="Cargando datos de la base de datos"/>
+            <TextBlock HorizontalAlignment="Center" Text="{x:Static properties:Resources.LOADING_DATA_DB}"/>
             <mah:MetroProgressBar Name="MetroProgressBar"  Width="350" HorizontalAlignment="Center" Height="23" IsIndeterminate="True" />
         </StackPanel>
 
         <DataGrid Name="RentalsDataGrid" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserAddRows="False"
                   Loaded="RentalsDataGrid_OnLoadedDataGrid" AutoGenerateColumns="False" IsReadOnly="True"
-                  Margin="10,15,10,0" SelectionMode="Single">
+                  Margin="10,15,10,0" SelectionMode="Single" MouseDoubleClick="RentalDataGrid_OnMouseDoubleClick">
             <DataGrid.Resources>
                 <Style x:Key="CenterCellAligned" TargetType="DataGridCell" BasedOn="{StaticResource MetroDataGridCell}">
                     <Setter Property="HorizontalAlignment" Value="Center" />
@@ -70,7 +72,7 @@
             </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Título del Prodcuto" Binding="{Binding ProductTitle}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Título del Producto" Binding="{Binding ProductTitle}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Id del Producto" Binding="{Binding ProductId}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Acreditación" Binding="{Binding ClientAccreditation}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Id del Cliente" Binding="{Binding ClientId}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
@@ -80,7 +82,7 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="Button" Click="DeleteButton_OnClick" Background="Transparent">
+                            <Button Name="DeleteGridButton" Click="DeleteButton_OnClick" Background="Transparent">
                                 <iconPacks:PackIconModern Foreground="White" Width="16" Height="16" Kind="Delete" VerticalAlignment="Center"/>
                             </Button>
                         </DataTemplate>

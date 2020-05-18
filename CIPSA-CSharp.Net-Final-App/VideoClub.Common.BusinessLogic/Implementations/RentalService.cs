@@ -116,7 +116,7 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
                 if (result)
                 {
-                    ClientService.Instance.AddQuantityRental(rentalDto.ClientId, quantityRental);
+                    ClientService.Instance.AddQuantityRental(rentalDto.ClientId);
                     var rental = Get(id);
                     var client = ClientService.Instance.Get(rental.ClientId);
                     price *= quantityRental;

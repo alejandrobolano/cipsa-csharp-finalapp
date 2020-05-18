@@ -10,7 +10,7 @@
                  mc:Ignorable="d"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  xmlns:properties="clr-namespace:VideoClub.WPF.Properties"
-                 Title="{x:Static properties:Resources.SETTINGS}" Height="150" Width="350"
+                 Title="{x:Static properties:Resources.SETTINGS}" Height="200" Width="350"
                  ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <StackPanel Orientation="Vertical" Margin="15">
@@ -25,6 +25,12 @@
             <TextBlock Text="{x:Static properties:Resources.BLOCKED_PROCESS_CHECK}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <mah:ToggleSwitch Name="BlockedCheckBox" DataContextChanged="BlockedCheckBox_OnDataContextChanged"
                               IsCheckedChanged="BlockedCheckBox_OnChecked" Loaded="BlockedCheckBox_OnLoaded"
+                          OnLabel="" OffLabel=""/>
+        </Grid>
+        <Grid Margin="15,0,15,0">
+            <TextBlock Text="{x:Static properties:Resources.DISCOUNT_PROCESS_CHECK}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <mah:ToggleSwitch Name="DiscountCheckBox" DataContextChanged="DiscountCheckBox_OnDataContextChanged"
+                              IsCheckedChanged="BlockedCheckBox_OnChecked" Loaded="DiscountCheckBox_OnLoaded"
                           OnLabel="" OffLabel=""/>
         </Grid>
     </StackPanel>

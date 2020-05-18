@@ -10,8 +10,9 @@ namespace VideoClub.WPF.Utils
     public class HelperWindow
     {
         public static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        public static readonly string BlockedUserProcessAutomatic = "BlockedUserProcess";
-        public static readonly string VipUserProcessAutomatic = "VipUserProcess";
+        public static readonly string BlockedClientProcessAutomatic = "BlockedClientProcess";
+        public static readonly string VipClientProcessAutomatic = "VipClientProcess";
+        public static readonly string DiscountClientProcessAutomatic = "DiscountClientProcess";
 
         //public static readonly Assembly assembly = Assembly.Load("namespace");
         //public static readonly ResourceManager resourceManager = new ResourceManager("VideoClub.Infrastructure.Repository.en-US", assembly);

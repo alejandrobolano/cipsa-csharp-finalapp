@@ -10,8 +10,9 @@ namespace VideoClub.WPF.Views.Settings
     /// </summary>
     public partial class SettingsWindow : MetroWindow
     {
-        private readonly string _vipClientProcess = HelperWindow.VipUserProcessAutomatic;
-        private readonly string _blockedClientProcess = HelperWindow.BlockedUserProcessAutomatic;
+        private readonly string _vipClientProcess = HelperWindow.VipClientProcessAutomatic;
+        private readonly string _blockedClientProcess = HelperWindow.BlockedClientProcessAutomatic;
+        private readonly string _discountClientProcess = HelperWindow.DiscountClientProcessAutomatic;
         public SettingsWindow()
         {
             InitializeComponent();
@@ -49,6 +50,17 @@ namespace VideoClub.WPF.Views.Settings
         {
             var isSelected = ((ToggleSwitch)sender).IsChecked;
             HelperWindow.AddUpdateAppSettings(_blockedClientProcess, isSelected.ToString());
+        }
+
+        private void DiscountCheckBox_OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var isSelected = ((ToggleSwitch)sender).IsChecked;
+            HelperWindow.AddUpdateAppSettings(_discountClientProcess, isSelected.ToString());
+        }
+
+        private void DiscountCheckBox_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            TryValueOfProcess(sender, _discountClientProcess);
         }
     }
 }

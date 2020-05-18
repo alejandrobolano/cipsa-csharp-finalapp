@@ -5,6 +5,7 @@ using AutoMapper;
 using VideoClub.Common.BusinessLogic.Contracts;
 using VideoClub.Common.BusinessLogic.Dto;
 using VideoClub.Common.Model.Enums;
+using VideoClub.Common.Model.Utils;
 using VideoClub.Infrastructure.Repository;
 using VideoClub.Infrastructure.Repository.Entity;
 using VideoClub.Infrastructure.Repository.Implementations;
@@ -103,10 +104,10 @@ namespace VideoClub.Common.BusinessLogic.Implementations
         {
             All().ForEach(client =>
             {
-                if (client.RentalQuantity >= 60)
-                {
-                    client.IsVip = true;
-                }
+                var differenceDays = (DateTime.Today - client.SubscriptionDate).Days;
+                if (client.RentalQuantity < 60 || differenceDays <= 365) return;
+                client.IsVip = true;
+                Update(client);
             });
         }
 
@@ -136,10 +137,20 @@ namespace VideoClub.Common.BusinessLogic.Implementations
             clients.ForEach(client =>
             {
                 var rentalsByClient = RentalService.Instance.GetRentalsByClient(client.Id);
-                if (rentalsByClient.Any(x => x.FinishRental < DateTime.Today))
+
+                var isBlocked = false;
+                for (var i = 0; i < rentalsByClient.Count && !isBlocked; i++)
                 {
+                    var rentalDto = rentalsByClient[i];
+                    var product = CommonService.GetProduct(rentalDto.ProductId);
+                    if (rentalDto.FinishRental >= DateTime.Today ||
+                        product.State != StateProductEnum.NonAvailable ||
+                        rentalDto.State == StateRentalEnum.Returned) continue;
                     UpdateStateClient(client, StateClientEnum.Blocked);
+                    isBlocked = true;
                 }
+
+
             });
 
         }

@@ -63,6 +63,7 @@
     <Compile Include="Dto\ProductDto.cs" />
     <Compile Include="Dto\RentalDto.cs" />
     <Compile Include="Dto\VideoGameDto.cs" />
+    <Compile Include="Implementations\CommonService.cs" />
     <Compile Include="Implementations\RentalService.cs" />
     <Compile Include="Implementations\ClientService.cs" />
     <Compile Include="Implementations\MovieService.cs" />

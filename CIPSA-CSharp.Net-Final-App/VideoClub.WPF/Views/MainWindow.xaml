@@ -11,7 +11,7 @@
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  xmlns:properties="clr-namespace:VideoClub.WPF.Properties"
                  Title="{x:Static properties:Resources.MAIN_TITLE}" Height="450" Width="800"
-                 ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+                 ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="MainWindow_OnLoaded">
 
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
@@ -52,21 +52,26 @@
                                       Height="60"
                                       Kind="InboxOut" />
         </Controls:Tile>
-        <Controls:Tile Title="VIP"
+        <Controls:Tile Title="VIP" Name="VipTile" Visibility="Hidden"
                        Background="PaleVioletRed" ToolTip="Gestione todas las rentas"
                        HorizontalTitleAlignment="Center" Margin="40,269,631,57" Width="Auto" Height="Auto">
             <iconPacks:PackIconModern Width="25"
                                       Height="25"
                                       Kind="UserTie" />
         </Controls:Tile>
-        <Controls:Tile Title="Desactivación"
-                       Background="BurlyWood" ToolTip="Gestione todas las rentas"
-                       HorizontalTitleAlignment="Center" Margin="197,269,472,57" Width="Auto" Height="Auto">
+        <Controls:Tile Title="Desactivación" Name="BlockedTile" Visibility="Hidden"
+                       Background="BurlyWood" ToolTip="Verificar proceso de clientes bloqueados"
+                       HorizontalTitleAlignment="Center" Margin="197,269,472,57" 
+                       Click="BlockedTile_OnClick" Width="Auto" Height="Auto">
             <iconPacks:PackIconModern Width="25"
                                       Height="25"
                                       Kind="Noentry" />
         </Controls:Tile>
+        <mah:ProgressRing Name="BlockedUserProgress" Foreground="{DynamicResource AccentColorBrush}"
+                          IsActive="True" Margin="230,284,505,78" />
         <Label Content="Proceso manual para los clientes" HorizontalAlignment="Left"
                Margin="40,239,0,0" VerticalAlignment="Top" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
+        <mah:ProgressRing x:Name="VipUserProgress" Foreground="{DynamicResource AccentColorBrush}"
+            IsActive="True" Margin="73,284,662,78" />
     </Grid>
 </mah:MetroWindow>

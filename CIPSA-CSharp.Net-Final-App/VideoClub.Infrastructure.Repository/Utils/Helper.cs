@@ -10,8 +10,6 @@ namespace VideoClub.Infrastructure.Repository.Utils
     {
         
         public static readonly log4net.ILog Log = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        //public static readonly Assembly assembly = Assembly.Load("VideoClub.Infrastructure.Repository");
-        //public static readonly ResourceManager resourceManager = new ResourceManager("VideoClub.Infrastructure.Repository.en-US", assembly);
         public static readonly string Connection = "VideoClubConnection";
 
         public static string GetCodeNumber(string model, int length, Random random)

@@ -1,18 +1,21 @@
-﻿using System;
+﻿using System.Configuration;
 using System.Diagnostics;
 using System.Reflection;
-using System.Resources;
-using System.Windows;
 using System.Windows.Controls;
 using log4net;
 using MahApps.Metro.Controls;
-using MahApps.Metro.Controls.Dialogs;
 
 namespace VideoClub.WPF.Utils
 {
     public class HelperWindow
     {
         public static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly string BlockedUserProcessAutomatic = "BlockedUserProcess";
+        public static readonly string VipUserProcessAutomatic = "VipUserProcess";
+
+        //public static readonly Assembly assembly = Assembly.Load("namespace");
+        //public static readonly ResourceManager resourceManager = new ResourceManager("VideoClub.Infrastructure.Repository.en-US", assembly);
+
 
         public static void ClearFields(StackPanel panel)
         {
@@ -52,7 +55,6 @@ namespace VideoClub.WPF.Utils
             }
             return false;
         }
-        
 
         public static void HandleLogError(string errorMessage)
         {
@@ -65,7 +67,47 @@ namespace VideoClub.WPF.Utils
             Log.Info(infoMessage);
         }
 
+        public static void AddUpdateAppSettings(string key, string value)
+        {
+            try
+            {
+                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                var settings = configFile.AppSettings.Settings;
+                if (settings[key] == null)
+                {
+                    settings.Add(key, value);
+                }
+                else
+                {
+                    settings[key].Value = value;
+                }
+                configFile.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+            }
+            catch (ConfigurationErrorsException exception)
+            {
+                HandleLogError(exception.Message);
+            }
+        }
+
+        public static string ReadSetting(string key)
+        {
+            var result = string.Empty;
+            try
+            {
+                var appSettings = ConfigurationManager.AppSettings;
+                result = appSettings[key] ?? "Not Found";
+            }
+            catch (ConfigurationErrorsException exception)
+            {
+                HandleLogError(exception.Message);
+            }
+
+            return result;
+        }
+
+
     }
-    
-   
+
+
 }

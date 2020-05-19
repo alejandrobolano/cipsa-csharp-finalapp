@@ -8,14 +8,17 @@
                  xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
                  Dialog:DialogParticipation.Register="{Binding}"
                  mc:Ignorable="d"
+                 Closed="MainWindow_OnClosed"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  xmlns:properties="clr-namespace:VideoClub.WPF.Properties"
-                 Title="{x:Static properties:Resources.MAIN_TITLE}" Height="450" Width="800"
+                 Title="{x:Static properties:Resources.MAIN_TITLE}" Height="450" Width="650"
                  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="MainWindow_OnLoaded">
 
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
-            <Button Content="settings" />
+            <Button Name="SettingsButton" Click="SettingsButton_Click">
+                <iconPacks:PackIconModern Width="18" Height="18" Kind="Settings" />
+            </Button>
             <Button Click="ButtonClientsWindows_OnClick">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconModern Width="24" Height="24" Kind="User" />
@@ -37,41 +40,83 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
 
-    <Grid HorizontalAlignment="Left" Height="422"  VerticalAlignment="Top" Width="795" Margin="0,0,-0.333,0">
-        <Controls:Tile Title="Crear renta rápida" Click="StartRentalsWindows_OnClick"
-                       Background="YellowGreen" ToolTip="Gestione todas las rentas"
-                       HorizontalTitleAlignment="Center" Margin="40,36,428,246" Width="Auto">
+
+    <WrapPanel Margin="15">
+        <Controls:Tile Title="{x:Static properties:Resources.RENTAL_FAST}" Click="StartRentalsWindows_OnClick"
+                       Background="YellowGreen" ToolTip="{x:Static properties:Resources.RENTAL_FAST_TOOLTIP}"
+                       HorizontalTitleAlignment="Center" Width="275" Margin="15">
             <iconPacks:PackIconModern Width="60"
                                       Height="60"
                                       Kind="InboxIn" />
         </Controls:Tile>
-        <Controls:Tile Title="Crear devolución rápida" 
-                       Background="Beige" ToolTip="Gestione todas las rentas"
-                       HorizontalTitleAlignment="Center" Margin="428,36,41,246" Width="Auto" Click="FinishRentalsWindows_OnClick">
+        <Controls:Tile Title="{x:Static properties:Resources.RETURNED_FAST}" HorizontalTitleAlignment="Center" Margin="15" 
+                       Background="Beige" ToolTip="{x:Static properties:Resources.RETURNED_FAST_TOOLTIP}" Width="275" Click="FinishRentalsWindows_OnClick">
             <iconPacks:PackIconModern Width="60"
                                       Height="60"
                                       Kind="InboxOut" />
         </Controls:Tile>
-        <Controls:Tile Title="VIP" Name="VipTile" Visibility="Hidden"
-                       Background="PaleVioletRed" ToolTip="Gestione todas las rentas"
-                       HorizontalTitleAlignment="Center" Margin="40,269,631,57" Width="Auto" Height="Auto">
-            <iconPacks:PackIconModern Width="25"
+        <DockPanel HorizontalAlignment="Stretch" Width="600" Margin="15">
+            <TextBlock Text="{x:Static properties:Resources.MANUAL_PROCESS}"  HorizontalAlignment="Left"
+                   VerticalAlignment="Top" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
+            <TextBlock Text="Informes relacionado a las rentas" Margin="0,0,15,0" HorizontalAlignment="Right"
+                   VerticalAlignment="Top" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
+        </DockPanel>
+
+        <Grid Margin="15,0,15,15">
+            <Controls:Tile Title="{x:Static properties:Resources.VIP}" Name="VipTile" 
+                           BorderThickness="0" Click="VipTile_OnClick"
+                           Background="PaleVioletRed" ToolTip="{x:Static properties:Resources.VIP_TILE_TOOLTIP}"
+                           HorizontalTitleAlignment="Center" Width="115" Height="115">
+                <iconPacks:PackIconModern Width="25"
                                       Height="25"
                                       Kind="UserTie" />
-        </Controls:Tile>
-        <Controls:Tile Title="Desactivación" Name="BlockedTile" Visibility="Hidden"
-                       Background="BurlyWood" ToolTip="Verificar proceso de clientes bloqueados"
-                       HorizontalTitleAlignment="Center" Margin="197,269,472,57" 
-                       Click="BlockedTile_OnClick" Width="Auto" Height="Auto">
-            <iconPacks:PackIconModern Width="25"
+            </Controls:Tile>
+            <mah:ProgressRing x:Name="VipUserProgress" HorizontalAlignment="Center"
+                              VerticalAlignment="Center" Visibility="Hidden"
+                              Foreground="{DynamicResource AccentColorBrush}"
+            IsActive="True" />
+        </Grid>
+
+        <Grid Margin="15,0,15,15">
+            <Controls:Tile Title="{x:Static properties:Resources.BLOCKED}" Name="BlockedTile" 
+                       Background="BurlyWood" ToolTip="{x:Static properties:Resources.BLOCKED_TILE_TOOLTIP}"
+                       HorizontalTitleAlignment="Center"
+                       Click="BlockedTile_OnClick" Width="115" Height="115">
+                <iconPacks:PackIconModern Width="25"
                                       Height="25"
                                       Kind="Noentry" />
-        </Controls:Tile>
-        <mah:ProgressRing Name="BlockedUserProgress" Foreground="{DynamicResource AccentColorBrush}"
-                          IsActive="True" Margin="230,284,505,78" />
-        <Label Content="Proceso manual para los clientes" HorizontalAlignment="Left"
-               Margin="40,239,0,0" VerticalAlignment="Top" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
-        <mah:ProgressRing x:Name="VipUserProgress" Foreground="{DynamicResource AccentColorBrush}"
-            IsActive="True" Margin="73,284,662,78" />
-    </Grid>
+            </Controls:Tile>
+            <mah:ProgressRing x:Name="BlockedUserProgress" HorizontalAlignment="Center"
+                              VerticalAlignment="Center" Visibility="Hidden"
+                              Foreground="{DynamicResource AccentColorBrush}"
+                          IsActive="True" />
+        </Grid>
+        
+        <Grid Margin="15,0,15,15">
+            <Controls:Tile Title="{x:Static properties:Resources.DISCOUNT}" Name="DiscountTile" 
+                       Background="CornflowerBlue" ToolTip="{x:Static properties:Resources.DISCOUNT_TILE_TOOLTIP}"
+                       HorizontalTitleAlignment="Center" 
+                       Click="DiscountTile_OnClick" Width="115" Height="115">
+                <iconPacks:PackIconModern Width="25"
+                                      Height="25"
+                                      Kind="Money" />
+            </Controls:Tile>
+            <mah:ProgressRing x:Name="DiscountUserProgress" HorizontalAlignment="Center"
+                              VerticalAlignment="Center" Visibility="Hidden"
+                              Foreground="{DynamicResource AccentColorBrush}"
+                          IsActive="True" />
+        </Grid>
+
+        <Grid Margin="15,0,15,15">
+            <Controls:Tile Title="Reporte" Name="ReportsTile" 
+                           Background="HotPink" ToolTip="{x:Static properties:Resources.DISCOUNT_TILE_TOOLTIP}"
+                           HorizontalTitleAlignment="Center" HorizontalAlignment="Right"
+                           Click="ReportsTile_OnClick" Width="115" Height="115">
+                <iconPacks:PackIconModern Width="25"
+                                          Height="25"
+                                          Kind="Page0" />
+            </Controls:Tile>
+        </Grid>
+    </WrapPanel>
+
 </mah:MetroWindow>

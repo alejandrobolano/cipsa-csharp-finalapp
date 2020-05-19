@@ -1,8 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 using MahApps.Metro.Controls;
 using VideoClub.Common.BusinessLogic.Implementations;
 using VideoClub.Common.Model.Enums;
+using VideoClub.WPF.Utils;
+using VideoClub.WPF.Views.Settings;
 
 namespace VideoClub.WPF.Views
 {
@@ -18,19 +21,19 @@ namespace VideoClub.WPF.Views
 
         private void ButtonMovieWindows_OnClick(object sender, RoutedEventArgs e)
         {
-            var movieWindows = new MovieWindow();
+            var movieWindows = new MovieWindow(StateProductEnum.All);
             movieWindows.Show();
         }
 
         private void ButtonClientsWindows_OnClick(object sender, RoutedEventArgs e)
         {
-            var clientsWindows = new ClientWindow();
+            var clientsWindows = new ClientWindow(StateClientEnum.All);
             clientsWindows.Show();
         }
 
         private void ButtonVideoGamesWindows_OnClick(object sender, RoutedEventArgs e)
         {
-            var videoGameWindows = new VideoGameWindow();
+            var videoGameWindows = new VideoGameWindow(StateProductEnum.All);
             videoGameWindows.Show();
         }
 
@@ -45,49 +48,145 @@ namespace VideoClub.WPF.Views
             var rentalsWindow = new RentalsWindow(StateRentalEnum.Activated);
             rentalsWindow.Show();
         }
-        
+
         private async void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            await ProcessBlockedClientsInBackground();
-            await ProcessVipClientsInBackground();
+            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.BlockedClientProcessAutomatic), out var isBlockedAutomaticProcess);
+            if (isBlockedAutomaticProcess)
+            {
+                await ProcessBlockedClientsInBackground();
+            }
+            else
+            {
+                VisibleTile(BlockedTile, BlockedUserProgress);
+            }
+
+            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.VipClientProcessAutomatic), out var isVipAutomaticProcess);
+            if (isVipAutomaticProcess)
+            {
+                await ProcessVipClientsInBackground();
+            }
+            else
+            {
+                VisibleTile(VipTile, VipUserProgress);
+            }
+
+            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.DiscountClientProcessAutomatic), out var isAutomaticProcess);
+            var today = DateTime.Today;
+            var lastDayMonth = new DateTime(today.Year, today.Month, DateTime.DaysInMonth(today.Year, today.Month));
+
+            if (isAutomaticProcess && lastDayMonth.Equals(today))
+            {
+                await ProcessDiscountClientsInBackground();
+            }
+            else
+            {
+                VisibleTile(DiscountTile, DiscountUserProgress);
+            }
         }
+
+        #region Process of blocked
+
 
         private async Task ProcessBlockedClientsInBackground()
         {
-            //BlockedTile.Visibility = Visibility.Hidden;
+            HideTile(BlockedTile, BlockedUserProgress);
             await ProcessOfChangeStateToBlockedTask();
-            BlockedUserProgress.Visibility = Visibility.Hidden;
-            BlockedTile.Visibility = Visibility.Visible;
-        }
-        private async Task ProcessVipClientsInBackground()
-        {
-            //VipTile.Visibility = Visibility.Hidden;
-            await ProcessOfChangeStateToBlockedTask();
-            VipUserProgress.Visibility = Visibility.Hidden;
-            VipTile.Visibility = Visibility.Visible;
-        }
+            VisibleTile(BlockedTile, BlockedUserProgress);
 
-        private void ProcessOfChangeStateToBlocked()
-        {
-            ClientService.Instance.ProcessOfChangeStateToBlocked();
-        }
-        private void ProcessOfVipClients()
-        {
-            ClientService.Instance.UpdateClientsForVip();
-        }
-
-        private async Task ProcessOfVipClientsTask()
-        {
-            await Task.Run(ProcessOfVipClients);
         }
         private async Task ProcessOfChangeStateToBlockedTask()
         {
             await Task.Run(ProcessOfChangeStateToBlocked);
         }
+        private void ProcessOfChangeStateToBlocked()
+        {
+            ClientService.Instance.ProcessOfChangeStateToBlocked();
+        }
+
+        #endregion
+
+        #region Process of vip
+
+        private async Task ProcessVipClientsInBackground()
+        {
+            HideTile(VipTile, VipUserProgress);
+            await ProcessOfVipClientsTask();
+            VisibleTile(VipTile, VipUserProgress);
+        }
+        private void ProcessOfVipClients()
+        {
+            ClientService.Instance.UpdateClientsForVip();
+        }
+        private async Task ProcessOfVipClientsTask()
+        {
+            await Task.Run(ProcessOfVipClients);
+        }
+
+        #endregion
+
+        #region Process of discount
+
+        private async Task ProcessDiscountClientsInBackground()
+        {
+            HideTile(DiscountTile, DiscountUserProgress);
+            await ProcessOfDiscountClientsTask();
+            VisibleTile(DiscountTile, DiscountUserProgress);
+        }
+
+
+        private void ProcessOfDiscountClients()
+        {
+            ClientService.Instance.UpdateDiscountForVip();
+        }
+        private async Task ProcessOfDiscountClientsTask()
+        {
+            await Task.Run(ProcessOfDiscountClients);
+        }
+
+        #endregion
+        private void VisibleTile(UIElement tile, UIElement progress)
+        {
+            tile.Visibility = Visibility.Visible;
+            progress.Visibility = Visibility.Hidden;
+        }
+        private void HideTile(UIElement tile, UIElement progress)
+        {
+            tile.Visibility = Visibility.Hidden;
+            progress.Visibility = Visibility.Visible;
+        }
+
 
         private async void BlockedTile_OnClick(object sender, RoutedEventArgs e)
         {
             await ProcessBlockedClientsInBackground();
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var settingsWindow = new SettingsWindow();
+            settingsWindow.Show();
+        }
+
+        private void MainWindow_OnClosed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private async void DiscountTile_OnClick(object sender, RoutedEventArgs e)
+        {
+            await ProcessDiscountClientsInBackground();
+        }
+
+        private async void VipTile_OnClick(object sender, RoutedEventArgs e)
+        {
+            await ProcessVipClientsInBackground();
+        }
+
+        private void ReportsTile_OnClick(object sender, RoutedEventArgs e)
+        {
+            var reportsWindow = new RentalSummary();
+            reportsWindow.Show();
         }
     }
 }

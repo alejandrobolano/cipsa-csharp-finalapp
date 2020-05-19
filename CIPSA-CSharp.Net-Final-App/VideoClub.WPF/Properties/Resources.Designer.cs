@@ -70,6 +70,15 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activo.
+        /// </summary>
+        public static string ACTIVED {
+            get {
+                return ResourceManager.GetString("ACTIVED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Agregar.
         /// </summary>
         public static string ADD {
@@ -124,11 +133,74 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Todos los clientes.
+        /// </summary>
+        public static string ALL_CLIENTS {
+            get {
+                return ResourceManager.GetString("ALL_CLIENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Todos las películas.
+        /// </summary>
+        public static string ALL_MOVIES {
+            get {
+                return ResourceManager.GetString("ALL_MOVIES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Todas las rentas.
         /// </summary>
         public static string ALL_RENTALS {
             get {
                 return ResourceManager.GetString("ALL_RENTALS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Todos los juegos.
+        /// </summary>
+        public static string ALL_VIDEOGAMES {
+            get {
+                return ResourceManager.GetString("ALL_VIDEOGAMES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceso automático al arrancar la aplicación.
+        /// </summary>
+        public static string AUTOMATIC_PROCESS {
+            get {
+                return ResourceManager.GetString("AUTOMATIC_PROCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desactivación.
+        /// </summary>
+        public static string BLOCKED {
+            get {
+                return ResourceManager.GetString("BLOCKED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bloqueo de clientes.
+        /// </summary>
+        public static string BLOCKED_PROCESS_CHECK {
+            get {
+                return ResourceManager.GetString("BLOCKED_PROCESS_CHECK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceso manual de asignación de nuevos clientes bloqueados.
+        /// </summary>
+        public static string BLOCKED_TILE_TOOLTIP {
+            get {
+                return ResourceManager.GetString("BLOCKED_TILE_TOOLTIP", resourceCulture);
             }
         }
         
@@ -178,6 +250,24 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clientes visualizados.
+        /// </summary>
+        public static string CLIENTS_DISPLAYED {
+            get {
+                return ResourceManager.GetString("CLIENTS_DISPLAYED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desactivado.
+        /// </summary>
+        public static string DEACTIVED {
+            get {
+                return ResourceManager.GetString("DEACTIVED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Eliminar.
         /// </summary>
         public static string DELETE {
@@ -210,6 +300,33 @@ namespace VideoClub.WPF.Properties {
         public static string DISC_QUANTITY_SHORT {
             get {
                 return ResourceManager.GetString("DISC_QUANTITY_SHORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Descuentos.
+        /// </summary>
+        public static string DISCOUNT {
+            get {
+                return ResourceManager.GetString("DISCOUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Descuentos VIP.
+        /// </summary>
+        public static string DISCOUNT_PROCESS_CHECK {
+            get {
+                return ResourceManager.GetString("DISCOUNT_PROCESS_CHECK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceso manual de asignación de los descuentos de los clientes VIP.
+        /// </summary>
+        public static string DISCOUNT_TILE_TOOLTIP {
+            get {
+                return ResourceManager.GetString("DISCOUNT_TILE_TOOLTIP", resourceCulture);
             }
         }
         
@@ -349,6 +466,15 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Proceso manual para gestión de clientes.
+        /// </summary>
+        public static string MANUAL_PROCESS {
+            get {
+                return ResourceManager.GetString("MANUAL_PROCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Película.
         /// </summary>
         public static string MOVIE {
@@ -372,6 +498,15 @@ namespace VideoClub.WPF.Properties {
         public static string MOVIES {
             get {
                 return ResourceManager.GetString("MOVIES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Películas visualizadas.
+        /// </summary>
+        public static string MOVIES_DISPLAYED {
+            get {
+                return ResourceManager.GetString("MOVIES_DISPLAYED", resourceCulture);
             }
         }
         
@@ -502,6 +637,24 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rentar Producto.
+        /// </summary>
+        public static string RENTAL_FAST {
+            get {
+                return ResourceManager.GetString("RENTAL_FAST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Renta el producto de manera fácil y sencilla.
+        /// </summary>
+        public static string RENTAL_FAST_TOOLTIP {
+            get {
+                return ResourceManager.GetString("RENTAL_FAST_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El producto con ID: $ no se encuentra disponible por lo que no se puede proceder con la renta.
         /// </summary>
         public static string RENTAL_NON_AVAILABLE {
@@ -565,11 +718,38 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Devolver Producto.
+        /// </summary>
+        public static string RETURNED_FAST {
+            get {
+                return ResourceManager.GetString("RETURNED_FAST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Devuelva el producto de manera fácil y sencilla.
+        /// </summary>
+        public static string RETURNED_FAST_TOOLTIP {
+            get {
+                return ResourceManager.GetString("RETURNED_FAST_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rentas devueltas.
         /// </summary>
         public static string RETURNED_RENTALS {
             get {
                 return ResourceManager.GetString("RETURNED_RENTALS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuraciones.
+        /// </summary>
+        public static string SETTINGS {
+            get {
+                return ResourceManager.GetString("SETTINGS", resourceCulture);
             }
         }
         
@@ -673,11 +853,38 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Juegos visualizados.
+        /// </summary>
+        public static string VIDEOGAMES_DISPLAYED {
+            get {
+                return ResourceManager.GetString("VIDEOGAMES_DISPLAYED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VIP.
         /// </summary>
         public static string VIP {
             get {
                 return ResourceManager.GetString("VIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clientes VIP.
+        /// </summary>
+        public static string VIP_PROCESS_CHECK {
+            get {
+                return ResourceManager.GetString("VIP_PROCESS_CHECK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceso manual de asignación de nuevos clientes VIP.
+        /// </summary>
+        public static string VIP_TILE_TOOLTIP {
+            get {
+                return ResourceManager.GetString("VIP_TILE_TOOLTIP", resourceCulture);
             }
         }
         

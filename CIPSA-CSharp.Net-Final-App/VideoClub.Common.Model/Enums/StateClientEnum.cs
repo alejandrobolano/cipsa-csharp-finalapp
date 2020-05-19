@@ -9,6 +9,7 @@ namespace VideoClub.Common.Model.Enums
         [Description("Bloqueado")]
         Blocked,
         [Description("Baja")]
-        Leave
+        Leave,
+        All
     }
 }

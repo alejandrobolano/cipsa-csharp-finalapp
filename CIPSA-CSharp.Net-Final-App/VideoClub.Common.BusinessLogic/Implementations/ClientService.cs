@@ -86,10 +86,22 @@ namespace VideoClub.Common.BusinessLogic.Implementations
         #endregion
 
         #region custom public methods
-        public void UpdateDiscount(ClientDto client)
+        private void UpdateDiscount(ClientDto client)
         {
+            var rentals = RentalService.Instance.GetRentalsByClient(client.Id);
+            var monthActual = DateTime.Today.Month;
             var quantityRentalMonth = 0;
-            if (quantityRentalMonth >= 5 && quantityRentalMonth < 10)
+
+            rentals.ForEach(x =>
+            {
+                if (x.StartRental.Month == monthActual)
+                {
+                    quantityRentalMonth++;
+                }
+            });
+            if (quantityRentalMonth < 5)
+                client.Discount = 0;
+            else if (quantityRentalMonth >= 5 && quantityRentalMonth < 10)
                 client.Discount = 10;
             else if (quantityRentalMonth >= 10 && quantityRentalMonth < 15)
                 client.Discount = 15;
@@ -98,6 +110,14 @@ namespace VideoClub.Common.BusinessLogic.Implementations
             else if (quantityRentalMonth >= 20 && quantityRentalMonth < 30)
                 client.Discount = 25;
             else if (quantityRentalMonth >= 30) client.Discount = 50;
+
+            Update(client);
+        }
+
+        public void UpdateDiscountForVip()
+        {
+            var clientsVip = All().Where(client => client.IsVip).ToList();
+            clientsVip.ForEach(UpdateDiscount);
         }
 
         public void UpdateClientsForVip()
@@ -113,16 +133,16 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         public List<ClientDto> GetClientsByState(StateClientEnum stateClient)
         {
-            var activatedClients = new List<ClientDto>();
-            All().ForEach(client =>
+            var clients = new List<ClientDto>();
+            All().ForEach(clientDto =>
             {
-                if (client.State.Equals(stateClient))
+                if (clientDto.State.Equals(stateClient))
                 {
-                    activatedClients.Add(client);
+                    clients.Add(clientDto);
                 }
             });
 
-            return activatedClients;
+            return clients;
         }
 
         private void UpdateStateClient(ClientDto client, StateClientEnum stateNew)
@@ -155,10 +175,10 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         }
 
-        public void AddQuantityRental(string id, int newQuantityRentals)
+        public void AddQuantityRental(string id)
         {
             var client = Get(id);
-            client.RentalQuantity += newQuantityRentals;
+            client.RentalQuantity ++;
             Update(client);
         }
 

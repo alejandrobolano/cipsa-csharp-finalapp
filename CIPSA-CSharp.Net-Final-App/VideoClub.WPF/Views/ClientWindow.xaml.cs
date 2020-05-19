@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,27 +21,50 @@ namespace VideoClub.WPF.Views
     /// </summary>
     public partial class ClientWindow : MetroWindow
     {
-        private readonly DateTime _todayDateTime;
+        private DateTime _todayDateTime;
         private ClientService _clientService;
         private IList<ClientDto> _clients;
-        private readonly IDictionary<AccreditationEnum, string> _itemsAccreditationType;
+        private IDictionary<AccreditationEnum, string> _itemsAccreditationType;
         private ClientDto _clientSelected;
         private readonly string _prefixSpain = "34";
-        public ClientWindow()
+        private IDictionary<StateClientEnum, string> _itemsStateClient;
+        private StateClientEnum _stateClient;
+        private readonly ResourceManager _resourceManager = Properties.Resources.ResourceManager;
+        public ClientWindow(StateClientEnum stateClient)
         {
             InitializeComponent();
+            InitializeData();
+            _stateClient = stateClient;
+            InitializeVariables();
+        }
+
+        private void InitializeVariables()
+        {
+            _clientService = ClientService.Instance;
+        }
+
+        private void InitializeData()
+        {
             _todayDateTime = DateTime.Today;
             _itemsAccreditationType = new Dictionary<AccreditationEnum, string>
             {
-                {AccreditationEnum.Dni,AccreditationEnum.Dni.GetDescription()},
-                {AccreditationEnum.Nie,AccreditationEnum.Nie.GetDescription()}
+                {AccreditationEnum.Dni, AccreditationEnum.Dni.GetDescription()},
+                {AccreditationEnum.Nie, AccreditationEnum.Nie.GetDescription()}
+            };
+            _itemsStateClient = new Dictionary<StateClientEnum, string>
+            {
+                {StateClientEnum.All, _resourceManager.GetResourceValue("ALL_CLIENTS")  },
+                {StateClientEnum.Activated, StateClientEnum.Activated.GetDescription()  },
+                {StateClientEnum.Blocked, StateClientEnum.Blocked.GetDescription()  },
+                {StateClientEnum.Leave, StateClientEnum.Leave.GetDescription() }
             };
         }
 
         private void LoadingData()
         {
-            _clientService = new ClientService();
-            _clients = _clientService.All();
+            _clients = _stateClient.Equals(StateClientEnum.All) 
+                ? _clientService.All() 
+                : _clientService.GetClientsByState(_stateClient);
         }
 
         private async Task LoadingDataTask()
@@ -56,9 +80,11 @@ namespace VideoClub.WPF.Views
         private async Task LoadDataGrid()
         {
             LoadingPanel.Visibility = Visibility.Visible;
+            StateClientPanel.Visibility = Visibility.Collapsed;
             await LoadingDataTask();
             ClientDataGrid.ItemsSource = _clients;
             LoadingPanel.Visibility = Visibility.Hidden;
+            StateClientPanel.Visibility = Visibility.Visible;
         }
 
         public async Task<MessageDialogResult> PromptAsync(string title, string message, MessageDialogStyle style = MessageDialogStyle.Affirmative, MetroDialogSettings settings = null)
@@ -208,6 +234,19 @@ namespace VideoClub.WPF.Views
         }
 
 
-        
+        private async void ClientStateComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var stateEnumSelected = _itemsStateClient.FirstOrDefault(x => x.Value.Equals(((ComboBox)sender).SelectedValue)).Key;
+            if (stateEnumSelected.Equals(_stateClient)) return;
+            _stateClient = stateEnumSelected;
+            await LoadDataGrid();
+        }
+
+        private void ClientStateComboBox_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var combo = (ComboBox)sender;
+            combo.ItemsSource = _itemsStateClient.Values;
+            combo.SelectedItem = _itemsStateClient[_stateClient];
+        }
     }
 }

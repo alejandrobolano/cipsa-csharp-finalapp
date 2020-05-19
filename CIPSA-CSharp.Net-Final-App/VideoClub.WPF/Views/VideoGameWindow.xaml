@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:VideoClub.WPF.Views"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:properties="clr-namespace:VideoClub.WPF.Properties"
-        mc:Ignorable="d" Height="450" Width="800"
+        mc:Ignorable="d" Height="450" Width="650"
         Title="{x:Static properties:Resources.VIDEOGAME_WINDOW_TITLE}"  
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         ResizeMode="NoResize" 
@@ -35,7 +35,7 @@
                     <TextBlock Text="{x:Static properties:Resources.PLATFORM}" VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <ComboBox Name="PlatformDropDown" Width="115" Loaded="PlatformDropDown_OnLoadedDropDown_OnLoaded"/>
                     <TextBlock Text="{x:Static properties:Resources.DISC_QUANTITY}" VerticalAlignment="Center" Margin="15,0,5,0"/>
-                    <mah:NumericUpDown Name="QuantityNumeric" Minimum="0" Maximum="10" Interval="1" InterceptManualEnter="False" NumericInputMode="Numbers" Width="75"/>
+                    <mah:NumericUpDown Name="QuantityNumeric" Minimum="1" Maximum="10" Interval="1" InterceptManualEnter="False" NumericInputMode="Numbers" Width="75"/>
               
                 </StackPanel>
             </StackPanel>
@@ -51,10 +51,16 @@
             </StackPanel>
         </Grid>
 
-        <StackPanel Orientation="Vertical" Name="LoadingPanel">
-            <TextBlock HorizontalAlignment="Center" Text="{x:Static properties:Resources.LOADING_DATA_DB}"/>
-            <mah:MetroProgressBar Name="MetroProgressBar"  Width="350" HorizontalAlignment="Center" Height="23" IsIndeterminate="True" />
-        </StackPanel>
+        <Grid>
+            <StackPanel Orientation="Vertical" Name="LoadingPanel">
+                <TextBlock HorizontalAlignment="Center" Text="{x:Static properties:Resources.LOADING_DATA_DB}"/>
+                <mah:MetroProgressBar Name="MetroProgressBar"  Width="350" HorizontalAlignment="Center" Height="23" IsIndeterminate="True" />
+            </StackPanel>
+            <StackPanel Name="StateProductPanel" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,15,10">
+                <TextBlock Text="{x:Static properties:Resources.VIDEOGAMES_DISPLAYED}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15,0,5,0"/>
+                <ComboBox Name="ProductStateComboBox" Loaded="VideoGameStateComboBox_OnLoaded" Width="150" SelectionChanged="VideoGameStateComboBox_SelectionChanged"/>
+            </StackPanel>
+        </Grid>
 
         <DataGrid Name="VideoGameDataGrid" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserAddRows="False"
                   Loaded="VideoGameDataGrid_OnLoadedDataGrid" AutoGenerateColumns="False" IsReadOnly="True"

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Resources;
 using System.Threading.Tasks;
 using System.Windows;
@@ -9,6 +10,7 @@ using System.Windows.Input;
 using MahApps.Metro.Controls;
 using VideoClub.Common.BusinessLogic.Dto;
 using VideoClub.Common.BusinessLogic.Implementations;
+using VideoClub.Common.Model.Enums;
 using VideoClub.Common.Model.Extensions;
 using VideoClub.WPF.Utils;
 
@@ -19,15 +21,33 @@ namespace VideoClub.WPF.Views
     /// </summary>
     public partial class MovieWindow : MetroWindow
     {
-        private readonly DateTime _todayDateTime;
+        private DateTime _todayDateTime;
         private MovieService _movieService;
         private IList<MovieDto> _movies;
         private MovieDto _movieSelected;
         private readonly ResourceManager _resourceManager = Properties.Resources.ResourceManager;
-        public MovieWindow()
+        private IDictionary<StateProductEnum, string> _itemsStateProduct;
+        private StateProductEnum _stateProduct;
+        public MovieWindow(StateProductEnum stateProduct)
         {
             InitializeComponent();
+            _stateProduct = stateProduct;
+            InitializeVariables();
+        }
+
+        private void InitializeVariables()
+        {
             _todayDateTime = DateTime.Today;
+            _movieService = MovieService.Instance;
+
+            _itemsStateProduct = new Dictionary<StateProductEnum, string>
+            {
+                {StateProductEnum.All, _resourceManager.GetResourceValue("ALL_MOVIES")},
+                {StateProductEnum.Available, StateProductEnum.Available.GetDescription()},
+                {StateProductEnum.BadState, StateProductEnum.BadState.GetDescription()},
+                {StateProductEnum.Lost, StateProductEnum.Lost.GetDescription()},
+                {StateProductEnum.NonAvailable, StateProductEnum.NonAvailable.GetDescription()}
+            };
         }
 
         private void DateNowTextBlock_OnLoaded(object sender, RoutedEventArgs e)
@@ -60,15 +80,18 @@ namespace VideoClub.WPF.Views
         private async Task LoadDataGrid()
         {
             LoadingPanel.Visibility = Visibility.Visible;
+            StateProductPanel.Visibility = Visibility.Collapsed;
             await LoadingDataTask();
             MovieDataGrid.ItemsSource = _movies;
             LoadingPanel.Visibility = Visibility.Hidden;
+            StateProductPanel.Visibility = Visibility.Visible;
         }
 
         private void LoadingData()
         {
-            _movieService = new MovieService();
-            _movies = _movieService.All();
+            _movies = _stateProduct.Equals(StateProductEnum.All)
+                ? _movieService.All()
+                : _movieService.GetMoviesByState(_stateProduct);
         }
         private async Task LoadingDataTask()
         {
@@ -210,6 +233,21 @@ namespace VideoClub.WPF.Views
         {
             var value = ((TextBox)sender).Text;
             e.Handled = !int.TryParse(value + e.Text, out _);
+        }
+
+        private void MovieStateComboBox_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var combo = (ComboBox)sender;
+            combo.ItemsSource = _itemsStateProduct.Values;
+            combo.SelectedItem = _itemsStateProduct[_stateProduct];
+        }
+
+        private async void MovieStateComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var stateEnumSelected = _itemsStateProduct.FirstOrDefault(x => x.Value.Equals(((ComboBox)sender).SelectedValue)).Key;
+            if (stateEnumSelected.Equals(_stateProduct)) return;
+            _stateProduct = stateEnumSelected;
+            await LoadDataGrid();
         }
     }
 }

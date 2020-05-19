@@ -89,6 +89,20 @@ namespace VideoClub.Common.BusinessLogic.Implementations
             return Update(movie);
         }
 
+        public List<MovieDto> GetMoviesByState(StateProductEnum state)
+        {
+            var movies = new List<MovieDto>();
+            All().ForEach(movieDto =>
+            {
+                if (movieDto.State.Equals(state))
+                {
+                    movies.Add(movieDto);
+                }
+            });
+
+            return movies;
+        }
+
         #endregion
 
 

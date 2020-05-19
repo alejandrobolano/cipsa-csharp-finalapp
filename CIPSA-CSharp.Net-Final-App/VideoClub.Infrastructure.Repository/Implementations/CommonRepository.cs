@@ -67,7 +67,16 @@ namespace VideoClub.Infrastructure.Repository.Implementations
 
         public virtual List<T> All()
         {
-            return _videoClubContext.Set<T>().ToList();
+            var result = new List<T>();
+            try
+            {
+                result = _videoClubContext.Set<T>().ToList();
+            }
+            catch (Exception e)
+            {
+                e.CustomDescription();
+            }
+            return result;
         }
 
         public virtual void SaveChanges()

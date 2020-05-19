@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
 using VideoClub.Common.BusinessLogic.Contracts;
 using VideoClub.Common.BusinessLogic.Dto;
@@ -64,7 +63,7 @@ namespace VideoClub.Common.BusinessLogic.Implementations
         public bool Remove(string id)
         {
             var rentalDto = Get(id);
-            HasBeenChangeStateProduct(rentalDto, StateProductEnum.Available, out var hasChange);
+            CommonService.HasBeenChangeStateProduct(rentalDto, StateProductEnum.Available, out var hasChange);
             return hasChange && _rentalRepository.Remove(id);
         }
 
@@ -110,18 +109,18 @@ namespace VideoClub.Common.BusinessLogic.Implementations
                 result = Add(rentalDto, out var id);
                 if (!result) return false;
 
-                var product = HasBeenChangeStateProduct(rentalDto, stateNew, out result);
+                var product = CommonService.HasBeenChangeStateProduct(rentalDto, stateNew, out result);
 
                 price = product.Price;
 
                 if (result)
                 {
-                    ClientService.Instance.AddQuantityRental(rentalDto.ClientId, quantityRental);
+                    ClientService.Instance.AddQuantityRental(rentalDto.ClientId);
                     var rental = Get(id);
                     var client = ClientService.Instance.Get(rental.ClientId);
                     price *= quantityRental;
                     price -= price * decimal.Divide(client.Discount, 100);
-                    rental.Price = decimal.Round(price,2);
+                    rental.Price = decimal.Round(price, 2);
                     rental.State = StateRentalEnum.Activated;
                     Update(rental);
                 }
@@ -135,23 +134,6 @@ namespace VideoClub.Common.BusinessLogic.Implementations
             }
 
             return result;
-        }
-
-        private static ProductDto HasBeenChangeStateProduct(RentalDto rentalDto, StateProductEnum stateNew, out bool result)
-        {
-            ProductDto product;
-            if (rentalDto.ProductId.Contains(CommonHelper.Movie))
-            {
-                product = MovieService.Instance.Get(rentalDto.ProductId);
-                result = MovieService.Instance.HasBeenChangeState((MovieDto) product, stateNew);
-            }
-            else
-            {
-                product = VideoGameService.Instance.Get(rentalDto.ProductId);
-                result = VideoGameService.Instance.HasBeenChangeState((VideoGameDto) product, stateNew);
-            }
-
-            return product;
         }
 
         public bool FinishRentalProduct(string idClient, string idProduct, out decimal differencePrice)
@@ -211,6 +193,41 @@ namespace VideoClub.Common.BusinessLogic.Implementations
             var rentalsByProductDtos = mapper.Map<List<Rental>, List<RentalDto>>(rentals);
             return rentalsByProductDtos;
         }
+
+        public List<RentalDto> GetRentalsOfProduct(string typeProductContains, out decimal earnings, out decimal totalByCost)
+        {
+            var result = new List<RentalDto>();
+            earnings= 0;
+            totalByCost= 0;
+
+            foreach (var rental in All())
+            {
+                if (!rental.ProductId.Contains(typeProductContains)) continue;
+                result.Add(rental);
+                var movie = CommonService.GetProduct(rental.ProductId);
+                totalByCost += movie.Price;
+                earnings += rental.Price;
+            }
+
+            return result;
+        }
+        public List<RentalDto> GetRentals(out decimal earnings, out decimal totalByCost)
+        {
+            var result = new List<RentalDto>();
+            earnings= 0;
+            totalByCost= 0;
+
+            foreach (var rental in All())
+            {
+                result.Add(rental);
+                var movie = CommonService.GetProduct(rental.ProductId);
+                totalByCost += movie.Price;
+                earnings += rental.Price;
+            }
+
+            return result;
+        }
+
         public RentalDto GetRentalByClientAndProduct(string idClient, string idProduct)
         {
             var rental = _rentalRepository.GetRentalByClientAndProduct(idClient, idProduct);

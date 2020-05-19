@@ -1,0 +1,38 @@
+﻿<mah:MetroWindow x:Class="VideoClub.WPF.Views.Settings.SettingsWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                 xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                 Dialog:DialogParticipation.Register="{Binding}"
+                 mc:Ignorable="d"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:properties="clr-namespace:VideoClub.WPF.Properties"
+                 Title="{x:Static properties:Resources.SETTINGS}" Height="200" Width="350"
+                 ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <StackPanel Orientation="Vertical" Margin="15">
+        <TextBlock Text="{x:Static properties:Resources.AUTOMATIC_PROCESS}"/>
+        <Grid Margin="15,0,15,0">
+            <TextBlock Text="{x:Static properties:Resources.VIP_PROCESS_CHECK}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <mah:ToggleSwitch Name="VipCheckBox"
+                          IsCheckedChanged="VipCheckBox_OnChecked" Loaded="VipCheckBox_OnLoaded"
+                          OnLabel="" OffLabel="" HorizontalAlignment="Right"/>
+        </Grid>
+        <Grid Margin="15,0,15,0">
+            <TextBlock Text="{x:Static properties:Resources.BLOCKED_PROCESS_CHECK}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <mah:ToggleSwitch Name="BlockedCheckBox" DataContextChanged="BlockedCheckBox_OnDataContextChanged"
+                              IsCheckedChanged="BlockedCheckBox_OnChecked" Loaded="BlockedCheckBox_OnLoaded"
+                          OnLabel="" OffLabel=""/>
+        </Grid>
+        <Grid Margin="15,0,15,0">
+            <TextBlock Text="{x:Static properties:Resources.DISCOUNT_PROCESS_CHECK}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <mah:ToggleSwitch Name="DiscountCheckBox" DataContextChanged="DiscountCheckBox_OnDataContextChanged"
+                              IsCheckedChanged="BlockedCheckBox_OnChecked" Loaded="DiscountCheckBox_OnLoaded"
+                          OnLabel="" OffLabel=""/>
+        </Grid>
+    </StackPanel>
+
+</mah:MetroWindow>

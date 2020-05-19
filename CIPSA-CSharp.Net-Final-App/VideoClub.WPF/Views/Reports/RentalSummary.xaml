@@ -14,33 +14,33 @@
                  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="RentalSummary_OnLoaded">
 
     <StackPanel Orientation="Vertical" Margin="15">
-        <TextBlock Text="Resumen general de los alquileres"/>
+        <TextBlock Text="{x:Static properties:Resources.GENERAL_SUMMARY_RENTAL_REPORT}"/>
         <StackPanel Name="InformationPanel">
             <StackPanel Orientation="Vertical" Margin="15,15,15,0">
                 <Grid>
                     <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="8" Height="8" HorizontalAlignment="Left"
                                           Kind="SocialTwitterHashtag" VerticalAlignment="Center"/>
-                    <TextBlock Text="Cantidad de Películas" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{x:Static properties:Resources.MOVIES_QUANTITY}" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
 
-                    <TextBlock  Name="TotalMoviesTextBlock" Text="15" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBlock  Name="TotalMoviesTextBlock" Text="-" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
                 <Grid Margin="15,0,0,0">
                     <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="8" Height="8" HorizontalAlignment="Left"
                                           Kind="CurrencyEuro" VerticalAlignment="Center"/>
-                    <TextBlock Text="Total sin descuento" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBlock Name="WithoutDiscountMoviesTextBlock" Text="15" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBlock Text="{x:Static properties:Resources.TOTAL_WITHOUT_DISCOUNT}" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBlock Name="WithoutDiscountMoviesTextBlock" Text="-" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
                 <Grid Margin="15,0,0,0">
                     <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="8" Height="8" HorizontalAlignment="Left"
                                           Kind="CurrencyEuro" VerticalAlignment="Center"/>
-                    <TextBlock Text="Total con descuento aplicado" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBlock Name="DiscountMoviesTextBlock" Text="15" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBlock Text="{x:Static properties:Resources.TOTAL_DISCOUNT_APPLY}" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBlock Name="DiscountMoviesTextBlock" Text="-" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
                 <Grid Margin="15,0,0,0">
                     <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="8" Height="8" HorizontalAlignment="Left"
                                           Kind="CurrencyEuro" VerticalAlignment="Center"/>
-                    <TextBlock Text="Porcentaje ahorrado por los clientes" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBlock Name="PercentEarnMoviesTextBlock" Text="15" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBlock Text="{x:Static properties:Resources.PERCENTS_EARNINGS_CLIENTS}" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBlock Name="PercentEarnMoviesTextBlock" Text="-" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
                 <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="100" Height="2" HorizontalAlignment="Center"
                                       Kind="Minus" VerticalAlignment="Center"/>
@@ -50,27 +50,27 @@
                 <Grid>
                     <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="8" Height="8" HorizontalAlignment="Left"
                                           Kind="SocialTwitterHashtag" VerticalAlignment="Center"/>
-                    <TextBlock Text="Cantidad de Video juegos" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{x:Static properties:Resources.VIDEOGAMES_QUANTITY}" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
 
-                    <TextBlock  Name="TotalVideoGamesTextBlock" Text="15" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBlock  Name="TotalVideoGamesTextBlock" Text="-" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
                 <Grid Margin="15,0,0,0">
                     <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="8" Height="8" HorizontalAlignment="Left"
                                           Kind="CurrencyEuro" VerticalAlignment="Center"/>
-                    <TextBlock Text="Total sin descuento" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBlock Name="WithoutDiscountVideoGamesTextBlock" Text="15" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBlock Text="{x:Static properties:Resources.TOTAL_WITHOUT_DISCOUNT}" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBlock Name="WithoutDiscountVideoGamesTextBlock" Text="-" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
                 <Grid Margin="15,0,0,0">
                     <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="8" Height="8" HorizontalAlignment="Left"
                                           Kind="CurrencyEuro" VerticalAlignment="Center"/>
-                    <TextBlock Text="Total con descuento aplicado" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBlock Name="DiscountVideoGamesTextBlock" Text="15" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBlock Text="{x:Static properties:Resources.TOTAL_DISCOUNT_APPLY}" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBlock Name="DiscountVideoGamesTextBlock" Text="-" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
                 <Grid Margin="15,0,0,0">
                     <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="8" Height="8" HorizontalAlignment="Left"
                                           Kind="CurrencyEuro" VerticalAlignment="Center"/>
-                    <TextBlock Text="Porcentaje ahorrado por los clientes" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBlock Name="PercentEarnVideoGamesTextBlock" Text="15" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBlock Text="{x:Static properties:Resources.PERCENTS_EARNINGS_CLIENTS}" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBlock Name="PercentEarnVideoGamesTextBlock" Text="-" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
                 <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="100" Height="2" HorizontalAlignment="Center"
                                       Kind="Minus" VerticalAlignment="Center"/>
@@ -80,33 +80,33 @@
                 <Grid>
                     <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="8" Height="8" HorizontalAlignment="Left"
                                           Kind="SocialTwitterHashtag" VerticalAlignment="Center"/>
-                    <TextBlock Text="Cantidad de rentas" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{x:Static properties:Resources.RENTALS_QUANTITY}" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
 
-                    <TextBlock  Name="TotalRentalsTextBlock" Text="15" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBlock  Name="TotalRentalsTextBlock" Text="-" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
                 <Grid Margin="15,0,0,0">
                     <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="8" Height="8" HorizontalAlignment="Left"
                                           Kind="CurrencyEuro" VerticalAlignment="Center"/>
-                    <TextBlock Text="Total sin descuento" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBlock Name="WithoutDiscountRentalsTextBlock" Text="15" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBlock Text="{x:Static properties:Resources.TOTAL_WITHOUT_DISCOUNT}" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBlock Name="WithoutDiscountRentalsTextBlock" Text="-" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
                 <Grid Margin="15,0,0,0">
                     <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="8" Height="8" HorizontalAlignment="Left"
                                           Kind="CurrencyEuro" VerticalAlignment="Center"/>
-                    <TextBlock Text="Total con descuento aplicado" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBlock Name="DiscountRentalsTextBlock" Text="15" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBlock Text="{x:Static properties:Resources.TOTAL_DISCOUNT_APPLY}" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBlock Name="DiscountRentalsTextBlock" Text="-" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
                 <Grid Margin="15,0,0,0">
                     <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="8" Height="8" HorizontalAlignment="Left"
                                           Kind="CurrencyEuro" VerticalAlignment="Center"/>
-                    <TextBlock Text="Porcentaje ahorrado por los clientes" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBlock Name="PercentEarnRentalsTextBlock" Text="15" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBlock Text="{x:Static properties:Resources.PERCENTS_EARNINGS_CLIENTS}" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBlock Name="PercentEarnRentalsTextBlock" Text="-" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
                 <iconPacks:PackIconModern Foreground="AntiqueWhite" Width="100" Height="2" HorizontalAlignment="Center"
                                       Kind="Minus" VerticalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
-        <mah:ProgressRing Name="LoadingProgressRing" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed"/>
+        <mah:MetroProgressBar Name="LoadingProgress" VerticalAlignment="Center" Width="250" Margin="0,15,0,15" HorizontalAlignment="Center" IsIndeterminate="True" Visibility="Hidden"/>
     </StackPanel>
 
 </mah:MetroWindow>

@@ -237,6 +237,9 @@
   <data name="FINISH_RENTAL_SUCCESSFUL" xml:space="preserve">
     <value>Ha finalizado la renta del producto correctamente con ID: $. Se ha cambiado al estado "Disponible"</value>
   </data>
+  <data name="GENERAL_SUMMARY_RENTAL_REPORT" xml:space="preserve">
+    <value>Resumen general de los alquileres</value>
+  </data>
   <data name="ID" xml:space="preserve">
     <value>Id</value>
   </data>
@@ -264,6 +267,9 @@
   <data name="MOVIES_DISPLAYED" xml:space="preserve">
     <value>Películas visualizadas</value>
   </data>
+  <data name="MOVIES_QUANTITY" xml:space="preserve">
+    <value>Cantidad de Películas</value>
+  </data>
   <data name="MOVIE_WINDOW_TITLE" xml:space="preserve">
     <value>Formulario de las Películas</value>
   </data>
@@ -278,6 +284,9 @@
   </data>
   <data name="PERCENT" xml:space="preserve">
     <value>%</value>
+  </data>
+  <data name="PERCENTS_EARNINGS_CLIENTS" xml:space="preserve">
+    <value>Porcentaje ahorrado por los clientes</value>
   </data>
   <data name="PHONE_1" xml:space="preserve">
     <value>Teléfono 1</value>
@@ -311,6 +320,9 @@
   </data>
   <data name="RENTALS_DISPLAYED" xml:space="preserve">
     <value>Rentas visualizadas</value>
+  </data>
+  <data name="RENTALS_QUANTITY" xml:space="preserve">
+    <value>Cantidad total de Rentas</value>
   </data>
   <data name="RENTAL_DAYS" xml:space="preserve">
     <value>Días del alquiler</value>
@@ -366,6 +378,12 @@
   <data name="TITLE" xml:space="preserve">
     <value>Título</value>
   </data>
+  <data name="TOTAL_DISCOUNT_APPLY" xml:space="preserve">
+    <value>Total con descuento aplicado</value>
+  </data>
+  <data name="TOTAL_WITHOUT_DISCOUNT" xml:space="preserve">
+    <value>Total sin descuento</value>
+  </data>
   <data name="UPDATE" xml:space="preserve">
     <value>Modificar</value>
   </data>
@@ -380,6 +398,9 @@
   </data>
   <data name="VIDEOGAMES_DISPLAYED" xml:space="preserve">
     <value>Juegos visualizados</value>
+  </data>
+  <data name="VIDEOGAMES_QUANTITY" xml:space="preserve">
+    <value>Cantidad de Video juegos</value>
   </data>
   <data name="VIDEOGAME_WINDOW_TITLE" xml:space="preserve">
     <value>Formulario de los Video juegos</value>

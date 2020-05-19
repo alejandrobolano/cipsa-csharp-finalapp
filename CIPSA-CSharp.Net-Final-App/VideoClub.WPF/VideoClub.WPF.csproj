@@ -137,6 +137,9 @@
     <Compile Include="Utils\HelperWindow.cs" />
     <Compile Include="Utils\ResourceExtension.cs" />
     <Compile Include="Utils\WindowExtension.cs" />
+    <Compile Include="Views\Reports\RentalSummary.xaml.cs">
+      <DependentUpon>RentalSummary.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Settings\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
@@ -152,11 +155,13 @@
     <Compile Include="Views\ClientWindow.xaml.cs">
       <DependentUpon>ClientWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\Settings\SettingsWindow.xaml">
+    <Page Include="Views\Reports\RentalSummary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Settings\SettingsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RentalsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

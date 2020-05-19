@@ -46,9 +46,10 @@ namespace VideoClub.Infrastructure.Repository.Implementations
             return result;
         }
 
-        public virtual bool Add(T model)
+        public virtual bool Add(T model, out string id)
         {
             var result = false;
+            id = model.Id;
             try
             {
                 _videoClubContext.Entry(model).State = EntityState.Added;
@@ -66,7 +67,16 @@ namespace VideoClub.Infrastructure.Repository.Implementations
 
         public virtual List<T> All()
         {
-            return _videoClubContext.Set<T>().ToList();
+            var result = new List<T>();
+            try
+            {
+                result = _videoClubContext.Set<T>().ToList();
+            }
+            catch (Exception e)
+            {
+                e.CustomDescription();
+            }
+            return result;
         }
 
         public virtual void SaveChanges()

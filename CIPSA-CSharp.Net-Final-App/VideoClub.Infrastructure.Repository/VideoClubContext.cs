@@ -1,4 +1,5 @@
 using System.Data.Entity;
+using VideoClub.Common.Model.Enums;
 using VideoClub.Infrastructure.Repository.Entity;
 using VideoClub.Infrastructure.Repository.Utils;
 
@@ -16,7 +17,7 @@ namespace VideoClub.Infrastructure.Repository
         {
             return _videoClubContext ?? (_videoClubContext = new VideoClubContext());
         }
-        public VideoClubContext() : base($"name=VideoClubConnection")
+        public VideoClubContext() : base($"name={Helper.Connection}")
         {
             var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
@@ -26,8 +27,8 @@ namespace VideoClub.Infrastructure.Repository
             Database.SetInitializer(new CreateDatabaseIfNotExists<VideoClubContext>());
 
             modelBuilder.Entity<Product>()
-                .Map<VideoGame>(m => m.Requires("ProductDtoType").HasValue("VideoGame"))
-                .Map<Movie>(m => m.Requires("ProductDtoType").HasValue("Movie"));
+                .Map<VideoGame>(m => m.Requires("ProductDtoType").HasValue(ProductTypeEnum.VideoGame.ToString()))
+                .Map<Movie>(m => m.Requires("ProductDtoType").HasValue(ProductTypeEnum.Movie.ToString()));
         }
     }
 }

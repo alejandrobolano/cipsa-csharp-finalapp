@@ -11,6 +11,8 @@ namespace VideoClub.Common.Model.Utils
         public static readonly string VideoGame = "GAM";
         public static readonly string Client = "CLI";
         public static readonly string Rental = "RENTAL";
+        public static readonly string Separator = "-";
+
         public static void ValidateStringClient(string value)
         {
             var regex = new Regex("^[0-9]+$");

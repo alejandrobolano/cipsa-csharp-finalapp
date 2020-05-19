@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using AutoMapper;
 using VideoClub.Common.BusinessLogic.Contracts;
 using VideoClub.Common.BusinessLogic.Dto;
@@ -17,6 +13,7 @@ namespace VideoClub.Common.BusinessLogic.Implementations
     public class VideoGameService : IService<VideoGameDto>
     {
         private readonly VideoGameRepository _videoGameRepository;
+        public static VideoGameService Instance { get; } = new VideoGameService();
         public VideoGameService()
         {
             var videoClubDi = new VideoClubDi(VideoClubContext.GetVideoClubContext());
@@ -25,7 +22,7 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         #region private methods
 
-                private static IMapper MapperToModel()
+        private static IMapper MapperToModel()
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<VideoGameDto, VideoGame>());
             var mapper = config.CreateMapper();
@@ -42,12 +39,12 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         #region common public methods
 
-         public bool Add(VideoGameDto model)
+        public bool Add(VideoGameDto model, out string id)
         {
             var mapper = MapperToModel();
             var videoGame = mapper.Map<VideoGameDto, VideoGame>(model);
 
-            return _videoGameRepository.Add(videoGame);
+            return _videoGameRepository.Add(videoGame, out id);
         }
 
         public bool Remove(string id)
@@ -62,7 +59,7 @@ namespace VideoClub.Common.BusinessLogic.Implementations
             var videoGameDto = mapper.Map<VideoGame, VideoGameDto>(videoGame);
             return videoGameDto;
         }
-       
+
         public bool Update(VideoGameDto modelDto)
         {
             var mapper = MapperToModel();
@@ -85,7 +82,26 @@ namespace VideoClub.Common.BusinessLogic.Implementations
         #endregion
 
         #region custom public methods
-        
+        public bool HasBeenChangeState(VideoGameDto videoGame, StateProductEnum state)
+        {
+            videoGame.State = state;
+            return Update(videoGame);
+        }
+
+        public List<VideoGameDto> GetVideoGamesByState(StateProductEnum state)
+        {
+            var videoGames = new List<VideoGameDto>();
+            All().ForEach(videoGameDto =>
+            {
+                if (videoGameDto.State.Equals(state))
+                {
+                    videoGames.Add(videoGameDto);
+                }
+            });
+
+            return videoGames;
+        }
+
         #endregion
 
 

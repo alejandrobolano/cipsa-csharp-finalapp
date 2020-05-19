@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using VideoClub.Common.Model.Exceptions;
 using VideoClub.Common.Model.Utils;
 using VideoClub.Infrastructure.Repository.Entity;
 using VideoClub.Infrastructure.Repository.Extensions;
@@ -15,7 +16,7 @@ namespace VideoClub.Infrastructure.Repository.Implementations
         {
             _videoClubContext = videoClubDi.VideoClubContext;
         }
-        
+
         public override bool Remove(string id)
         {
             var result = false;
@@ -37,16 +38,46 @@ namespace VideoClub.Infrastructure.Repository.Implementations
 
         public override Movie Get(string id)
         {
-            return _videoClubContext.Set<Movie>().FirstOrDefault(videoGame => 
-                videoGame.Id.ToLower().Equals(id.ToLower()) || 
+            return _videoClubContext.Set<Movie>().FirstOrDefault(videoGame =>
+                videoGame.Id.ToLower().Equals(id.ToLower()) ||
                 videoGame.Title.ToLower().Equals(id.ToLower()));
         }
 
-        public override bool Add(Movie model)
+        public override bool Add(Movie model, out string id)
         {
             var random = new Random();
             model.Id = Helper.GetCodeNumber(CommonHelper.Movie, 6, random);
-            return base.Add(model);
+            try
+            {
+                ValidateYears(model);
+            }
+            catch(Exception exception)
+            {
+                exception.CustomDescription();
+                id = string.Empty;
+                return false;
+            }
+
+            return base.Add(model, out id);
+        }
+        private static void ValidateYears(Movie model)
+        {
+            if (model.ProductionYear > model.BuyYear)
+            {
+                throw new InvalidCompareYearException();
+            }
+
+            var yearActual = DateTime.Today.Year;
+            if (model.ProductionYear > yearActual)
+            {
+                throw new InvalidYearException(model.ProductionYear);
+            }
+
+            if (model.BuyYear > yearActual)
+            {
+                throw new InvalidYearException(model.BuyYear);
+            }
+
         }
 
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
 using VideoClub.Common.BusinessLogic.Contracts;
 using VideoClub.Common.BusinessLogic.Dto;
@@ -10,20 +9,18 @@ using VideoClub.Infrastructure.Repository;
 using VideoClub.Infrastructure.Repository.Entity;
 using VideoClub.Infrastructure.Repository.Implementations;
 using VideoClub.Infrastructure.Repository.UnitOfWork;
+using VideoClub.Infrastructure.Repository.Utils;
 
 namespace VideoClub.Common.BusinessLogic.Implementations
 {
     public class RentalService : IService<RentalDto>
     {
         private readonly RentalRepository _rentalRepository;
-        private readonly MovieService _movieService;
-        private readonly VideoGameService _videoGameService;
+        public static RentalService Instance { get; } = new RentalService();
         public RentalService()
         {
             var videoClubDi = new VideoClubDi(VideoClubContext.GetVideoClubContext());
             _rentalRepository = new RentalRepository(videoClubDi);
-            _movieService = new MovieService();
-            _videoGameService = new VideoGameService();
         }
 
         #region private methods
@@ -56,17 +53,18 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         #region common public methods
 
-        public bool Add(RentalDto model)
+        public bool Add(RentalDto model, out string id)
         {
             var mapper = MapperToModel();
             var rental = mapper.Map<RentalDto, Rental>(model);
-
-            return _rentalRepository.Add(rental);
+            return _rentalRepository.Add(rental, out id);
         }
 
         public bool Remove(string id)
         {
-            return _rentalRepository.Remove(id);
+            var rentalDto = Get(id);
+            CommonService.HasBeenChangeStateProduct(rentalDto, StateProductEnum.Available, out var hasChange);
+            return hasChange && _rentalRepository.Remove(id);
         }
 
         public RentalDto Get(string id)
@@ -100,23 +98,39 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         #region custom public methods
 
-        public bool StartRentalProduct(RentalDto rentalDto, StateProductEnum stateNew)
+        public bool StartRentalProduct(RentalDto rentalDto, int quantityRental, StateProductEnum stateNew, out decimal price)
         {
-            var result = Add(rentalDto);
-            if (result)
+            bool result;
+            price = 0;
+            try
             {
-                if (rentalDto.Id.Contains(CommonHelper.Movie))
+                var finishRental = rentalDto.StartRental.AddDays(quantityRental);
+                rentalDto.FinishRental = finishRental;
+                result = Add(rentalDto, out var id);
+                if (!result) return false;
+
+                var product = CommonService.HasBeenChangeStateProduct(rentalDto, stateNew, out result);
+
+                price = product.Price;
+
+                if (result)
                 {
-                    var movie = _movieService.Get(rentalDto.ProductId);
-                    movie.State = stateNew;
-                    result = _movieService.Update(movie);
+                    ClientService.Instance.AddQuantityRental(rentalDto.ClientId);
+                    var rental = Get(id);
+                    var client = ClientService.Instance.Get(rental.ClientId);
+                    price *= quantityRental;
+                    price -= price * decimal.Divide(client.Discount, 100);
+                    rental.Price = decimal.Round(price, 2);
+                    rental.State = StateRentalEnum.Activated;
+                    Update(rental);
                 }
-                else
-                {
-                    var videoGame = _videoGameService.Get(rentalDto.ProductId);
-                    videoGame.State = stateNew;
-                    result = _videoGameService.Update(videoGame);
-                }
+
+
+            }
+            catch (Exception exception)
+            {
+                Helper.HandleLogError(exception.Message);
+                result = false;
             }
 
             return result;
@@ -126,23 +140,42 @@ namespace VideoClub.Common.BusinessLogic.Implementations
         {
             bool result;
             var rental = GetRentalByClientAndProduct(idClient, idProduct);
-            var differenceDays = DateTime.Today - rental.FinishRental;
-            if (idProduct.Contains(CommonHelper.Movie))
+            var differenceDays = (DateTime.Today - rental.FinishRental).Days;
+            differencePrice = 0;
+            try
             {
-                var movie = _movieService.Get(idProduct);
-                movie.State = StateProductEnum.Available;
-                result = _movieService.Update(movie);
-                differencePrice = differenceDays.Days * movie.Price;
+                if (idProduct.Contains(CommonHelper.Movie))
+                {
+                    var movie = MovieService.Instance.Get(idProduct);
+                    movie.State = StateProductEnum.Available;
+                    result = MovieService.Instance.Update(movie);
+                    differencePrice = differenceDays * movie.Price;
+                }
+                else
+                {
+                    var videoGame = VideoGameService.Instance.Get(idProduct);
+                    videoGame.State = StateProductEnum.Available;
+                    result = VideoGameService.Instance.Update(videoGame);
+                    differencePrice = differenceDays * videoGame.Price;
+                }
+
+                if (result)
+                {
+                    ChangeStateRental(rental, StateRentalEnum.Returned);
+                }
             }
-            else
+            catch (Exception exception)
             {
-                var videoGame = _videoGameService.Get(idProduct);
-                videoGame.State = StateProductEnum.Available;
-                result = _videoGameService.Update(videoGame);
-                differencePrice = differenceDays.Days * videoGame.Price;
+                Helper.HandleLogError(exception.Message);
+                result = false;
             }
-               
             return result;
+        }
+
+        private void ChangeStateRental(RentalDto rental, StateRentalEnum state)
+        {
+            rental.State = state;
+            Update(rental);
         }
 
 
@@ -160,12 +193,90 @@ namespace VideoClub.Common.BusinessLogic.Implementations
             var rentalsByProductDtos = mapper.Map<List<Rental>, List<RentalDto>>(rentals);
             return rentalsByProductDtos;
         }
+
+        public List<RentalDto> GetRentalsOfProduct(string typeProductContains, out decimal earnings, out decimal totalByCost)
+        {
+            var result = new List<RentalDto>();
+            earnings= 0;
+            totalByCost= 0;
+
+            foreach (var rental in All())
+            {
+                if (!rental.ProductId.Contains(typeProductContains)) continue;
+                result.Add(rental);
+                var movie = CommonService.GetProduct(rental.ProductId);
+                totalByCost += movie.Price;
+                earnings += rental.Price;
+            }
+
+            return result;
+        }
+        public List<RentalDto> GetRentals(out decimal earnings, out decimal totalByCost)
+        {
+            var result = new List<RentalDto>();
+            earnings= 0;
+            totalByCost= 0;
+
+            foreach (var rental in All())
+            {
+                result.Add(rental);
+                var movie = CommonService.GetProduct(rental.ProductId);
+                totalByCost += movie.Price;
+                earnings += rental.Price;
+            }
+
+            return result;
+        }
+
         public RentalDto GetRentalByClientAndProduct(string idClient, string idProduct)
         {
             var rental = _rentalRepository.GetRentalByClientAndProduct(idClient, idProduct);
             var mapper = MapperToDto();
             var rentalByClientAndProduct = mapper.Map<Rental, RentalDto>(rental);
             return rentalByClientAndProduct;
+        }
+
+        public List<RentalDto> GetRentalsByState(StateRentalEnum stateRental)
+        {
+            var rentals = All();
+            var rentalsByState = new List<RentalDto>();
+            rentals.ForEach(rental =>
+            {
+                if (rental.State.Equals(stateRental))
+                {
+                    rentalsByState.Add(rental);
+                }
+            });
+            return rentalsByState;
+        }
+        public List<RentalDto> GetRentalsByState(StateRentalEnum stateRental, StateProductEnum stateProduct)
+        {
+            var rentals = All();
+            var rentalsByState = new List<RentalDto>();
+            rentals.ForEach(rental =>
+            {
+                if (rental.ProductId.Contains(CommonHelper.Movie))
+                {
+                    var movie = MovieService.Instance.Get(rental.ProductId);
+                    CheckProductByState(stateRental, stateProduct, movie, rentalsByState, rental);
+                }
+                else
+                {
+                    var videoGame = VideoGameService.Instance.Get(rental.ProductId);
+                    CheckProductByState(stateRental, stateProduct, videoGame, rentalsByState, rental);
+                }
+            });
+            return rentalsByState;
+        }
+
+        private static void CheckProductByState(StateRentalEnum stateRental, StateProductEnum stateProduct,
+            ProductDto productDto, ICollection<RentalDto> rentalsByState,
+            RentalDto rental)
+        {
+            if (rental.State.Equals(stateRental) && productDto.State.Equals(stateProduct))
+            {
+                rentalsByState.Add(rental);
+            }
         }
 
         #endregion

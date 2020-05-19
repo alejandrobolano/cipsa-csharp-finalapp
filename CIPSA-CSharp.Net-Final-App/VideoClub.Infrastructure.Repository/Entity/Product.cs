@@ -14,7 +14,9 @@ namespace VideoClub.Infrastructure.Repository.Entity
         [Key]
         [Column(Order = 2)]
         [Index(IsUnique = true)]
+        [Required]
         public string Title { get; set; }
+        [Required]
         public int QuantityDisc { get; set; }
         public StateProductEnum State { get; set; }
         [Required]

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using VideoClub.Common.Model.Enums;
 using VideoClub.Common.Model.Utils;
 using VideoClub.Infrastructure.Repository.Contracts;
 
@@ -32,6 +33,8 @@ namespace VideoClub.Infrastructure.Repository.Entity
         public DateTime StartRental { get; set; }
         [Required]
         public DateTime FinishRental { get; set; }
-        
+        public StateRentalEnum State { get; set; }
+        public decimal Price { get; set; }
+
     }
 }

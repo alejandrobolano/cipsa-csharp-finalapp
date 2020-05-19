@@ -36,11 +36,11 @@ namespace VideoClub.Infrastructure.Repository.Implementations
             return result;
         }
 
-        public override bool Add(Rental model)
+        public override bool Add(Rental model, out string id)
         {
             var random = new Random();
             model.Id = Helper.GetCodeNumber(CommonHelper.Rental, 6, random);
-            return base.Add(model);
+            return base.Add(model, out id);
         }
 
         public override Rental Get(string id)
@@ -65,11 +65,13 @@ namespace VideoClub.Infrastructure.Repository.Implementations
         public Rental GetRentalByClientAndProduct(string idClient, string idProduct)
         {
             return _videoClubContext.Set<Rental>().FirstOrDefault(rental =>
-                rental.Client.Id.ToLower().Equals(idClient.ToLower()) ||
-                (rental.Client.Name.ToLower() + rental.Client.LastName.ToLower()).Replace(" ", "")
-                .Equals(idClient.ToLower().Replace(" ", "")) &&
-                rental.Product.Id.ToLower().Equals(idProduct.ToLower()) ||
-                rental.Product.Title.ToLower().Equals(idProduct.ToLower()));
+                (rental.Client.Id.ToLower().Equals(idClient.ToLower()) ||
+                 (rental.Client.Name.ToLower() + rental.Client.LastName.ToLower()).Replace(" ", "")
+                 .Equals(idClient.ToLower().Replace(" ", ""))) 
+                &&
+                (rental.Product.Id.ToLower().Equals(idProduct.ToLower()) ||
+                 rental.Product.Title.ToLower().Equals(idProduct.ToLower()))
+                );
         }
 
 

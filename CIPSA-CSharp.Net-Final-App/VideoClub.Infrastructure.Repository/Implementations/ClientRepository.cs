@@ -43,11 +43,11 @@ namespace VideoClub.Infrastructure.Repository.Implementations
                 client.Accreditation.ToLower().Equals(id.ToLower()));
         }
 
-        public override bool Add(Client model)
+        public override bool Add(Client model, out string id)
         {
             var random = new Random();
             model.Id = Helper.GetCodeNumber(CommonHelper.Client, 6, random);
-            return base.Add(model);
+            return base.Add(model, out id);
         }
 
     }

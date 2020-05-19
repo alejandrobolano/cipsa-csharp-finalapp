@@ -69,10 +69,6 @@
     <Compile Include="Implementations\RentalRepository.cs" />
     <Compile Include="Implementations\MovieRepository.cs" />
     <Compile Include="Implementations\VideoGameRepository.cs" />
-    <Compile Include="Migrations\202005011548517_UpdateTable-OfProduct.cs" />
-    <Compile Include="Migrations\202005011548517_UpdateTable-OfProduct.designer.cs">
-      <DependentUpon>202005011548517_UpdateTable-OfProduct.cs</DependentUpon>
-    </Compile>
     <Compile Include="VideoClubContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,11 +87,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005011548517_UpdateTable-OfProduct.resx">
-      <DependentUpon>202005011548517_UpdateTable-OfProduct.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

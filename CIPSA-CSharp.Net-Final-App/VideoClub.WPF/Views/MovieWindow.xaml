@@ -25,17 +25,18 @@
         <Grid>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Name="MainPanel" IsEnabled="False" Margin="10,15,0,0">
                 <StackPanel Orientation="Horizontal" Margin="0,10">
-                    <Label Content="Título" Width="64" />
+                    <TextBlock  Text="{x:Static properties:Resources.TITLE}" VerticalAlignment="Center"  Margin="15,0,5,0" Width="64" />
                     <TextBox Name="TitleText"  Height="23" TextWrapping="Wrap" Text="" Width="220"  MaxLines="1"
-                         mah:TextBoxHelper.Watermark="título" mah:TextBoxHelper.ClearTextButton="True" />
-                    <Label Content="Precio" Width="67"/>
+                         mah:TextBoxHelper.Watermark="{x:Static properties:Resources.TITLE}" mah:TextBoxHelper.ClearTextButton="True" />
+                    <TextBlock Text="{x:Static properties:Resources.PRICE}" Width="67" VerticalAlignment="Center"  Margin="15,0,5,0"/>
                     <mah:NumericUpDown Name="PriceNumeric" Minimum="0" Maximum="99" StringFormat="€ 0.00" NumericInputMode="Decimal" />
-                    <Label Content="Cantidad de discos" Margin="15,0,0,0"/>
-                    <mah:NumericUpDown Name="QuantityNumeric" Minimum="0" Maximum="10" Interval="1" InterceptManualEnter="False" NumericInputMode="Numbers"/>
+                    <TextBlock Text="{x:Static properties:Resources.DISC_QUANTITY}" VerticalAlignment="Center"  Margin="15,0,5,0"/>
+                    <mah:NumericUpDown Name="QuantityNumeric" Value="1" Minimum="1" Maximum="10" Interval="1" 
+                                       InterceptManualEnter="False" NumericInputMode="Numbers"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,10">
                     <StackPanel Orientation="Horizontal" >
-                        <Label Content="Duración" />
+                        <TextBlock Text="{x:Static properties:Resources.TIMING}" VerticalAlignment="Center"  Margin="15,0,5,0"/>
                         <mah:NumericUpDown Name="HourDurationNumeric" Minimum="0" Maximum="24" Interval="1" 
                                    mah:TextBoxHelper.Watermark="hh" UpDownButtonsWidth="15" NumericInputMode="Numbers" Margin="5,0,0,0"/>
                         <mah:NumericUpDown Name="MinuteDurationNumeric" Minimum="0" Maximum="60" Interval="1" 
@@ -44,31 +45,38 @@
                                    mah:TextBoxHelper.Watermark="ss" UpDownButtonsWidth="15" NumericInputMode="Numbers"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
-                        <Label Content="Año de producción"/>
-                        <TextBox Name="ProductionYearText" mah:TextBoxHelper.Watermark="yyyy" Width="65" PreviewTextInput="NumberValidationTextBox"
+                        <TextBlock Text="{x:Static properties:Resources.PRODUCTION_YEAR}" VerticalAlignment="Center"  Margin="15,0,5,0"/>
+                        <TextBox Name="ProductionYearText"  mah:TextBoxHelper.Watermark="{x:Static properties:Resources.YEAR_WATERMARK}"
+                                 Width="65" PreviewTextInput="NumberValidationTextBox"
                                  mah:TextBoxHelper.ClearTextButton="True" MaxLength="4" Margin="5,0,0,0"/>
-                        <Label Content="Año de compra"/>
-                        <TextBox Name="BuyYearText" mah:TextBoxHelper.Watermark="yyyy" Width="65" PreviewTextInput="NumberValidationTextBox"
+                        <TextBlock Text="{x:Static properties:Resources.BUYER_YEAR}" VerticalAlignment="Center"  Margin="15,0,5,0"/>
+                        <TextBox Name="BuyYearText" mah:TextBoxHelper.Watermark="{x:Static properties:Resources.YEAR_WATERMARK}" Width="65" PreviewTextInput="NumberValidationTextBox"
                                  mah:TextBoxHelper.ClearTextButton="True" MaxLength="4"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,10,15,10">
-                <Button Name="NewButton" Content="Nuevo" Click="NewButton_OnClick" 
+                <Button Name="NewButton" Content="{x:Static properties:Resources.NEW}" Click="NewButton_OnClick" 
                     Style="{DynamicResource SquareButtonStyle}" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
-                <Button Name="AddButton" Content="Agregar"  Click="AddButton_OnClick" IsEnabled="False"
+                <Button Name="AddButton" Content="{x:Static properties:Resources.ADD}"  Click="AddButton_OnClick" IsEnabled="False"
                     Style="{DynamicResource SquareButtonStyle}" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
-                <Button Name="UpdateButton" Content="Actualizar" Click="UpdateButton_OnClick" IsEnabled="False"
+                <Button Name="UpdateButton" Content="{x:Static properties:Resources.UPDATE}" Click="UpdateButton_OnClick" IsEnabled="False"
                     Style="{DynamicResource SquareButtonStyle}" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
-                <Button Name="DeleteButton" Content="Eliminar"  Click="DeleteButton_OnClick" IsEnabled="False"
+                <Button Name="DeleteButton" Content="{x:Static properties:Resources.DELETE}"  Click="DeleteButton_OnClick" IsEnabled="False"
                     Style="{DynamicResource SquareButtonStyle}" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
             </StackPanel>
         </Grid>
-
-        <StackPanel Orientation="Vertical" Name="LoadingPanel">
-            <TextBlock HorizontalAlignment="Center" Text="Cargando datos de la base de datos"/>
-            <mah:MetroProgressBar Name="MetroProgressBar"  Width="350" HorizontalAlignment="Center" Height="23" IsIndeterminate="True" />
-        </StackPanel>
+       
+        <Grid>
+            <StackPanel Orientation="Vertical" Name="LoadingPanel">
+                <TextBlock HorizontalAlignment="Center" Text="{x:Static properties:Resources.LOADING_DATA_DB}"/>
+                <mah:MetroProgressBar Name="MetroProgressBar"  Width="350" HorizontalAlignment="Center" Height="23" IsIndeterminate="True" />
+            </StackPanel>
+            <StackPanel Name="StateProductPanel" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,15,10">
+                <TextBlock Text="{x:Static properties:Resources.MOVIES_DISPLAYED}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15,0,5,0"/>
+                <ComboBox Name="ProductStateComboBox" Loaded="MovieStateComboBox_OnLoaded" Width="150" SelectionChanged="MovieStateComboBox_SelectionChanged"/>
+            </StackPanel>
+        </Grid>
 
         <DataGrid Name="MovieDataGrid" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserAddRows="False"
                   Loaded="MovieDataGrid_OnLoadedDataGrid" AutoGenerateColumns="False" IsReadOnly="True"
@@ -79,14 +87,14 @@
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Título" Binding="{Binding Title}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Discos" Binding="{Binding QuantityDisc}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Estado" Binding="{Binding StateDescription}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Precio" Binding="{Binding Price, StringFormat=€ 0.00}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Duración" Binding="{Binding Duration}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Año de Prod." Binding="{Binding ProductionYear}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Año de Compra" Binding="{Binding BuyYear}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.ID}" Binding="{Binding Id}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.TITLE}" Binding="{Binding Title}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.DISC_QUANTITY_SHORT}" Binding="{Binding QuantityDisc}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.STATE}" Binding="{Binding StateDescription}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.PRICE}" Binding="{Binding Price, StringFormat=€ 0.00}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.TIMING}" Binding="{Binding Duration}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.PRODUCTION_YEAR}" Binding="{Binding ProductionYear}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{x:Static properties:Resources.BUYER_YEAR}" Binding="{Binding BuyYear}" CellStyle="{StaticResource CenterCellAligned}"></DataGridTextColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

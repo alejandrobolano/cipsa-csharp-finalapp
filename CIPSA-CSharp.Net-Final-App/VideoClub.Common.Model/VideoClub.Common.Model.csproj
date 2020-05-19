@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Enums\AccreditationEnum.cs" />
     <Compile Include="Enums\GamePlatformEnum.cs" />
+    <Compile Include="Enums\ProductTypeEnum.cs" />
+    <Compile Include="Enums\StateRentalEnum.cs" />
     <Compile Include="Enums\StateClientEnum.cs" />
     <Compile Include="Enums\StateProductEnum.cs" />
     <Compile Include="Exceptions\InvalidatePhoneNumberException.cs" />

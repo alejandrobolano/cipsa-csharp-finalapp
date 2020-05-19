@@ -5,6 +5,7 @@ using AutoMapper;
 using VideoClub.Common.BusinessLogic.Contracts;
 using VideoClub.Common.BusinessLogic.Dto;
 using VideoClub.Common.Model.Enums;
+using VideoClub.Common.Model.Utils;
 using VideoClub.Infrastructure.Repository;
 using VideoClub.Infrastructure.Repository.Entity;
 using VideoClub.Infrastructure.Repository.Implementations;
@@ -15,12 +16,12 @@ namespace VideoClub.Common.BusinessLogic.Implementations
     public class ClientService : IService<ClientDto>
     {
         private readonly ClientRepository _clientRepository;
-        private readonly RentalService _rentalService;
+        public static ClientService Instance { get; } = new ClientService();
+
         public ClientService()
         {
             var videoClubDi = new VideoClubDi(VideoClubContext.GetVideoClubContext());
             _clientRepository = new ClientRepository(videoClubDi);
-            _rentalService = new RentalService();
         }
 
         #region private methods
@@ -42,12 +43,12 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         #region common public methods
 
-        public bool Add(ClientDto model)
+        public bool Add(ClientDto model, out string id)
         {
             var mapper = MapperToModel();
             var client = mapper.Map<ClientDto, Client>(model);
 
-            return _clientRepository.Add(client);
+            return _clientRepository.Add(client, out id);
         }
 
         public bool Remove(string id)
@@ -85,52 +86,63 @@ namespace VideoClub.Common.BusinessLogic.Implementations
         #endregion
 
         #region custom public methods
-        public void UpdateDiscount(ClientDto client)
+        private void UpdateDiscount(ClientDto client)
         {
-            var quantityRentalMonth = 0; //Change this
-            switch (quantityRentalMonth)
+            var rentals = RentalService.Instance.GetRentalsByClient(client.Id);
+            var monthActual = DateTime.Today.Month;
+            var quantityRentalMonth = 0;
+
+            rentals.ForEach(x =>
             {
-                case 5:
-                    client.Discount = 10;
-                    break;
-                case 10:
-                    client.Discount = 15;
-                    break;
-                case 15:
-                    client.Discount = 20;
-                    break;
-                case 20:
-                    client.Discount = 25;
-                    break;
-                case 30:
-                    client.Discount = 50;
-                    break;
-            }
+                if (x.StartRental.Month == monthActual)
+                {
+                    quantityRentalMonth++;
+                }
+            });
+            if (quantityRentalMonth < 5)
+                client.Discount = 0;
+            else if (quantityRentalMonth >= 5 && quantityRentalMonth < 10)
+                client.Discount = 10;
+            else if (quantityRentalMonth >= 10 && quantityRentalMonth < 15)
+                client.Discount = 15;
+            else if (quantityRentalMonth >= 15 && quantityRentalMonth < 20)
+                client.Discount = 20;
+            else if (quantityRentalMonth >= 20 && quantityRentalMonth < 30)
+                client.Discount = 25;
+            else if (quantityRentalMonth >= 30) client.Discount = 50;
+
+            Update(client);
+        }
+
+        public void UpdateDiscountForVip()
+        {
+            var clientsVip = All().Where(client => client.IsVip).ToList();
+            clientsVip.ForEach(UpdateDiscount);
         }
 
         public void UpdateClientsForVip()
         {
             All().ForEach(client =>
             {
-                if (client.RentalQuantity >= 60)
-                {
-                    client.IsVip = true;
-                }
+                var differenceDays = (DateTime.Today - client.SubscriptionDate).Days;
+                if (client.RentalQuantity < 60 || differenceDays <= 365) return;
+                client.IsVip = true;
+                Update(client);
             });
         }
 
         public List<ClientDto> GetClientsByState(StateClientEnum stateClient)
         {
-            var activatedClients = new List<ClientDto>();
-            All().ForEach(client =>
+            var clients = new List<ClientDto>();
+            All().ForEach(clientDto =>
             {
-                if (client.State.Equals(stateClient))
+                if (clientDto.State.Equals(stateClient))
                 {
-                    activatedClients.Add(client);
+                    clients.Add(clientDto);
                 }
             });
 
-            return activatedClients;
+            return clients;
         }
 
         private void UpdateStateClient(ClientDto client, StateClientEnum stateNew)
@@ -144,13 +156,30 @@ namespace VideoClub.Common.BusinessLogic.Implementations
             var clients = All();
             clients.ForEach(client =>
             {
-                var rentalsByClient = _rentalService.GetRentalsByClient(client.Id);
-                if (rentalsByClient.Any(x => x.FinishRental < DateTime.Today))
+                var rentalsByClient = RentalService.Instance.GetRentalsByClient(client.Id);
+
+                var isBlocked = false;
+                for (var i = 0; i < rentalsByClient.Count && !isBlocked; i++)
                 {
+                    var rentalDto = rentalsByClient[i];
+                    var product = CommonService.GetProduct(rentalDto.ProductId);
+                    if (rentalDto.FinishRental >= DateTime.Today ||
+                        product.State != StateProductEnum.NonAvailable ||
+                        rentalDto.State == StateRentalEnum.Returned) continue;
                     UpdateStateClient(client, StateClientEnum.Blocked);
+                    isBlocked = true;
                 }
+
+
             });
 
+        }
+
+        public void AddQuantityRental(string id)
+        {
+            var client = Get(id);
+            client.RentalQuantity ++;
+            Update(client);
         }
 
         #endregion

@@ -1,7 +1,11 @@
-﻿using System.Windows;
+﻿using System;
+using System.Threading.Tasks;
+using System.Windows;
 using MahApps.Metro.Controls;
 using VideoClub.Common.BusinessLogic.Implementations;
-using VideoClub.Common.Model.Extensions;
+using VideoClub.Common.Model.Enums;
+using VideoClub.WPF.Utils;
+using VideoClub.WPF.Views.Settings;
 
 namespace VideoClub.WPF.Views
 {
@@ -13,91 +17,176 @@ namespace VideoClub.WPF.Views
         public MainWindow()
         {
             InitializeComponent();
-            //var movie = new MovieDto
-            //{
-            //    BuyYear = 2008,
-            //    Duration = new TimeSpan(2, 23, 10),
-            //    NumberDisc = 2,
-            //    Price = 20,
-            //    ProductionYear = 2000,
-            //    State = StateProductEnum.Available,
-            //    Title = "Casa de papel"
-            //};
-            var movieService = new MovieService();
-            //movieService.Add(movie);
-
-            //var client1 = new ClientDto
-            //{
-            //    Accreditation = "Y52723472",
-            //    Address = "Hospitalet de llobregat",
-            //    Email = "alfa@alfa.com",
-            //    Name = "Alejandro",
-            //    LastName = "Bolaño",
-            //    PhoneContact = "34666090909",
-            //    SubscriptionDate = DateTime.Today
-            //};
-
-            var clientService = new ClientService();
-            //clientService.Add(client1);
-
-            //var client = clientService.Get("CLI-IC8JLZ");
-            //var product = movieService.Get("Casa negra");
-            //var startRental = DateTime.Today;
-            //var quantity = 2;
-            //var quantityTimeSpan = new TimeSpan(quantity,0,0,0);
-            //var finishRental = startRental.Add(quantityTimeSpan);
-            //var rental = new RentalDto
-            //{
-            //    ClientAccreditation = client.Accreditation,
-            //    ClientId = client.Id,
-            //    ProductTitle = product.Title,
-            //    ProductId = product.Id,
-            //    FinishRental = finishRental,
-            //    StartRental = startRental
-            //};
-
-            //var rentalService = new RentalService();
-            //rentalService.StartRentalProduct(rental, StateProductEnum.NonAvailable);
-            //var foo1 = rentalService.GetRentalsByClient("CLI-IC8JLZ");
-            //var foo2 = rentalService.GetRentalsByProduct("CLI-IC8JLZ");
-            //var foo3 = rentalService.GetRentalsByProduct("Casa de papel");
-
-            //var videoGame = new VideoGameDto()
-            //{
-            //    NumberDisc = 1,
-            //    Price = 2,
-            //    Title = "Beta",
-            //    Platform = GamePlatformEnum.Wii
-            //};
-
-            //var metroWindow = (Application.Current.MainWindow as MetroWindow);
-            //metroWindow.ShowMessageAsync("Actualizacion", $"Nuevo nombre: ...");
         }
 
         private void ButtonMovieWindows_OnClick(object sender, RoutedEventArgs e)
         {
-            var movieWindows = new MovieWindow();
+            var movieWindows = new MovieWindow(StateProductEnum.All);
             movieWindows.Show();
-            //var dialog = new MovieDialog();
-            //dialog.ShowModalDialogExternally();
         }
 
         private void ButtonClientsWindows_OnClick(object sender, RoutedEventArgs e)
         {
-            var clientsWindows = new ClientWindow();
+            var clientsWindows = new ClientWindow(StateClientEnum.All);
             clientsWindows.Show();
         }
 
         private void ButtonVideoGamesWindows_OnClick(object sender, RoutedEventArgs e)
         {
-            var videoGameWindows = new VideoGameWindow();
+            var videoGameWindows = new VideoGameWindow(StateProductEnum.All);
             videoGameWindows.Show();
         }
 
-        private void ButtonRentalsWindows_OnClick(object sender, RoutedEventArgs e)
+        private void StartRentalsWindows_OnClick(object sender, RoutedEventArgs e)
         {
-            var rentalsWindow = new RentalsWindow();
+            var rentalsWindow = new RentalsWindow(StateRentalEnum.All);
             rentalsWindow.Show();
+        }
+
+        private void FinishRentalsWindows_OnClick(object sender, RoutedEventArgs e)
+        {
+            var rentalsWindow = new RentalsWindow(StateRentalEnum.Activated);
+            rentalsWindow.Show();
+        }
+
+        private async void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.BlockedClientProcessAutomatic), out var isBlockedAutomaticProcess);
+            if (isBlockedAutomaticProcess)
+            {
+                await ProcessBlockedClientsInBackground();
+            }
+            else
+            {
+                VisibleTile(BlockedTile, BlockedUserProgress);
+            }
+
+            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.VipClientProcessAutomatic), out var isVipAutomaticProcess);
+            if (isVipAutomaticProcess)
+            {
+                await ProcessVipClientsInBackground();
+            }
+            else
+            {
+                VisibleTile(VipTile, VipUserProgress);
+            }
+
+            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.DiscountClientProcessAutomatic), out var isAutomaticProcess);
+            var today = DateTime.Today;
+            var lastDayMonth = new DateTime(today.Year, today.Month, DateTime.DaysInMonth(today.Year, today.Month));
+
+            if (isAutomaticProcess && lastDayMonth.Equals(today))
+            {
+                await ProcessDiscountClientsInBackground();
+            }
+            else
+            {
+                VisibleTile(DiscountTile, DiscountUserProgress);
+            }
+        }
+
+        #region Process of blocked
+
+
+        private async Task ProcessBlockedClientsInBackground()
+        {
+            HideTile(BlockedTile, BlockedUserProgress);
+            await ProcessOfChangeStateToBlockedTask();
+            VisibleTile(BlockedTile, BlockedUserProgress);
+
+        }
+        private async Task ProcessOfChangeStateToBlockedTask()
+        {
+            await Task.Run(ProcessOfChangeStateToBlocked);
+        }
+        private void ProcessOfChangeStateToBlocked()
+        {
+            ClientService.Instance.ProcessOfChangeStateToBlocked();
+        }
+
+        #endregion
+
+        #region Process of vip
+
+        private async Task ProcessVipClientsInBackground()
+        {
+            HideTile(VipTile, VipUserProgress);
+            await ProcessOfVipClientsTask();
+            VisibleTile(VipTile, VipUserProgress);
+        }
+        private void ProcessOfVipClients()
+        {
+            ClientService.Instance.UpdateClientsForVip();
+        }
+        private async Task ProcessOfVipClientsTask()
+        {
+            await Task.Run(ProcessOfVipClients);
+        }
+
+        #endregion
+
+        #region Process of discount
+
+        private async Task ProcessDiscountClientsInBackground()
+        {
+            HideTile(DiscountTile, DiscountUserProgress);
+            await ProcessOfDiscountClientsTask();
+            VisibleTile(DiscountTile, DiscountUserProgress);
+        }
+
+
+        private void ProcessOfDiscountClients()
+        {
+            ClientService.Instance.UpdateDiscountForVip();
+        }
+        private async Task ProcessOfDiscountClientsTask()
+        {
+            await Task.Run(ProcessOfDiscountClients);
+        }
+
+        #endregion
+        private void VisibleTile(UIElement tile, UIElement progress)
+        {
+            tile.Visibility = Visibility.Visible;
+            progress.Visibility = Visibility.Hidden;
+        }
+        private void HideTile(UIElement tile, UIElement progress)
+        {
+            tile.Visibility = Visibility.Hidden;
+            progress.Visibility = Visibility.Visible;
+        }
+
+
+        private async void BlockedTile_OnClick(object sender, RoutedEventArgs e)
+        {
+            await ProcessBlockedClientsInBackground();
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var settingsWindow = new SettingsWindow();
+            settingsWindow.Show();
+        }
+
+        private void MainWindow_OnClosed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private async void DiscountTile_OnClick(object sender, RoutedEventArgs e)
+        {
+            await ProcessDiscountClientsInBackground();
+        }
+
+        private async void VipTile_OnClick(object sender, RoutedEventArgs e)
+        {
+            await ProcessVipClientsInBackground();
+        }
+
+        private void ReportsTile_OnClick(object sender, RoutedEventArgs e)
+        {
+            var reportsWindow = new RentalSummary();
+            reportsWindow.Show();
         }
     }
 }

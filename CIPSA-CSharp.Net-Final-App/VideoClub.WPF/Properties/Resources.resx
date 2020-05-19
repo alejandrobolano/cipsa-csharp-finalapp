@@ -117,10 +117,304 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClientWindowTitle" xml:space="preserve">
-    <value>Formulario de Clientes</value>
+  <data name="ACCREDITATION" xml:space="preserve">
+    <value>Acreditación</value>
   </data>
-  <data name="Title" xml:space="preserve">
+  <data name="ACTIVED" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="ADD" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
+  <data name="ADDED_MOVIE_SUCCESSFUL" xml:space="preserve">
+    <value>Se ha introducido correctamente la película con ID: $</value>
+  </data>
+  <data name="ADDED_RENTAL_SUCCESSFUL" xml:space="preserve">
+    <value>Se ha introducido correctamente la renta. El total ha pagar es de PRICE</value>
+  </data>
+  <data name="ADDED_VIDEOGAME_SUCCESSFUL" xml:space="preserve">
+    <value>Se ha introducido correctamente el juego con ID: $</value>
+  </data>
+  <data name="ADDRESS" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="ADDRESS_WATERMARK" xml:space="preserve">
+    <value>Mi calle, 08000, Barcelona, España</value>
+  </data>
+  <data name="ALL_CLIENTS" xml:space="preserve">
+    <value>Todos los clientes</value>
+  </data>
+  <data name="ALL_MOVIES" xml:space="preserve">
+    <value>Todos las películas</value>
+  </data>
+  <data name="ALL_RENTALS" xml:space="preserve">
+    <value>Todas las rentas</value>
+  </data>
+  <data name="ALL_VIDEOGAMES" xml:space="preserve">
+    <value>Todos los juegos</value>
+  </data>
+  <data name="AUTOMATIC_PROCESS" xml:space="preserve">
+    <value>Proceso automático al arrancar la aplicación</value>
+  </data>
+  <data name="BLOCKED" xml:space="preserve">
+    <value>Desactivación</value>
+  </data>
+  <data name="BLOCKED_PROCESS_CHECK" xml:space="preserve">
+    <value>Bloqueo de clientes</value>
+  </data>
+  <data name="BLOCKED_TILE_TOOLTIP" xml:space="preserve">
+    <value>Proceso manual de asignación de nuevos clientes bloqueados</value>
+  </data>
+  <data name="BUYER_YEAR" xml:space="preserve">
+    <value>Año de compra</value>
+  </data>
+  <data name="CLIENT" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="CLIENTS" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="CLIENTS_DISPLAYED" xml:space="preserve">
+    <value>Clientes visualizados</value>
+  </data>
+  <data name="CLIENT_ID" xml:space="preserve">
+    <value>Id del Cliente</value>
+  </data>
+  <data name="CLIENT_WINDOW_TITLE" xml:space="preserve">
+    <value>Formulario de los Clientes</value>
+  </data>
+  <data name="DEACTIVED" xml:space="preserve">
+    <value>Desactivado</value>
+  </data>
+  <data name="DELETE" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="DELETE_SUCCESSFUL" xml:space="preserve">
+    <value>Se ha eliminado correctamente</value>
+  </data>
+  <data name="DISCOUNT" xml:space="preserve">
+    <value>Descuentos</value>
+  </data>
+  <data name="DISCOUNT_PROCESS_CHECK" xml:space="preserve">
+    <value>Descuentos VIP</value>
+  </data>
+  <data name="DISCOUNT_TILE_TOOLTIP" xml:space="preserve">
+    <value>Proceso manual de asignación de los descuentos de los clientes VIP</value>
+  </data>
+  <data name="DISC_QUANTITY" xml:space="preserve">
+    <value>Cantidad de discos</value>
+  </data>
+  <data name="DISC_QUANTITY_SHORT" xml:space="preserve">
+    <value>Discos</value>
+  </data>
+  <data name="EMAIL" xml:space="preserve">
+    <value>Correo eléctronico</value>
+  </data>
+  <data name="EMAIL_SHORT" xml:space="preserve">
+    <value>Correo</value>
+  </data>
+  <data name="EMAIL_WATERMARK" xml:space="preserve">
+    <value>micorreo@dominio.es</value>
+  </data>
+  <data name="ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ERROR_DATA_MESSAGE" xml:space="preserve">
+    <value>Se ha producido un error en los datos introducidos</value>
+  </data>
+  <data name="ERROR_MESSAGE" xml:space="preserve">
+    <value>Se ha producido un error</value>
+  </data>
+  <data name="FINISH" xml:space="preserve">
+    <value>Finalizar</value>
+  </data>
+  <data name="FINISH_DATE" xml:space="preserve">
+    <value>Fecha de Fin</value>
+  </data>
+  <data name="FINISH_RENTAL_DUE_PAYMENT" xml:space="preserve">
+    <value>Ha finalizado la renta del producto con ID: $, pero tiene una deuda pendiente de pago de PRICE €</value>
+  </data>
+  <data name="FINISH_RENTAL_SUCCESSFUL" xml:space="preserve">
+    <value>Ha finalizado la renta del producto correctamente con ID: $. Se ha cambiado al estado "Disponible"</value>
+  </data>
+  <data name="GENERAL_SUMMARY_RENTAL_REPORT" xml:space="preserve">
+    <value>Resumen general de los alquileres</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="INFORMATION" xml:space="preserve">
+    <value>Información</value>
+  </data>
+  <data name="LAST_NAME" xml:space="preserve">
+    <value>Apellidos</value>
+  </data>
+  <data name="LOADING_DATA_DB" xml:space="preserve">
+    <value>Cargando datos de la base de datos</value>
+  </data>
+  <data name="MAIN_TITLE" xml:space="preserve">
     <value>Version Original</value>
+  </data>
+  <data name="MANUAL_PROCESS" xml:space="preserve">
+    <value>Proceso manual para gestión de clientes</value>
+  </data>
+  <data name="MOVIE" xml:space="preserve">
+    <value>Película</value>
+  </data>
+  <data name="MOVIES" xml:space="preserve">
+    <value>Películas</value>
+  </data>
+  <data name="MOVIES_DISPLAYED" xml:space="preserve">
+    <value>Películas visualizadas</value>
+  </data>
+  <data name="MOVIES_QUANTITY" xml:space="preserve">
+    <value>Cantidad de Películas</value>
+  </data>
+  <data name="MOVIE_WINDOW_TITLE" xml:space="preserve">
+    <value>Formulario de las Películas</value>
+  </data>
+  <data name="NAME" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="NEW" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="PENDING_RENTALS" xml:space="preserve">
+    <value>Rentas pendientes</value>
+  </data>
+  <data name="PERCENT" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="PERCENTS_EARNINGS_CLIENTS" xml:space="preserve">
+    <value>Porcentaje ahorrado por los clientes</value>
+  </data>
+  <data name="PHONE_1" xml:space="preserve">
+    <value>Teléfono 1</value>
+  </data>
+  <data name="PHONE_2" xml:space="preserve">
+    <value>Teléfono 2</value>
+  </data>
+  <data name="PLATFORM" xml:space="preserve">
+    <value>Plataforma</value>
+  </data>
+  <data name="PRICE" xml:space="preserve">
+    <value>Precio</value>
+  </data>
+  <data name="PRODUCT" xml:space="preserve">
+    <value>Producto</value>
+  </data>
+  <data name="PRODUCTION_YEAR" xml:space="preserve">
+    <value>Año de producción</value>
+  </data>
+  <data name="PRODUCT_ID" xml:space="preserve">
+    <value>Id del Producto</value>
+  </data>
+  <data name="PRODUCT_NON_AVAILABLE" xml:space="preserve">
+    <value>Producto no disponible con ID: $</value>
+  </data>
+  <data name="PRODUCT_TITLE" xml:space="preserve">
+    <value>Título del Producto</value>
+  </data>
+  <data name="RENTALS" xml:space="preserve">
+    <value>Rentas</value>
+  </data>
+  <data name="RENTALS_DISPLAYED" xml:space="preserve">
+    <value>Rentas visualizadas</value>
+  </data>
+  <data name="RENTALS_QUANTITY" xml:space="preserve">
+    <value>Cantidad total de Rentas</value>
+  </data>
+  <data name="RENTAL_DAYS" xml:space="preserve">
+    <value>Días del alquiler</value>
+  </data>
+  <data name="RENTAL_FAST" xml:space="preserve">
+    <value>Rentar Producto</value>
+  </data>
+  <data name="RENTAL_FAST_TOOLTIP" xml:space="preserve">
+    <value>Renta el producto de manera fácil y sencilla</value>
+  </data>
+  <data name="RENTAL_NON_AVAILABLE" xml:space="preserve">
+    <value>El producto con ID: $ no se encuentra disponible por lo que no se puede proceder con la renta</value>
+  </data>
+  <data name="RENTAL_PRODUCT_BAD_STATE" xml:space="preserve">
+    <value>El producto con ID: $ se encuentra en mal estado por lo que no se puede proceder con la renta</value>
+  </data>
+  <data name="RENTAL_PRODUCT_LOST" xml:space="preserve">
+    <value>El producto con ID: $ se encuentra perdido por lo que no se puede proceder con la renta</value>
+  </data>
+  <data name="RENTAL_RETURNED" xml:space="preserve">
+    <value>El producto se ha devuelto anteriormente</value>
+  </data>
+  <data name="RENTAL_WINDOW_TITLE" xml:space="preserve">
+    <value>Formulario de las rentas</value>
+  </data>
+  <data name="RETURNED_FAST" xml:space="preserve">
+    <value>Devolver Producto</value>
+  </data>
+  <data name="RETURNED_FAST_TOOLTIP" xml:space="preserve">
+    <value>Devuelva el producto de manera fácil y sencilla</value>
+  </data>
+  <data name="RETURNED_RENTALS" xml:space="preserve">
+    <value>Rentas devueltas</value>
+  </data>
+  <data name="SETTINGS" xml:space="preserve">
+    <value>Configuraciones</value>
+  </data>
+  <data name="START" xml:space="preserve">
+    <value>Alquilar</value>
+  </data>
+  <data name="START_DATE" xml:space="preserve">
+    <value>Fecha de Inicio</value>
+  </data>
+  <data name="STATE" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="SUBSCRIPTION" xml:space="preserve">
+    <value>Suscripción</value>
+  </data>
+  <data name="TIMING" xml:space="preserve">
+    <value>Duración</value>
+  </data>
+  <data name="TITLE" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="TOTAL_DISCOUNT_APPLY" xml:space="preserve">
+    <value>Total con descuento aplicado</value>
+  </data>
+  <data name="TOTAL_WITHOUT_DISCOUNT" xml:space="preserve">
+    <value>Total sin descuento</value>
+  </data>
+  <data name="UPDATE" xml:space="preserve">
+    <value>Modificar</value>
+  </data>
+  <data name="UPDATE_SUCCESSFUL" xml:space="preserve">
+    <value>Se ha actualizado correctamente</value>
+  </data>
+  <data name="VIDEOGAME" xml:space="preserve">
+    <value>Video juego</value>
+  </data>
+  <data name="VIDEOGAMES" xml:space="preserve">
+    <value>Video juegos</value>
+  </data>
+  <data name="VIDEOGAMES_DISPLAYED" xml:space="preserve">
+    <value>Juegos visualizados</value>
+  </data>
+  <data name="VIDEOGAMES_QUANTITY" xml:space="preserve">
+    <value>Cantidad de Video juegos</value>
+  </data>
+  <data name="VIDEOGAME_WINDOW_TITLE" xml:space="preserve">
+    <value>Formulario de los Video juegos</value>
+  </data>
+  <data name="VIP" xml:space="preserve">
+    <value>VIP</value>
+  </data>
+  <data name="VIP_PROCESS_CHECK" xml:space="preserve">
+    <value>Clientes VIP</value>
+  </data>
+  <data name="VIP_TILE_TOOLTIP" xml:space="preserve">
+    <value>Proceso manual de asignación de nuevos clientes VIP</value>
+  </data>
+  <data name="YEAR_WATERMARK" xml:space="preserve">
+    <value>YYYY</value>
   </data>
 </root>

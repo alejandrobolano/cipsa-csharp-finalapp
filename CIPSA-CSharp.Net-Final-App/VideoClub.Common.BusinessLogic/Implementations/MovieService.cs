@@ -13,6 +13,7 @@ namespace VideoClub.Common.BusinessLogic.Implementations
     public class MovieService : IService<MovieDto>
     {
         private readonly MovieRepository _movieRepository;
+        public static MovieService Instance { get; } = new MovieService();
         public MovieService()
         {
             var videoClubDi = new VideoClubDi(VideoClubContext.GetVideoClubContext());
@@ -38,12 +39,12 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         #region common public methods
 
-        public bool Add(MovieDto model)
+        public bool Add(MovieDto model, out string id)
         {
             var mapper = MapperToModel();
             var movie = mapper.Map<MovieDto, Movie>(model);
 
-            return _movieRepository.Add(movie);
+            return _movieRepository.Add(movie, out id);
         }
 
         public bool Remove(string id)
@@ -82,9 +83,24 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         #region custom methods
 
-        public void ChangeState(MovieDto movie, StateProductEnum state)
+        public bool HasBeenChangeState(MovieDto movie, StateProductEnum state)
         {
             movie.State = state;
+            return Update(movie);
+        }
+
+        public List<MovieDto> GetMoviesByState(StateProductEnum state)
+        {
+            var movies = new List<MovieDto>();
+            All().ForEach(movieDto =>
+            {
+                if (movieDto.State.Equals(state))
+                {
+                    movies.Add(movieDto);
+                }
+            });
+
+            return movies;
         }
 
         #endregion

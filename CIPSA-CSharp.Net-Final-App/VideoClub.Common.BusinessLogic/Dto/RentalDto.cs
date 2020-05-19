@@ -1,4 +1,6 @@
 ﻿using System;
+using VideoClub.Common.Model.Enums;
+using VideoClub.Common.Model.Extensions;
 
 namespace VideoClub.Common.BusinessLogic.Dto
 {
@@ -13,5 +15,8 @@ namespace VideoClub.Common.BusinessLogic.Dto
         //public ClientDto Client { get; set; }
         public DateTime StartRental { get; set; }
         public DateTime FinishRental { get; set; }
+        public StateRentalEnum State { get; set; }
+        public string StateDescription => State.GetDescription();
+        public decimal Price { get; set; }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Resources;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,7 +10,9 @@ using System.Windows.Input;
 using MahApps.Metro.Controls;
 using VideoClub.Common.BusinessLogic.Dto;
 using VideoClub.Common.BusinessLogic.Implementations;
+using VideoClub.Common.Model.Enums;
 using VideoClub.Common.Model.Extensions;
+using VideoClub.WPF.Utils;
 
 namespace VideoClub.WPF.Views
 {
@@ -17,14 +21,33 @@ namespace VideoClub.WPF.Views
     /// </summary>
     public partial class MovieWindow : MetroWindow
     {
-        private readonly DateTime _todayDateTime;
+        private DateTime _todayDateTime;
         private MovieService _movieService;
         private IList<MovieDto> _movies;
         private MovieDto _movieSelected;
-        public MovieWindow()
+        private readonly ResourceManager _resourceManager = Properties.Resources.ResourceManager;
+        private IDictionary<StateProductEnum, string> _itemsStateProduct;
+        private StateProductEnum _stateProduct;
+        public MovieWindow(StateProductEnum stateProduct)
         {
             InitializeComponent();
+            _stateProduct = stateProduct;
+            InitializeVariables();
+        }
+
+        private void InitializeVariables()
+        {
             _todayDateTime = DateTime.Today;
+            _movieService = MovieService.Instance;
+
+            _itemsStateProduct = new Dictionary<StateProductEnum, string>
+            {
+                {StateProductEnum.All, _resourceManager.GetResourceValue("ALL_MOVIES")},
+                {StateProductEnum.Available, StateProductEnum.Available.GetDescription()},
+                {StateProductEnum.BadState, StateProductEnum.BadState.GetDescription()},
+                {StateProductEnum.Lost, StateProductEnum.Lost.GetDescription()},
+                {StateProductEnum.NonAvailable, StateProductEnum.NonAvailable.GetDescription()}
+            };
         }
 
         private void DateNowTextBlock_OnLoaded(object sender, RoutedEventArgs e)
@@ -46,6 +69,7 @@ namespace VideoClub.WPF.Views
         {
             ChangeEnabledToButtons(true);
             FillFields(sender);
+            MainPanel.IsEnabled = true;
         }
 
         private void UpdateButtonDataGrid_OnClick(object sender, RoutedEventArgs e)
@@ -56,15 +80,18 @@ namespace VideoClub.WPF.Views
         private async Task LoadDataGrid()
         {
             LoadingPanel.Visibility = Visibility.Visible;
+            StateProductPanel.Visibility = Visibility.Collapsed;
             await LoadingDataTask();
             MovieDataGrid.ItemsSource = _movies;
             LoadingPanel.Visibility = Visibility.Hidden;
+            StateProductPanel.Visibility = Visibility.Visible;
         }
 
         private void LoadingData()
         {
-            _movieService = new MovieService();
-            _movies = _movieService.All();
+            _movies = _stateProduct.Equals(StateProductEnum.All)
+                ? _movieService.All()
+                : _movieService.GetMoviesByState(_stateProduct);
         }
         private async Task LoadingDataTask()
         {
@@ -83,7 +110,6 @@ namespace VideoClub.WPF.Views
         {
             MovieSelected(sender);
             FillDataFromDataGrid();
-            MainPanel.IsEnabled = true;
         }
 
         private void MovieSelected(object sender)
@@ -116,20 +142,22 @@ namespace VideoClub.WPF.Views
         {
             var movie = new MovieDto();
             FillDataFromFields(movie);
-            return _movieService.Add(movie);
+            return _movieService.Add(movie, out _);
         }
 
         private void FillDataFromFields(MovieDto movie)
         {
             movie.Title = TitleText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter();
-            movie.Price = Convert.ToDecimal(PriceNumeric.Value);
-            movie.QuantityDisc = Convert.ToInt32(QuantityNumeric.Value);
-            movie.ProductionYear = Convert.ToInt32(ProductionYearText.Text);
-            movie.BuyYear = Convert.ToInt32(BuyYearText.Text);
+            movie.Price = Convert.ToDecimal(PriceNumeric?.Value);
+            movie.QuantityDisc = Convert.ToInt32(QuantityNumeric?.Value);
+            int.TryParse(ProductionYearText?.Text, out var productionYear);
+            movie.ProductionYear = productionYear;
+            int.TryParse(BuyYearText?.Text, out var buyYear);
+            movie.BuyYear = buyYear;
             var durationTimeSpan = new TimeSpan(
-                Convert.ToInt32(HourDurationNumeric.Value),
-                Convert.ToInt32(MinuteDurationNumeric.Value),
-                Convert.ToInt32(SecondDurationNumeric.Value)
+                Convert.ToInt32(HourDurationNumeric?.Value),
+                Convert.ToInt32(MinuteDurationNumeric?.Value),
+                Convert.ToInt32(SecondDurationNumeric?.Value)
                 );
             movie.Duration = durationTimeSpan;
         }
@@ -152,18 +180,43 @@ namespace VideoClub.WPF.Views
 
         private async void AddButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (CheckFields()) return;
             if (AddMovie())
             {
                 await LoadDataGrid();
+            }
+            else
+            {
+                this.ShowGenericErrorMessage(_resourceManager);
+                HelperWindow.HandleLogError(string.Empty);
             }
         }
 
         private async void UpdateButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (CheckFields()) return;
+
             if (UpdateMovie())
             {
                 await LoadDataGrid();
             }
+            else
+            {
+                this.ShowGenericErrorMessage(_resourceManager);
+                HelperWindow.HandleLogError(string.Empty);
+            }
+        }
+
+        private bool CheckFields()
+        {
+            if (HelperWindow.HasAnyEmptyFields(MainPanel))
+            {
+                this.ShowGenericErrorDataMessage(_resourceManager);
+                HelperWindow.HandleLogError(string.Empty);
+                return true;
+            }
+
+            return false;
         }
 
         private async void DeleteButton_OnClick(object sender, RoutedEventArgs e)
@@ -180,6 +233,21 @@ namespace VideoClub.WPF.Views
         {
             var value = ((TextBox)sender).Text;
             e.Handled = !int.TryParse(value + e.Text, out _);
+        }
+
+        private void MovieStateComboBox_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var combo = (ComboBox)sender;
+            combo.ItemsSource = _itemsStateProduct.Values;
+            combo.SelectedItem = _itemsStateProduct[_stateProduct];
+        }
+
+        private async void MovieStateComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var stateEnumSelected = _itemsStateProduct.FirstOrDefault(x => x.Value.Equals(((ComboBox)sender).SelectedValue)).Key;
+            if (stateEnumSelected.Equals(_stateProduct)) return;
+            _stateProduct = stateEnumSelected;
+            await LoadDataGrid();
         }
     }
 }

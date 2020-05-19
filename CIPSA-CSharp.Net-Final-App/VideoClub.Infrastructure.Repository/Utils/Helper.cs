@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
+using VideoClub.Common.Model.Utils;
 
 namespace VideoClub.Infrastructure.Repository.Utils
 {
     public class Helper
     {
-        public static readonly string Separator = "-";
         
         public static readonly log4net.ILog Log = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        //public static readonly Assembly assembly = Assembly.Load("VideoClub.Infrastructure.Repository");
-        //public static readonly ResourceManager resourceManager = new ResourceManager("VideoClub.Infrastructure.Repository.en-US", assembly);
         public static readonly string Connection = "VideoClubConnection";
 
         public static string GetCodeNumber(string model, int length, Random random)
@@ -25,7 +19,14 @@ namespace VideoClub.Infrastructure.Repository.Utils
                 .Select(s => s[random.Next(s.Length)])
                 .ToArray());
 
-            return model + Separator + result;
+            return model + CommonHelper.Separator + result;
+        }
+
+        public static void HandleLogError(string errorMessage)
+        {
+            var callStack = new StackFrame(1, true);
+            Log.Error($"{errorMessage}" +
+                      $"\n {callStack.GetFileName()} {callStack.GetFileLineNumber()}");
         }
     }
 }

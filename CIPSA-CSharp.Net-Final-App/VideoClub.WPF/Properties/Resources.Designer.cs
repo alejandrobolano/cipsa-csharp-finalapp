@@ -61,20 +61,902 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Formulario de Clientes.
+        ///   Looks up a localized string similar to Acreditación.
         /// </summary>
-        public static string ClientWindowTitle {
+        public static string ACCREDITATION {
             get {
-                return ResourceManager.GetString("ClientWindowTitle", resourceCulture);
+                return ResourceManager.GetString("ACCREDITATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activo.
+        /// </summary>
+        public static string ACTIVED {
+            get {
+                return ResourceManager.GetString("ACTIVED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Agregar.
+        /// </summary>
+        public static string ADD {
+            get {
+                return ResourceManager.GetString("ADD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha introducido correctamente la película con ID: $.
+        /// </summary>
+        public static string ADDED_MOVIE_SUCCESSFUL {
+            get {
+                return ResourceManager.GetString("ADDED_MOVIE_SUCCESSFUL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha introducido correctamente la renta. El total ha pagar es de PRICE.
+        /// </summary>
+        public static string ADDED_RENTAL_SUCCESSFUL {
+            get {
+                return ResourceManager.GetString("ADDED_RENTAL_SUCCESSFUL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha introducido correctamente el juego con ID: $.
+        /// </summary>
+        public static string ADDED_VIDEOGAME_SUCCESSFUL {
+            get {
+                return ResourceManager.GetString("ADDED_VIDEOGAME_SUCCESSFUL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dirección.
+        /// </summary>
+        public static string ADDRESS {
+            get {
+                return ResourceManager.GetString("ADDRESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mi calle, 08000, Barcelona, España.
+        /// </summary>
+        public static string ADDRESS_WATERMARK {
+            get {
+                return ResourceManager.GetString("ADDRESS_WATERMARK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Todos los clientes.
+        /// </summary>
+        public static string ALL_CLIENTS {
+            get {
+                return ResourceManager.GetString("ALL_CLIENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Todos las películas.
+        /// </summary>
+        public static string ALL_MOVIES {
+            get {
+                return ResourceManager.GetString("ALL_MOVIES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Todas las rentas.
+        /// </summary>
+        public static string ALL_RENTALS {
+            get {
+                return ResourceManager.GetString("ALL_RENTALS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Todos los juegos.
+        /// </summary>
+        public static string ALL_VIDEOGAMES {
+            get {
+                return ResourceManager.GetString("ALL_VIDEOGAMES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceso automático al arrancar la aplicación.
+        /// </summary>
+        public static string AUTOMATIC_PROCESS {
+            get {
+                return ResourceManager.GetString("AUTOMATIC_PROCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desactivación.
+        /// </summary>
+        public static string BLOCKED {
+            get {
+                return ResourceManager.GetString("BLOCKED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bloqueo de clientes.
+        /// </summary>
+        public static string BLOCKED_PROCESS_CHECK {
+            get {
+                return ResourceManager.GetString("BLOCKED_PROCESS_CHECK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceso manual de asignación de nuevos clientes bloqueados.
+        /// </summary>
+        public static string BLOCKED_TILE_TOOLTIP {
+            get {
+                return ResourceManager.GetString("BLOCKED_TILE_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Año de compra.
+        /// </summary>
+        public static string BUYER_YEAR {
+            get {
+                return ResourceManager.GetString("BUYER_YEAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cliente.
+        /// </summary>
+        public static string CLIENT {
+            get {
+                return ResourceManager.GetString("CLIENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id del Cliente.
+        /// </summary>
+        public static string CLIENT_ID {
+            get {
+                return ResourceManager.GetString("CLIENT_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Formulario de los Clientes.
+        /// </summary>
+        public static string CLIENT_WINDOW_TITLE {
+            get {
+                return ResourceManager.GetString("CLIENT_WINDOW_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clientes.
+        /// </summary>
+        public static string CLIENTS {
+            get {
+                return ResourceManager.GetString("CLIENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clientes visualizados.
+        /// </summary>
+        public static string CLIENTS_DISPLAYED {
+            get {
+                return ResourceManager.GetString("CLIENTS_DISPLAYED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desactivado.
+        /// </summary>
+        public static string DEACTIVED {
+            get {
+                return ResourceManager.GetString("DEACTIVED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eliminar.
+        /// </summary>
+        public static string DELETE {
+            get {
+                return ResourceManager.GetString("DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha eliminado correctamente.
+        /// </summary>
+        public static string DELETE_SUCCESSFUL {
+            get {
+                return ResourceManager.GetString("DELETE_SUCCESSFUL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cantidad de discos.
+        /// </summary>
+        public static string DISC_QUANTITY {
+            get {
+                return ResourceManager.GetString("DISC_QUANTITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discos.
+        /// </summary>
+        public static string DISC_QUANTITY_SHORT {
+            get {
+                return ResourceManager.GetString("DISC_QUANTITY_SHORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Descuentos.
+        /// </summary>
+        public static string DISCOUNT {
+            get {
+                return ResourceManager.GetString("DISCOUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Descuentos VIP.
+        /// </summary>
+        public static string DISCOUNT_PROCESS_CHECK {
+            get {
+                return ResourceManager.GetString("DISCOUNT_PROCESS_CHECK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceso manual de asignación de los descuentos de los clientes VIP.
+        /// </summary>
+        public static string DISCOUNT_TILE_TOOLTIP {
+            get {
+                return ResourceManager.GetString("DISCOUNT_TILE_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correo eléctronico.
+        /// </summary>
+        public static string EMAIL {
+            get {
+                return ResourceManager.GetString("EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correo.
+        /// </summary>
+        public static string EMAIL_SHORT {
+            get {
+                return ResourceManager.GetString("EMAIL_SHORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to micorreo@dominio.es.
+        /// </summary>
+        public static string EMAIL_WATERMARK {
+            get {
+                return ResourceManager.GetString("EMAIL_WATERMARK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string ERROR {
+            get {
+                return ResourceManager.GetString("ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error en los datos introducidos.
+        /// </summary>
+        public static string ERROR_DATA_MESSAGE {
+            get {
+                return ResourceManager.GetString("ERROR_DATA_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error.
+        /// </summary>
+        public static string ERROR_MESSAGE {
+            get {
+                return ResourceManager.GetString("ERROR_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finalizar.
+        /// </summary>
+        public static string FINISH {
+            get {
+                return ResourceManager.GetString("FINISH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha de Fin.
+        /// </summary>
+        public static string FINISH_DATE {
+            get {
+                return ResourceManager.GetString("FINISH_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ha finalizado la renta del producto con ID: $, pero tiene una deuda pendiente de pago de PRICE €.
+        /// </summary>
+        public static string FINISH_RENTAL_DUE_PAYMENT {
+            get {
+                return ResourceManager.GetString("FINISH_RENTAL_DUE_PAYMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ha finalizado la renta del producto correctamente con ID: $. Se ha cambiado al estado &quot;Disponible&quot;.
+        /// </summary>
+        public static string FINISH_RENTAL_SUCCESSFUL {
+            get {
+                return ResourceManager.GetString("FINISH_RENTAL_SUCCESSFUL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resumen general de los alquileres.
+        /// </summary>
+        public static string GENERAL_SUMMARY_RENTAL_REPORT {
+            get {
+                return ResourceManager.GetString("GENERAL_SUMMARY_RENTAL_REPORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        public static string ID {
+            get {
+                return ResourceManager.GetString("ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Información.
+        /// </summary>
+        public static string INFORMATION {
+            get {
+                return ResourceManager.GetString("INFORMATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apellidos.
+        /// </summary>
+        public static string LAST_NAME {
+            get {
+                return ResourceManager.GetString("LAST_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cargando datos de la base de datos.
+        /// </summary>
+        public static string LOADING_DATA_DB {
+            get {
+                return ResourceManager.GetString("LOADING_DATA_DB", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Version Original.
         /// </summary>
-        public static string Title {
+        public static string MAIN_TITLE {
             get {
-                return ResourceManager.GetString("Title", resourceCulture);
+                return ResourceManager.GetString("MAIN_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceso manual para gestión de clientes.
+        /// </summary>
+        public static string MANUAL_PROCESS {
+            get {
+                return ResourceManager.GetString("MANUAL_PROCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Película.
+        /// </summary>
+        public static string MOVIE {
+            get {
+                return ResourceManager.GetString("MOVIE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Formulario de las Películas.
+        /// </summary>
+        public static string MOVIE_WINDOW_TITLE {
+            get {
+                return ResourceManager.GetString("MOVIE_WINDOW_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Películas.
+        /// </summary>
+        public static string MOVIES {
+            get {
+                return ResourceManager.GetString("MOVIES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Películas visualizadas.
+        /// </summary>
+        public static string MOVIES_DISPLAYED {
+            get {
+                return ResourceManager.GetString("MOVIES_DISPLAYED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cantidad de Películas.
+        /// </summary>
+        public static string MOVIES_QUANTITY {
+            get {
+                return ResourceManager.GetString("MOVIES_QUANTITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nombre.
+        /// </summary>
+        public static string NAME {
+            get {
+                return ResourceManager.GetString("NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nuevo.
+        /// </summary>
+        public static string NEW {
+            get {
+                return ResourceManager.GetString("NEW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rentas pendientes.
+        /// </summary>
+        public static string PENDING_RENTALS {
+            get {
+                return ResourceManager.GetString("PENDING_RENTALS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to %.
+        /// </summary>
+        public static string PERCENT {
+            get {
+                return ResourceManager.GetString("PERCENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Porcentaje ahorrado por los clientes.
+        /// </summary>
+        public static string PERCENTS_EARNINGS_CLIENTS {
+            get {
+                return ResourceManager.GetString("PERCENTS_EARNINGS_CLIENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teléfono 1.
+        /// </summary>
+        public static string PHONE_1 {
+            get {
+                return ResourceManager.GetString("PHONE_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teléfono 2.
+        /// </summary>
+        public static string PHONE_2 {
+            get {
+                return ResourceManager.GetString("PHONE_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plataforma.
+        /// </summary>
+        public static string PLATFORM {
+            get {
+                return ResourceManager.GetString("PLATFORM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Precio.
+        /// </summary>
+        public static string PRICE {
+            get {
+                return ResourceManager.GetString("PRICE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Producto.
+        /// </summary>
+        public static string PRODUCT {
+            get {
+                return ResourceManager.GetString("PRODUCT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id del Producto.
+        /// </summary>
+        public static string PRODUCT_ID {
+            get {
+                return ResourceManager.GetString("PRODUCT_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Producto no disponible con ID: $.
+        /// </summary>
+        public static string PRODUCT_NON_AVAILABLE {
+            get {
+                return ResourceManager.GetString("PRODUCT_NON_AVAILABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Título del Producto.
+        /// </summary>
+        public static string PRODUCT_TITLE {
+            get {
+                return ResourceManager.GetString("PRODUCT_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Año de producción.
+        /// </summary>
+        public static string PRODUCTION_YEAR {
+            get {
+                return ResourceManager.GetString("PRODUCTION_YEAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Días del alquiler.
+        /// </summary>
+        public static string RENTAL_DAYS {
+            get {
+                return ResourceManager.GetString("RENTAL_DAYS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rentar Producto.
+        /// </summary>
+        public static string RENTAL_FAST {
+            get {
+                return ResourceManager.GetString("RENTAL_FAST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Renta el producto de manera fácil y sencilla.
+        /// </summary>
+        public static string RENTAL_FAST_TOOLTIP {
+            get {
+                return ResourceManager.GetString("RENTAL_FAST_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El producto con ID: $ no se encuentra disponible por lo que no se puede proceder con la renta.
+        /// </summary>
+        public static string RENTAL_NON_AVAILABLE {
+            get {
+                return ResourceManager.GetString("RENTAL_NON_AVAILABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El producto con ID: $ se encuentra en mal estado por lo que no se puede proceder con la renta.
+        /// </summary>
+        public static string RENTAL_PRODUCT_BAD_STATE {
+            get {
+                return ResourceManager.GetString("RENTAL_PRODUCT_BAD_STATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El producto con ID: $ se encuentra perdido por lo que no se puede proceder con la renta.
+        /// </summary>
+        public static string RENTAL_PRODUCT_LOST {
+            get {
+                return ResourceManager.GetString("RENTAL_PRODUCT_LOST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El producto se ha devuelto anteriormente.
+        /// </summary>
+        public static string RENTAL_RETURNED {
+            get {
+                return ResourceManager.GetString("RENTAL_RETURNED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Formulario de las rentas.
+        /// </summary>
+        public static string RENTAL_WINDOW_TITLE {
+            get {
+                return ResourceManager.GetString("RENTAL_WINDOW_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rentas.
+        /// </summary>
+        public static string RENTALS {
+            get {
+                return ResourceManager.GetString("RENTALS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rentas visualizadas.
+        /// </summary>
+        public static string RENTALS_DISPLAYED {
+            get {
+                return ResourceManager.GetString("RENTALS_DISPLAYED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cantidad total de Rentas.
+        /// </summary>
+        public static string RENTALS_QUANTITY {
+            get {
+                return ResourceManager.GetString("RENTALS_QUANTITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Devolver Producto.
+        /// </summary>
+        public static string RETURNED_FAST {
+            get {
+                return ResourceManager.GetString("RETURNED_FAST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Devuelva el producto de manera fácil y sencilla.
+        /// </summary>
+        public static string RETURNED_FAST_TOOLTIP {
+            get {
+                return ResourceManager.GetString("RETURNED_FAST_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rentas devueltas.
+        /// </summary>
+        public static string RETURNED_RENTALS {
+            get {
+                return ResourceManager.GetString("RETURNED_RENTALS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuraciones.
+        /// </summary>
+        public static string SETTINGS {
+            get {
+                return ResourceManager.GetString("SETTINGS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alquilar.
+        /// </summary>
+        public static string START {
+            get {
+                return ResourceManager.GetString("START", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha de Inicio.
+        /// </summary>
+        public static string START_DATE {
+            get {
+                return ResourceManager.GetString("START_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estado.
+        /// </summary>
+        public static string STATE {
+            get {
+                return ResourceManager.GetString("STATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suscripción.
+        /// </summary>
+        public static string SUBSCRIPTION {
+            get {
+                return ResourceManager.GetString("SUBSCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duración.
+        /// </summary>
+        public static string TIMING {
+            get {
+                return ResourceManager.GetString("TIMING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Título.
+        /// </summary>
+        public static string TITLE {
+            get {
+                return ResourceManager.GetString("TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total con descuento aplicado.
+        /// </summary>
+        public static string TOTAL_DISCOUNT_APPLY {
+            get {
+                return ResourceManager.GetString("TOTAL_DISCOUNT_APPLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total sin descuento.
+        /// </summary>
+        public static string TOTAL_WITHOUT_DISCOUNT {
+            get {
+                return ResourceManager.GetString("TOTAL_WITHOUT_DISCOUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modificar.
+        /// </summary>
+        public static string UPDATE {
+            get {
+                return ResourceManager.GetString("UPDATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha actualizado correctamente.
+        /// </summary>
+        public static string UPDATE_SUCCESSFUL {
+            get {
+                return ResourceManager.GetString("UPDATE_SUCCESSFUL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Video juego.
+        /// </summary>
+        public static string VIDEOGAME {
+            get {
+                return ResourceManager.GetString("VIDEOGAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Formulario de los Video juegos.
+        /// </summary>
+        public static string VIDEOGAME_WINDOW_TITLE {
+            get {
+                return ResourceManager.GetString("VIDEOGAME_WINDOW_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Video juegos.
+        /// </summary>
+        public static string VIDEOGAMES {
+            get {
+                return ResourceManager.GetString("VIDEOGAMES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Juegos visualizados.
+        /// </summary>
+        public static string VIDEOGAMES_DISPLAYED {
+            get {
+                return ResourceManager.GetString("VIDEOGAMES_DISPLAYED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cantidad de Video juegos.
+        /// </summary>
+        public static string VIDEOGAMES_QUANTITY {
+            get {
+                return ResourceManager.GetString("VIDEOGAMES_QUANTITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VIP.
+        /// </summary>
+        public static string VIP {
+            get {
+                return ResourceManager.GetString("VIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clientes VIP.
+        /// </summary>
+        public static string VIP_PROCESS_CHECK {
+            get {
+                return ResourceManager.GetString("VIP_PROCESS_CHECK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceso manual de asignación de nuevos clientes VIP.
+        /// </summary>
+        public static string VIP_TILE_TOOLTIP {
+            get {
+                return ResourceManager.GetString("VIP_TILE_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to YYYY.
+        /// </summary>
+        public static string YEAR_WATERMARK {
+            get {
+                return ResourceManager.GetString("YEAR_WATERMARK", resourceCulture);
             }
         }
     }

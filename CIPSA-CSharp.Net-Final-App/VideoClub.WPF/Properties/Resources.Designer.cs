@@ -421,6 +421,15 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resumen general de los alquileres.
+        /// </summary>
+        public static string GENERAL_SUMMARY_RENTAL_REPORT {
+            get {
+                return ResourceManager.GetString("GENERAL_SUMMARY_RENTAL_REPORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Id.
         /// </summary>
         public static string ID {
@@ -511,6 +520,15 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cantidad de Películas.
+        /// </summary>
+        public static string MOVIES_QUANTITY {
+            get {
+                return ResourceManager.GetString("MOVIES_QUANTITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nombre.
         /// </summary>
         public static string NAME {
@@ -543,6 +561,15 @@ namespace VideoClub.WPF.Properties {
         public static string PERCENT {
             get {
                 return ResourceManager.GetString("PERCENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Porcentaje ahorrado por los clientes.
+        /// </summary>
+        public static string PERCENTS_EARNINGS_CLIENTS {
+            get {
+                return ResourceManager.GetString("PERCENTS_EARNINGS_CLIENTS", resourceCulture);
             }
         }
         
@@ -718,6 +745,15 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cantidad total de Rentas.
+        /// </summary>
+        public static string RENTALS_QUANTITY {
+            get {
+                return ResourceManager.GetString("RENTALS_QUANTITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Devolver Producto.
         /// </summary>
         public static string RETURNED_FAST {
@@ -808,6 +844,24 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total con descuento aplicado.
+        /// </summary>
+        public static string TOTAL_DISCOUNT_APPLY {
+            get {
+                return ResourceManager.GetString("TOTAL_DISCOUNT_APPLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total sin descuento.
+        /// </summary>
+        public static string TOTAL_WITHOUT_DISCOUNT {
+            get {
+                return ResourceManager.GetString("TOTAL_WITHOUT_DISCOUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Modificar.
         /// </summary>
         public static string UPDATE {
@@ -858,6 +912,15 @@ namespace VideoClub.WPF.Properties {
         public static string VIDEOGAMES_DISPLAYED {
             get {
                 return ResourceManager.GetString("VIDEOGAMES_DISPLAYED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cantidad de Video juegos.
+        /// </summary>
+        public static string VIDEOGAMES_QUANTITY {
+            get {
+                return ResourceManager.GetString("VIDEOGAMES_QUANTITY", resourceCulture);
             }
         }
         

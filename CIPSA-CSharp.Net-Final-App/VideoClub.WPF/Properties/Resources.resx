@@ -141,8 +141,17 @@
   <data name="ADDRESS_WATERMARK" xml:space="preserve">
     <value>Mi calle, 08000, Barcelona, España</value>
   </data>
+  <data name="ALL_CLIENTS" xml:space="preserve">
+    <value>Todos los clientes</value>
+  </data>
+  <data name="ALL_MOVIES" xml:space="preserve">
+    <value>Todos las películas</value>
+  </data>
   <data name="ALL_RENTALS" xml:space="preserve">
     <value>Todas las rentas</value>
+  </data>
+  <data name="ALL_VIDEOGAMES" xml:space="preserve">
+    <value>Todos los juegos</value>
   </data>
   <data name="AUTOMATIC_PROCESS" xml:space="preserve">
     <value>Proceso automático al arrancar la aplicación</value>
@@ -164,6 +173,9 @@
   </data>
   <data name="CLIENTS" xml:space="preserve">
     <value>Clientes</value>
+  </data>
+  <data name="CLIENTS_DISPLAYED" xml:space="preserve">
+    <value>Clientes visualizados</value>
   </data>
   <data name="CLIENT_ID" xml:space="preserve">
     <value>Id del Cliente</value>
@@ -248,6 +260,9 @@
   </data>
   <data name="MOVIES" xml:space="preserve">
     <value>Películas</value>
+  </data>
+  <data name="MOVIES_DISPLAYED" xml:space="preserve">
+    <value>Películas visualizadas</value>
   </data>
   <data name="MOVIE_WINDOW_TITLE" xml:space="preserve">
     <value>Formulario de las Películas</value>
@@ -362,6 +377,9 @@
   </data>
   <data name="VIDEOGAMES" xml:space="preserve">
     <value>Video juegos</value>
+  </data>
+  <data name="VIDEOGAMES_DISPLAYED" xml:space="preserve">
+    <value>Juegos visualizados</value>
   </data>
   <data name="VIDEOGAME_WINDOW_TITLE" xml:space="preserve">
     <value>Formulario de los Video juegos</value>

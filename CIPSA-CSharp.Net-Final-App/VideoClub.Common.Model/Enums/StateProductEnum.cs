@@ -11,6 +11,7 @@ namespace VideoClub.Common.Model.Enums
         [Description("Perdido")]
         Lost,
         [Description("Mal Estado")]
-        BadState
+        BadState,
+        All
     }
 }

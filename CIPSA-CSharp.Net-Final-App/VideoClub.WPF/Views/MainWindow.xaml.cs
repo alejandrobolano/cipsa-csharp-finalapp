@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Configuration;
 using System.Threading.Tasks;
 using System.Windows;
 using MahApps.Metro.Controls;
-using MahApps.Metro.Controls.Dialogs;
 using VideoClub.Common.BusinessLogic.Implementations;
 using VideoClub.Common.Model.Enums;
 using VideoClub.WPF.Utils;
-using VideoClub.WPF.Views.DialogsView;
 using VideoClub.WPF.Views.Settings;
 
 namespace VideoClub.WPF.Views
@@ -24,19 +21,19 @@ namespace VideoClub.WPF.Views
 
         private void ButtonMovieWindows_OnClick(object sender, RoutedEventArgs e)
         {
-            var movieWindows = new MovieWindow();
+            var movieWindows = new MovieWindow(StateProductEnum.All);
             movieWindows.Show();
         }
 
         private void ButtonClientsWindows_OnClick(object sender, RoutedEventArgs e)
         {
-            var clientsWindows = new ClientWindow();
+            var clientsWindows = new ClientWindow(StateClientEnum.All);
             clientsWindows.Show();
         }
 
         private void ButtonVideoGamesWindows_OnClick(object sender, RoutedEventArgs e)
         {
-            var videoGameWindows = new VideoGameWindow();
+            var videoGameWindows = new VideoGameWindow(StateProductEnum.All);
             videoGameWindows.Show();
         }
 
@@ -54,27 +51,49 @@ namespace VideoClub.WPF.Views
 
         private async void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            await ProcessBlockedClientsInBackground(false);
-            await ProcessVipClientsInBackground(false);
-            await ProcessDiscountClientsInBackground(false);
-        }
-
-        #region Process of blocked
-
-        #endregion
-        private async Task ProcessBlockedClientsInBackground(bool isClicked)
-        {
-            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.BlockedClientProcessAutomatic), out var isAutomaticProcess);
-            if (isAutomaticProcess || isClicked)
+            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.BlockedClientProcessAutomatic), out var isBlockedAutomaticProcess);
+            if (isBlockedAutomaticProcess)
             {
-                HideTile(BlockedTile, BlockedUserProgress);
-                await ProcessOfChangeStateToBlockedTask();
-                VisibleTile(BlockedTile, BlockedUserProgress);
+                await ProcessBlockedClientsInBackground();
             }
             else
             {
                 VisibleTile(BlockedTile, BlockedUserProgress);
             }
+
+            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.VipClientProcessAutomatic), out var isVipAutomaticProcess);
+            if (isVipAutomaticProcess)
+            {
+                await ProcessVipClientsInBackground();
+            }
+            else
+            {
+                VisibleTile(VipTile, VipUserProgress);
+            }
+
+            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.DiscountClientProcessAutomatic), out var isAutomaticProcess);
+            var today = DateTime.Today;
+            var lastDayMonth = new DateTime(today.Year, today.Month, DateTime.DaysInMonth(today.Year, today.Month));
+
+            if (isAutomaticProcess && lastDayMonth.Equals(today))
+            {
+                await ProcessDiscountClientsInBackground();
+            }
+            else
+            {
+                VisibleTile(DiscountTile, DiscountUserProgress);
+            }
+        }
+
+        #region Process of blocked
+
+
+        private async Task ProcessBlockedClientsInBackground()
+        {
+            HideTile(BlockedTile, BlockedUserProgress);
+            await ProcessOfChangeStateToBlockedTask();
+            VisibleTile(BlockedTile, BlockedUserProgress);
+
         }
         private async Task ProcessOfChangeStateToBlockedTask()
         {
@@ -85,21 +104,15 @@ namespace VideoClub.WPF.Views
             ClientService.Instance.ProcessOfChangeStateToBlocked();
         }
 
+        #endregion
+
         #region Process of vip
 
-        private async Task ProcessVipClientsInBackground(bool isClicked)
+        private async Task ProcessVipClientsInBackground()
         {
-            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.VipClientProcessAutomatic), out var isAutomaticProcess);
-            if (isAutomaticProcess || isClicked)
-            {
-                HideTile(VipTile, VipUserProgress);
-                await ProcessOfVipClientsTask();
-                VisibleTile(VipTile, VipUserProgress);
-            }
-            else
-            {
-                VisibleTile(VipTile, VipUserProgress);
-            }
+            HideTile(VipTile, VipUserProgress);
+            await ProcessOfVipClientsTask();
+            VisibleTile(VipTile, VipUserProgress);
         }
         private void ProcessOfVipClients()
         {
@@ -114,22 +127,11 @@ namespace VideoClub.WPF.Views
 
         #region Process of discount
 
-        private async Task ProcessDiscountClientsInBackground(bool isClicked)
+        private async Task ProcessDiscountClientsInBackground()
         {
-            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.DiscountClientProcessAutomatic), out var isAutomaticProcess);
-            var today = DateTime.Today;
-            var lastDayMonth = new DateTime(today.Year, today.Month, DateTime.DaysInMonth(today.Year, today.Month));
-
-            if (isAutomaticProcess && lastDayMonth.Equals(today) || isClicked)
-            {
-                HideTile(DiscountTile, DiscountUserProgress);
-                await ProcessOfDiscountClientsTask();
-                VisibleTile(DiscountTile, DiscountUserProgress);
-            }
-            else
-            {
-                VisibleTile(DiscountTile, DiscountUserProgress);
-            }
+            HideTile(DiscountTile, DiscountUserProgress);
+            await ProcessOfDiscountClientsTask();
+            VisibleTile(DiscountTile, DiscountUserProgress);
         }
 
 
@@ -157,7 +159,7 @@ namespace VideoClub.WPF.Views
 
         private async void BlockedTile_OnClick(object sender, RoutedEventArgs e)
         {
-            await ProcessBlockedClientsInBackground(true);
+            await ProcessBlockedClientsInBackground();
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
@@ -173,12 +175,18 @@ namespace VideoClub.WPF.Views
 
         private async void DiscountTile_OnClick(object sender, RoutedEventArgs e)
         {
-            await ProcessDiscountClientsInBackground(true);
+            await ProcessDiscountClientsInBackground();
         }
 
         private async void VipTile_OnClick(object sender, RoutedEventArgs e)
         {
-            await ProcessVipClientsInBackground(true);
+            await ProcessVipClientsInBackground();
+        }
+
+        private void ReportsTile_OnClick(object sender, RoutedEventArgs e)
+        {
+            var reportsWindow = new RentalSummary();
+            reportsWindow.Show();
         }
     }
 }

@@ -66,11 +66,17 @@
                     Style="{DynamicResource SquareButtonStyle}" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
             </StackPanel>
         </Grid>
-
-        <StackPanel Orientation="Vertical" Name="LoadingPanel">
-            <TextBlock HorizontalAlignment="Center" Text="{x:Static properties:Resources.LOADING_DATA_DB}"/>
-            <mah:MetroProgressBar Name="MetroProgressBar"  Width="350" HorizontalAlignment="Center" Height="23" IsIndeterminate="True" />
-        </StackPanel>
+       
+        <Grid>
+            <StackPanel Orientation="Vertical" Name="LoadingPanel">
+                <TextBlock HorizontalAlignment="Center" Text="{x:Static properties:Resources.LOADING_DATA_DB}"/>
+                <mah:MetroProgressBar Name="MetroProgressBar"  Width="350" HorizontalAlignment="Center" Height="23" IsIndeterminate="True" />
+            </StackPanel>
+            <StackPanel Name="StateProductPanel" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,15,10">
+                <TextBlock Text="{x:Static properties:Resources.MOVIES_DISPLAYED}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15,0,5,0"/>
+                <ComboBox Name="ProductStateComboBox" Loaded="MovieStateComboBox_OnLoaded" Width="150" SelectionChanged="MovieStateComboBox_SelectionChanged"/>
+            </StackPanel>
+        </Grid>
 
         <DataGrid Name="MovieDataGrid" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserAddRows="False"
                   Loaded="MovieDataGrid_OnLoadedDataGrid" AutoGenerateColumns="False" IsReadOnly="True"

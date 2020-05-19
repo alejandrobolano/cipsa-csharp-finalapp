@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,15 +21,34 @@ namespace VideoClub.WPF.Views
     /// </summary>
     public partial class VideoGameWindow : MetroWindow
     {
-        private readonly DateTime _todayDateTime;
+        private DateTime _todayDateTime;
         private VideoGameService _videoGameService;
         private IList<VideoGameDto> _videosGame;
         private VideoGameDto _videoGameSelected;
         private IDictionary<GamePlatformEnum, string> _itemsPlatform;
-        public VideoGameWindow()
+        private readonly ResourceManager _resourceManager = Properties.Resources.ResourceManager;
+        private IDictionary<StateProductEnum, string> _itemsStateProduct;
+        private StateProductEnum _stateProduct;
+        public VideoGameWindow(StateProductEnum stateProduct)
         {
             InitializeComponent();
+            InitializeVariables();
+            _stateProduct = stateProduct;
+
+        }
+        private void InitializeVariables()
+        {
             _todayDateTime = DateTime.Today;
+            _videoGameService = VideoGameService.Instance;
+
+            _itemsStateProduct = new Dictionary<StateProductEnum, string>
+            {
+                {StateProductEnum.All, _resourceManager.GetResourceValue("ALL_VIDEOGAMES")},
+                {StateProductEnum.Available, StateProductEnum.Available.GetDescription()},
+                {StateProductEnum.BadState, StateProductEnum.BadState.GetDescription()},
+                {StateProductEnum.Lost, StateProductEnum.Lost.GetDescription()},
+                {StateProductEnum.NonAvailable, StateProductEnum.NonAvailable.GetDescription()}
+            };
             FillSourcePlatformComboBox();
         }
 
@@ -73,15 +93,18 @@ namespace VideoClub.WPF.Views
         private async Task LoadDataGrid()
         {
             LoadingPanel.Visibility = Visibility.Visible;
+            StateProductPanel.Visibility = Visibility.Collapsed;
             await LoadingDataTask();
             VideoGameDataGrid.ItemsSource = _videosGame;
             LoadingPanel.Visibility = Visibility.Hidden;
+            StateProductPanel.Visibility = Visibility.Visible;
         }
 
         private void LoadingData()
         {
-            _videoGameService = new VideoGameService();
-            _videosGame = _videoGameService.All();
+            _videosGame = _stateProduct.Equals(StateProductEnum.All)
+                ? _videoGameService.All()
+                : _videoGameService.GetVideoGamesByState(_stateProduct);
         }
         private async Task LoadingDataTask()
         {
@@ -188,6 +211,21 @@ namespace VideoClub.WPF.Views
             var items = new List<string> { string.Empty };
             items.AddRange(_itemsPlatform.Values);
             PlatformDropDown.ItemsSource = items;
+        }
+
+        private void VideoGameStateComboBox_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var combo = (ComboBox)sender;
+            combo.ItemsSource = _itemsStateProduct.Values;
+            combo.SelectedItem = _itemsStateProduct[_stateProduct];
+        }
+
+        private async void VideoGameStateComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var stateEnumSelected = _itemsStateProduct.FirstOrDefault(x => x.Value.Equals(((ComboBox)sender).SelectedValue)).Key;
+            if (stateEnumSelected.Equals(_stateProduct)) return;
+            _stateProduct = stateEnumSelected;
+            await LoadDataGrid();
         }
     }
 }

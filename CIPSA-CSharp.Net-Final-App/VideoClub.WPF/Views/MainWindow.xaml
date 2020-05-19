@@ -58,6 +58,8 @@
         <DockPanel HorizontalAlignment="Stretch" Width="600" Margin="15">
             <TextBlock Text="{x:Static properties:Resources.MANUAL_PROCESS}"  HorizontalAlignment="Left"
                    VerticalAlignment="Top" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
+            <TextBlock Text="Informes relacionado a las rentas" Margin="0,0,15,0" HorizontalAlignment="Right"
+                   VerticalAlignment="Top" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
         </DockPanel>
 
         <Grid Margin="15,0,15,15">
@@ -105,6 +107,16 @@
                           IsActive="True" />
         </Grid>
 
+        <Grid Margin="15,0,15,15">
+            <Controls:Tile Title="Reporte" Name="ReportsTile" 
+                           Background="HotPink" ToolTip="{x:Static properties:Resources.DISCOUNT_TILE_TOOLTIP}"
+                           HorizontalTitleAlignment="Center" HorizontalAlignment="Right"
+                           Click="ReportsTile_OnClick" Width="115" Height="115">
+                <iconPacks:PackIconModern Width="25"
+                                          Height="25"
+                                          Kind="Page0" />
+            </Controls:Tile>
+        </Grid>
     </WrapPanel>
 
 </mah:MetroWindow>

@@ -133,11 +133,38 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Todos los clientes.
+        /// </summary>
+        public static string ALL_CLIENTS {
+            get {
+                return ResourceManager.GetString("ALL_CLIENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Todos las películas.
+        /// </summary>
+        public static string ALL_MOVIES {
+            get {
+                return ResourceManager.GetString("ALL_MOVIES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Todas las rentas.
         /// </summary>
         public static string ALL_RENTALS {
             get {
                 return ResourceManager.GetString("ALL_RENTALS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Todos los juegos.
+        /// </summary>
+        public static string ALL_VIDEOGAMES {
+            get {
+                return ResourceManager.GetString("ALL_VIDEOGAMES", resourceCulture);
             }
         }
         
@@ -219,6 +246,15 @@ namespace VideoClub.WPF.Properties {
         public static string CLIENTS {
             get {
                 return ResourceManager.GetString("CLIENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clientes visualizados.
+        /// </summary>
+        public static string CLIENTS_DISPLAYED {
+            get {
+                return ResourceManager.GetString("CLIENTS_DISPLAYED", resourceCulture);
             }
         }
         
@@ -462,6 +498,15 @@ namespace VideoClub.WPF.Properties {
         public static string MOVIES {
             get {
                 return ResourceManager.GetString("MOVIES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Películas visualizadas.
+        /// </summary>
+        public static string MOVIES_DISPLAYED {
+            get {
+                return ResourceManager.GetString("MOVIES_DISPLAYED", resourceCulture);
             }
         }
         
@@ -804,6 +849,15 @@ namespace VideoClub.WPF.Properties {
         public static string VIDEOGAMES {
             get {
                 return ResourceManager.GetString("VIDEOGAMES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Juegos visualizados.
+        /// </summary>
+        public static string VIDEOGAMES_DISPLAYED {
+            get {
+                return ResourceManager.GetString("VIDEOGAMES_DISPLAYED", resourceCulture);
             }
         }
         

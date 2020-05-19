@@ -133,16 +133,16 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         public List<ClientDto> GetClientsByState(StateClientEnum stateClient)
         {
-            var activatedClients = new List<ClientDto>();
-            All().ForEach(client =>
+            var clients = new List<ClientDto>();
+            All().ForEach(clientDto =>
             {
-                if (client.State.Equals(stateClient))
+                if (clientDto.State.Equals(stateClient))
                 {
-                    activatedClients.Add(client);
+                    clients.Add(clientDto);
                 }
             });
 
-            return activatedClients;
+            return clients;
         }
 
         private void UpdateStateClient(ClientDto client, StateClientEnum stateNew)

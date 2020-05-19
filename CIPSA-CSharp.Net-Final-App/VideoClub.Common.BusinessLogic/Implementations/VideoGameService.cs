@@ -88,6 +88,20 @@ namespace VideoClub.Common.BusinessLogic.Implementations
             return Update(videoGame);
         }
 
+        public List<VideoGameDto> GetVideoGamesByState(StateProductEnum state)
+        {
+            var videoGames = new List<VideoGameDto>();
+            All().ForEach(videoGameDto =>
+            {
+                if (videoGameDto.State.Equals(state))
+                {
+                    videoGames.Add(videoGameDto);
+                }
+            });
+
+            return videoGames;
+        }
+
         #endregion
 
 

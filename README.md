@@ -26,6 +26,10 @@ La Entity Framework es un conjunto de tecnologías de ADO.NET que admiten el des
 
 [EntityFramework Code First](https://www.entityframeworktutorial.net/code-first/what-is-code-first.aspx) usado en el proyecto
 
+#### Patrón repositorio - Unit Of Work
+
+El uso de un repositorio separado para una sola transacción podría generar actualizaciones parciales. 
+
 ### MahApps
 
 Un framework que permite a los desarrolladores crear una mejor interfaz de usuario para sus propias aplicaciones WPF con un mínimo esfuerzo. 

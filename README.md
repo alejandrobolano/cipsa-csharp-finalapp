@@ -5,7 +5,7 @@
 - Práctica final del Máster C#.Net, relacionado a la gestión básica de un video club.
 - Es una aplicación **WPF** donde se gestiona Películas y Video Juegos, además se tiene el control de los clientes y la actualización de los mismos convirtiendolos a VIP
 
-### Pantallas
+## Pantallas
 
 - Clientes :  Se muestra una pantalla con acceso para agregar, modificar y eliminar clientes. Además se podrá filtrar por el estado actual de los clientes.
 - Películas :  Se muestra una pantalla con acceso para agregar, modificar y eliminar películas. Además se podrá filtrar por el estado actual de los películas.
@@ -14,7 +14,16 @@
 - Configuraciones :  Se muestra una pantalla para la selección de los distintos procesos automáticos, pudiendo desconectar y hacer dichos procesos de manera manual dentro de la pantalla principal.
 - Pantalla principal : Tendrá acceso para realizar una renta y devolver un producto de manera rápida. Además que cuenta con unos acceso manuales de distintos procesos que se deben realizar respecto a los clientes. Por otra parte, contiene un botón con el resumen actual de las rentas, obteniendo las beneficios que se han ahorrado los clientes con los descuentos
 
-### Tecnología de desarrollo
+## Tecnología de desarrollo
+
+### Arquitectura
+
+* La programación por capas es una arquitectura cliente-servidor en el que el objetivo primordial es la separación de la lógica de negocios de la lógica de diseño; un ejemplo básico de esto consiste en separar la capa de datos de la capa de presentación al usuario. Esta aplicación tiene una arquitectura *N Capas*.
+* El proyecto cuenta con tres capas lógicas: 
+    - Presentación
+    - Lógica de negocio
+    - Repositorio de datos
+* A estas capas, se le suma una capa transversal Común, con datos comunes 
 
 ### SQLServer
 

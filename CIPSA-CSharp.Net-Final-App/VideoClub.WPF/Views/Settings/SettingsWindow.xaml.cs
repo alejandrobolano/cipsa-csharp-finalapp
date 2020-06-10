@@ -36,31 +36,29 @@ namespace VideoClub.WPF.Views.Settings
 
         private void VipCheckBox_OnChecked(object sender, EventArgs eventArgs)
         {
-            var isSelected = ((ToggleSwitch) sender).IsChecked;
-            HelperWindow.AddUpdateAppSettings(_vipClientProcess, isSelected.ToString());
+            AddUpdateSettings(sender, _vipClientProcess);
         }
 
         private void BlockedCheckBox_OnChecked(object sender, EventArgs eventArgs)
         {
-            var isSelected = ((ToggleSwitch)sender).IsChecked;
-            HelperWindow.AddUpdateAppSettings(_blockedClientProcess, isSelected.ToString());
+            AddUpdateSettings(sender, _blockedClientProcess);
         }
 
-        private void BlockedCheckBox_OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            var isSelected = ((ToggleSwitch)sender).IsChecked;
-            HelperWindow.AddUpdateAppSettings(_blockedClientProcess, isSelected.ToString());
-        }
-
-        private void DiscountCheckBox_OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            var isSelected = ((ToggleSwitch)sender).IsChecked;
-            HelperWindow.AddUpdateAppSettings(_discountClientProcess, isSelected.ToString());
-        }
-
+        
         private void DiscountCheckBox_OnLoaded(object sender, RoutedEventArgs e)
         {
             TryValueOfProcess(sender, _discountClientProcess);
+        }
+
+        private void DiscountCheckBox_OnChecked(object sender, EventArgs e)
+        {
+            AddUpdateSettings(sender, _discountClientProcess);
+        }
+
+        private void AddUpdateSettings(object sender, string key)
+        {
+            var isSelected = ((ToggleSwitch) sender).IsChecked;
+            HelperWindow.AddUpdateAppSettings(key, isSelected.ToString());
         }
     }
 }

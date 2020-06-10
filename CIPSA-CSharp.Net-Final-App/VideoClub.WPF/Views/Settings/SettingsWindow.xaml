@@ -23,14 +23,14 @@
         </Grid>
         <Grid Margin="15,0,15,0">
             <TextBlock Text="{x:Static properties:Resources.BLOCKED_PROCESS_CHECK}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <mah:ToggleSwitch Name="BlockedCheckBox" DataContextChanged="BlockedCheckBox_OnDataContextChanged"
+            <mah:ToggleSwitch Name="BlockedCheckBox" 
                               IsCheckedChanged="BlockedCheckBox_OnChecked" Loaded="BlockedCheckBox_OnLoaded"
                           OnLabel="" OffLabel=""/>
         </Grid>
         <Grid Margin="15,0,15,0">
             <TextBlock Text="{x:Static properties:Resources.DISCOUNT_PROCESS_CHECK}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <mah:ToggleSwitch Name="DiscountCheckBox" DataContextChanged="DiscountCheckBox_OnDataContextChanged"
-                              IsCheckedChanged="BlockedCheckBox_OnChecked" Loaded="DiscountCheckBox_OnLoaded"
+            <mah:ToggleSwitch Name="DiscountCheckBox"
+                              IsCheckedChanged="DiscountCheckBox_OnChecked" Loaded="DiscountCheckBox_OnLoaded"
                           OnLabel="" OffLabel=""/>
         </Grid>
     </StackPanel>

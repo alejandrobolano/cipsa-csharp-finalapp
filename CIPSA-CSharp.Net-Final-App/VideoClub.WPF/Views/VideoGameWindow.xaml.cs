@@ -162,14 +162,14 @@ namespace VideoClub.WPF.Views
         private bool AddVideoGame()
         {
             var videoGame = new VideoGameDto();
-            FillDataFromFields(videoGame);
+            FillDataFromFields(videoGame,true);
             return _videoGameService.Add(videoGame, out _);
         }
 
-        private void FillDataFromFields(VideoGameDto videoGame)
+        private void FillDataFromFields(VideoGameDto videoGame, bool isNew)
         {
             var platform = _itemsPlatform.FirstOrDefault(x => x.Value.Equals(PlatformDropDown.SelectedValue)).Key;
-            videoGame.Title = TitleText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter();
+            videoGame.Title = isNew ? TitleText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter() : TitleText.Text;
             videoGame.Price = Convert.ToDecimal(PriceNumeric.Value);
             videoGame.QuantityDisc = Convert.ToInt32(QuantityNumeric.Value);
             videoGame.Platform = platform;
@@ -183,7 +183,7 @@ namespace VideoClub.WPF.Views
         }
         private bool UpdateVideoGame()
         {
-            FillDataFromFields(_videoGameSelected);
+            FillDataFromFields(_videoGameSelected, false);
             return _videoGameService.Update(_videoGameSelected);
         }
         private void NewButton_OnClick(object sender, RoutedEventArgs e)
@@ -220,9 +220,15 @@ namespace VideoClub.WPF.Views
 
         private async void UpdateButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (CheckFields()) return;
             if (UpdateVideoGame())
             {
                 await LoadDataGrid();
+            }
+            else
+            {
+                this.ShowGenericErrorMessage(_resourceManager);
+                WindowHelper.HandleLogError(string.Empty);
             }
         }
 

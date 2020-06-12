@@ -152,13 +152,13 @@ namespace VideoClub.WPF.Views
         private bool AddMovie()
         {
             var movie = new MovieDto();
-            FillDataFromFields(movie);
+            FillDataFromFields(movie,true);
             return _movieService.Add(movie, out _);
         }
 
-        private void FillDataFromFields(MovieDto movie)
+        private void FillDataFromFields(MovieDto movie, bool isNew)
         {
-            movie.Title = TitleText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter();
+            movie.Title = isNew ? TitleText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter() : TitleText.Text;
             movie.Price = Convert.ToDecimal(PriceNumeric?.Value);
             movie.QuantityDisc = Convert.ToInt32(QuantityNumeric?.Value);
             int.TryParse(ProductionYearText?.Text, out var productionYear);
@@ -181,7 +181,7 @@ namespace VideoClub.WPF.Views
         }
         private bool UpdateMovie()
         {
-            FillDataFromFields(_movieSelected);
+            FillDataFromFields(_movieSelected, false);
             return _movieService.Update(_movieSelected);
         }
         private void NewButton_OnClick(object sender, RoutedEventArgs e)

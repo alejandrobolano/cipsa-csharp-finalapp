@@ -10,9 +10,9 @@ namespace VideoClub.WPF.Views.Settings
     /// </summary>
     public partial class SettingsWindow : MetroWindow
     {
-        private readonly string _vipClientProcess = HelperWindow.VipClientProcessAutomatic;
-        private readonly string _blockedClientProcess = HelperWindow.BlockedClientProcessAutomatic;
-        private readonly string _discountClientProcess = HelperWindow.DiscountClientProcessAutomatic;
+        private readonly string _vipClientProcess = WindowHelper.VipClientProcessAutomatic;
+        private readonly string _blockedClientProcess = WindowHelper.BlockedClientProcessAutomatic;
+        private readonly string _discountClientProcess = WindowHelper.DiscountClientProcessAutomatic;
         public SettingsWindow()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace VideoClub.WPF.Views.Settings
 
         private static void TryValueOfProcess(object sender, string keySetting)
         {
-            bool.TryParse(HelperWindow.ReadSetting(keySetting), out var isAutomaticProcess);
+            bool.TryParse(WindowHelper.ReadSetting(keySetting), out var isAutomaticProcess);
             ((ToggleSwitch) sender).IsChecked = isAutomaticProcess;
         }
 
@@ -58,7 +58,7 @@ namespace VideoClub.WPF.Views.Settings
         private void AddUpdateSettings(object sender, string key)
         {
             var isSelected = ((ToggleSwitch) sender).IsChecked;
-            HelperWindow.AddUpdateAppSettings(key, isSelected.ToString());
+            WindowHelper.AddUpdateAppSettings(key, isSelected.ToString());
         }
     }
 }

@@ -22,19 +22,19 @@
             <Button Click="ButtonClientsWindows_OnClick">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconModern Width="24" Height="24" Kind="User" />
-                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="clientes" />
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="{x:Static properties:Resources.CLIENTS}" />
                 </StackPanel>
             </Button>
             <Button Click="ButtonVideoGamesWindows_OnClick">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconModern Width="24" Height="24" Kind="ControllerXbox" />
-                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="games" />
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="{x:Static properties:Resources.VIDEOGAMES}" />
                 </StackPanel>
             </Button>
             <Button Click="ButtonMovieWindows_OnClick">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconModern Width="24" Height="24" Kind="MovieClapper" />
-                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center"  Text="movies" />
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center"  Text="{x:Static properties:Resources.MOVIES}" />
                 </StackPanel>
             </Button>
         </Controls:WindowCommands>

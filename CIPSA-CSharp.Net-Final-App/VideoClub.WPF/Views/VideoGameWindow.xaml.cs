@@ -28,6 +28,7 @@ namespace VideoClub.WPF.Views
         private IDictionary<GamePlatformEnum, string> _itemsPlatform;
         private readonly ResourceManager _resourceManager = Properties.Resources.ResourceManager;
         private IDictionary<StateProductEnum, string> _itemsStateProduct;
+        private Dictionary<StateProductEnum, string> _changeItemsStateProduct;
         private StateProductEnum _stateProduct;
         public VideoGameWindow(StateProductEnum stateProduct)
         {
@@ -43,13 +44,22 @@ namespace VideoClub.WPF.Views
 
             _itemsStateProduct = new Dictionary<StateProductEnum, string>
             {
-                {StateProductEnum.All, _resourceManager.GetResourceValue("ALL_VIDEOGAMES")},
+                {StateProductEnum.All, _resourceManager.GetResourceValue("ALL_VIDEOGAMES")}
+            };
+            _itemsStateProduct.Append(GetAllStateProductEnum());
+            _changeItemsStateProduct = GetAllStateProductEnum();
+            FillSourcePlatformComboBox();
+        }
+
+        private Dictionary<StateProductEnum, string> GetAllStateProductEnum()
+        {
+            return new Dictionary<StateProductEnum, string>
+            {
                 {StateProductEnum.Available, StateProductEnum.Available.GetDescription()},
                 {StateProductEnum.BadState, StateProductEnum.BadState.GetDescription()},
                 {StateProductEnum.Lost, StateProductEnum.Lost.GetDescription()},
                 {StateProductEnum.NonAvailable, StateProductEnum.NonAvailable.GetDescription()}
             };
-            FillSourcePlatformComboBox();
         }
 
         private void FillSourcePlatformComboBox()
@@ -146,22 +156,25 @@ namespace VideoClub.WPF.Views
             PriceNumeric.Value = Convert.ToDouble(_videoGameSelected.Price, CultureInfo.CurrentCulture);
             QuantityNumeric.Value = _videoGameSelected.QuantityDisc;
             PlatformDropDown.SelectedItem = _itemsPlatform[_videoGameSelected.Platform];
+            ChangeProductStateComboBox.SelectedItem = _changeItemsStateProduct[_videoGameSelected.State];
         }
 
         private bool AddVideoGame()
         {
             var videoGame = new VideoGameDto();
-            FillDataFromFields(videoGame);
+            FillDataFromFields(videoGame,true);
             return _videoGameService.Add(videoGame, out _);
         }
 
-        private void FillDataFromFields(VideoGameDto videoGame)
+        private void FillDataFromFields(VideoGameDto videoGame, bool isNew)
         {
             var platform = _itemsPlatform.FirstOrDefault(x => x.Value.Equals(PlatformDropDown.SelectedValue)).Key;
-            videoGame.Title = TitleText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter();
+            videoGame.Title = isNew ? TitleText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter() : TitleText.Text;
             videoGame.Price = Convert.ToDecimal(PriceNumeric.Value);
             videoGame.QuantityDisc = Convert.ToInt32(QuantityNumeric.Value);
             videoGame.Platform = platform;
+            var state = _changeItemsStateProduct.FirstOrDefault(valuePair => valuePair.Value.Equals(ChangeProductStateComboBox.SelectedValue)).Key;
+            videoGame.State = state;
         }
 
         private bool RemoveVideoGame(VideoGameDto videoGame)
@@ -170,29 +183,52 @@ namespace VideoClub.WPF.Views
         }
         private bool UpdateVideoGame()
         {
-            FillDataFromFields(_videoGameSelected);
+            FillDataFromFields(_videoGameSelected, false);
             return _videoGameService.Update(_videoGameSelected);
         }
         private void NewButton_OnClick(object sender, RoutedEventArgs e)
         {
             ChangeEnabledToButtons(false);
-            HelperWindow.ClearFields(MainPanel);
+            WindowHelper.ClearFields(MainPanel);
             MainPanel.IsEnabled = true;
+        }
+        private bool CheckFields()
+        {
+            if (WindowHelper.HasAnyEmptyFields(MainPanel))
+            {
+                this.ShowGenericErrorDataMessage(_resourceManager);
+                WindowHelper.HandleLogError(string.Empty);
+                return true;
+            }
+
+            return false;
         }
 
         private async void AddButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (CheckFields()) return;
             if (AddVideoGame())
             {
                 await LoadDataGrid();
+            }
+            else
+            {
+                this.ShowGenericErrorMessage(_resourceManager);
+                WindowHelper.HandleLogError(string.Empty);
             }
         }
 
         private async void UpdateButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (CheckFields()) return;
             if (UpdateVideoGame())
             {
                 await LoadDataGrid();
+            }
+            else
+            {
+                this.ShowGenericErrorMessage(_resourceManager);
+                WindowHelper.HandleLogError(string.Empty);
             }
         }
 
@@ -203,7 +239,7 @@ namespace VideoClub.WPF.Views
             {
                 await LoadDataGrid();
             }
-            HelperWindow.ClearFields(MainPanel);
+            WindowHelper.ClearFields(MainPanel);
         }
 
         private void PlatformDropDown_OnLoadedDropDown_OnLoaded(object sender, RoutedEventArgs e)
@@ -227,5 +263,12 @@ namespace VideoClub.WPF.Views
             _stateProduct = stateEnumSelected;
             await LoadDataGrid();
         }
+
+        private void ChangeVideoGameStateComboBox_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var combo = (ComboBox)sender;
+            combo.ItemsSource = _changeItemsStateProduct.Values;
+        }
+
     }
 }

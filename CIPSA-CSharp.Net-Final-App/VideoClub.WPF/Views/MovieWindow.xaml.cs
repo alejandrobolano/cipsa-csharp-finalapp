@@ -27,6 +27,7 @@ namespace VideoClub.WPF.Views
         private MovieDto _movieSelected;
         private readonly ResourceManager _resourceManager = Properties.Resources.ResourceManager;
         private IDictionary<StateProductEnum, string> _itemsStateProduct;
+        private Dictionary<StateProductEnum, string> _changeItemsStateProduct;
         private StateProductEnum _stateProduct;
         public MovieWindow(StateProductEnum stateProduct)
         {
@@ -42,7 +43,16 @@ namespace VideoClub.WPF.Views
 
             _itemsStateProduct = new Dictionary<StateProductEnum, string>
             {
-                {StateProductEnum.All, _resourceManager.GetResourceValue("ALL_MOVIES")},
+                {StateProductEnum.All, _resourceManager.GetResourceValue("ALL_MOVIES")}
+            };
+            _itemsStateProduct.Append(GetAllStateProductEnum());
+            _changeItemsStateProduct = GetAllStateProductEnum();
+        }
+
+        private Dictionary<StateProductEnum, string> GetAllStateProductEnum()
+        {
+            return new Dictionary<StateProductEnum, string>
+            {
                 {StateProductEnum.Available, StateProductEnum.Available.GetDescription()},
                 {StateProductEnum.BadState, StateProductEnum.BadState.GetDescription()},
                 {StateProductEnum.Lost, StateProductEnum.Lost.GetDescription()},
@@ -136,18 +146,19 @@ namespace VideoClub.WPF.Views
             HourDurationNumeric.Value = _movieSelected.Duration.Hours;
             MinuteDurationNumeric.Value = _movieSelected.Duration.Minutes;
             SecondDurationNumeric.Value = _movieSelected.Duration.Seconds;
+            ChangeProductStateComboBox.SelectedItem = _changeItemsStateProduct[_movieSelected.State];
         }
 
         private bool AddMovie()
         {
             var movie = new MovieDto();
-            FillDataFromFields(movie);
+            FillDataFromFields(movie,true);
             return _movieService.Add(movie, out _);
         }
 
-        private void FillDataFromFields(MovieDto movie)
+        private void FillDataFromFields(MovieDto movie, bool isNew)
         {
-            movie.Title = TitleText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter();
+            movie.Title = isNew ? TitleText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter() : TitleText.Text;
             movie.Price = Convert.ToDecimal(PriceNumeric?.Value);
             movie.QuantityDisc = Convert.ToInt32(QuantityNumeric?.Value);
             int.TryParse(ProductionYearText?.Text, out var productionYear);
@@ -160,6 +171,8 @@ namespace VideoClub.WPF.Views
                 Convert.ToInt32(SecondDurationNumeric?.Value)
                 );
             movie.Duration = durationTimeSpan;
+            var state = _changeItemsStateProduct.FirstOrDefault(valuePair => valuePair.Value.Equals(ChangeProductStateComboBox.SelectedValue)).Key;
+            movie.State = state;
         }
 
         private bool RemoveMovie(MovieDto movie)
@@ -168,13 +181,13 @@ namespace VideoClub.WPF.Views
         }
         private bool UpdateMovie()
         {
-            FillDataFromFields(_movieSelected);
+            FillDataFromFields(_movieSelected, false);
             return _movieService.Update(_movieSelected);
         }
         private void NewButton_OnClick(object sender, RoutedEventArgs e)
         {
             ChangeEnabledToButtons(false);
-            HelperWindow.ClearFields(MainPanel);
+            WindowHelper.ClearFields(MainPanel);
             MainPanel.IsEnabled = true;
         }
 
@@ -188,7 +201,7 @@ namespace VideoClub.WPF.Views
             else
             {
                 this.ShowGenericErrorMessage(_resourceManager);
-                HelperWindow.HandleLogError(string.Empty);
+                WindowHelper.HandleLogError(string.Empty);
             }
         }
 
@@ -203,16 +216,16 @@ namespace VideoClub.WPF.Views
             else
             {
                 this.ShowGenericErrorMessage(_resourceManager);
-                HelperWindow.HandleLogError(string.Empty);
+                WindowHelper.HandleLogError(string.Empty);
             }
         }
 
         private bool CheckFields()
         {
-            if (HelperWindow.HasAnyEmptyFields(MainPanel))
+            if (WindowHelper.HasAnyEmptyFields(MainPanel))
             {
                 this.ShowGenericErrorDataMessage(_resourceManager);
-                HelperWindow.HandleLogError(string.Empty);
+                WindowHelper.HandleLogError(string.Empty);
                 return true;
             }
 
@@ -226,7 +239,7 @@ namespace VideoClub.WPF.Views
             {
                 await LoadDataGrid();
             }
-            HelperWindow.ClearFields(MainPanel);
+            WindowHelper.ClearFields(MainPanel);
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -248,6 +261,12 @@ namespace VideoClub.WPF.Views
             if (stateEnumSelected.Equals(_stateProduct)) return;
             _stateProduct = stateEnumSelected;
             await LoadDataGrid();
+        }
+
+        private void ChangeMovieStateComboBox_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var combo = (ComboBox)sender;
+            combo.ItemsSource = _changeItemsStateProduct.Values;
         }
     }
 }

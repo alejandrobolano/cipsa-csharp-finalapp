@@ -134,7 +134,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Utils\HelperWindow.cs" />
+    <Compile Include="Utils\DataHelper.cs" />
+    <Compile Include="Utils\WindowHelper.cs" />
     <Compile Include="Utils\ResourceExtension.cs" />
     <Compile Include="Utils\WindowExtension.cs" />
     <Compile Include="Views\Reports\RentalSummary.xaml.cs">

@@ -148,7 +148,7 @@
     <value>Todos las películas</value>
   </data>
   <data name="ALL_RENTALS" xml:space="preserve">
-    <value>Todas las rentas</value>
+    <value>Todos los alquileres</value>
   </data>
   <data name="ALL_VIDEOGAMES" xml:space="preserve">
     <value>Todos los juegos</value>
@@ -160,7 +160,7 @@
     <value>Desactivación</value>
   </data>
   <data name="BLOCKED_PROCESS_CHECK" xml:space="preserve">
-    <value>Bloqueo de clientes</value>
+    <value>Desactivación de clientes</value>
   </data>
   <data name="BLOCKED_TILE_TOOLTIP" xml:space="preserve">
     <value>Proceso manual de asignación de nuevos clientes bloqueados</value>
@@ -226,7 +226,7 @@
     <value>Se ha producido un error</value>
   </data>
   <data name="FINISH" xml:space="preserve">
-    <value>Finalizar</value>
+    <value>Devolver</value>
   </data>
   <data name="FINISH_DATE" xml:space="preserve">
     <value>Fecha de Fin</value>
@@ -316,31 +316,31 @@
     <value>Título del Producto</value>
   </data>
   <data name="RENTALS" xml:space="preserve">
-    <value>Rentas</value>
+    <value>Alquileres</value>
   </data>
   <data name="RENTALS_DISPLAYED" xml:space="preserve">
-    <value>Rentas visualizadas</value>
+    <value>Alquileres visualizadas</value>
   </data>
   <data name="RENTALS_QUANTITY" xml:space="preserve">
-    <value>Cantidad total de Rentas</value>
+    <value>Cantidad total de Alquileres</value>
   </data>
   <data name="RENTAL_DAYS" xml:space="preserve">
     <value>Días del alquiler</value>
   </data>
   <data name="RENTAL_FAST" xml:space="preserve">
-    <value>Rentar Producto</value>
+    <value>Alquilar Producto</value>
   </data>
   <data name="RENTAL_FAST_TOOLTIP" xml:space="preserve">
-    <value>Renta el producto de manera fácil y sencilla</value>
+    <value>Alquila el producto de manera fácil y sencilla</value>
   </data>
   <data name="RENTAL_NON_AVAILABLE" xml:space="preserve">
-    <value>El producto con ID: $ no se encuentra disponible por lo que no se puede proceder con la renta</value>
+    <value>El producto con ID: $ no se encuentra disponible por lo que no se puede proceder con el alquiler</value>
   </data>
   <data name="RENTAL_PRODUCT_BAD_STATE" xml:space="preserve">
-    <value>El producto con ID: $ se encuentra en mal estado por lo que no se puede proceder con la renta</value>
+    <value>El producto con ID: $ se encuentra en mal estado por lo que no se puede proceder con el alquiler</value>
   </data>
   <data name="RENTAL_PRODUCT_LOST" xml:space="preserve">
-    <value>El producto con ID: $ se encuentra perdido por lo que no se puede proceder con la renta</value>
+    <value>El producto con ID: $ se encuentra perdido por lo que no se puede proceder con el alquiler</value>
   </data>
   <data name="RENTAL_RETURNED" xml:space="preserve">
     <value>El producto se ha devuelto anteriormente</value>
@@ -355,7 +355,7 @@
     <value>Devuelva el producto de manera fácil y sencilla</value>
   </data>
   <data name="RETURNED_RENTALS" xml:space="preserve">
-    <value>Rentas devueltas</value>
+    <value>Alquileres devueltas</value>
   </data>
   <data name="SETTINGS" xml:space="preserve">
     <value>Configuraciones</value>

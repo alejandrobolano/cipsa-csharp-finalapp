@@ -7,7 +7,7 @@ using MahApps.Metro.Controls;
 
 namespace VideoClub.WPF.Utils
 {
-    public class HelperWindow
+    public class WindowHelper
     {
         public static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         public static readonly string BlockedClientProcessAutomatic = "BlockedClientProcess";
@@ -28,7 +28,7 @@ namespace VideoClub.WPF.Utils
                         box.Text = string.Empty;
                         break;
                     case ComboBox box:
-                        box.SelectedItem = string.Empty;
+                        box.SelectedIndex = 0;
                         break;
                     case NumericUpDown numeric:
                         numeric.Value = new double();

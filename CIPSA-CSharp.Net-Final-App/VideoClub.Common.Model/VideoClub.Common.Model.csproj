@@ -50,6 +50,7 @@
     <Compile Include="Exceptions\InvalidatePhoneNumberException.cs" />
     <Compile Include="Exceptions\InvalidateStringClientException.cs" />
     <Compile Include="Exceptions\InvalidYearException.cs" />
+    <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

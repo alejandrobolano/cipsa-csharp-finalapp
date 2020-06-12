@@ -151,7 +151,7 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Todas las rentas.
+        ///   Looks up a localized string similar to Todos los alquileres.
         /// </summary>
         public static string ALL_RENTALS {
             get {
@@ -187,7 +187,7 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bloqueo de clientes.
+        ///   Looks up a localized string similar to Desactivación de clientes.
         /// </summary>
         public static string BLOCKED_PROCESS_CHECK {
             get {
@@ -385,7 +385,7 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Finalizar.
+        ///   Looks up a localized string similar to Devolver.
         /// </summary>
         public static string FINISH {
             get {
@@ -664,7 +664,7 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rentar Producto.
+        ///   Looks up a localized string similar to Alquilar Producto.
         /// </summary>
         public static string RENTAL_FAST {
             get {
@@ -673,7 +673,7 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Renta el producto de manera fácil y sencilla.
+        ///   Looks up a localized string similar to Alquila el producto de manera fácil y sencilla.
         /// </summary>
         public static string RENTAL_FAST_TOOLTIP {
             get {
@@ -682,7 +682,7 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to El producto con ID: $ no se encuentra disponible por lo que no se puede proceder con la renta.
+        ///   Looks up a localized string similar to El producto con ID: $ no se encuentra disponible por lo que no se puede proceder con el alquiler.
         /// </summary>
         public static string RENTAL_NON_AVAILABLE {
             get {
@@ -691,7 +691,7 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to El producto con ID: $ se encuentra en mal estado por lo que no se puede proceder con la renta.
+        ///   Looks up a localized string similar to El producto con ID: $ se encuentra en mal estado por lo que no se puede proceder con el alquiler.
         /// </summary>
         public static string RENTAL_PRODUCT_BAD_STATE {
             get {
@@ -700,7 +700,7 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to El producto con ID: $ se encuentra perdido por lo que no se puede proceder con la renta.
+        ///   Looks up a localized string similar to El producto con ID: $ se encuentra perdido por lo que no se puede proceder con el alquiler.
         /// </summary>
         public static string RENTAL_PRODUCT_LOST {
             get {
@@ -727,7 +727,7 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rentas.
+        ///   Looks up a localized string similar to Alquileres.
         /// </summary>
         public static string RENTALS {
             get {
@@ -736,7 +736,7 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rentas visualizadas.
+        ///   Looks up a localized string similar to Alquileres visualizadas.
         /// </summary>
         public static string RENTALS_DISPLAYED {
             get {
@@ -745,7 +745,7 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cantidad total de Rentas.
+        ///   Looks up a localized string similar to Cantidad total de Alquileres.
         /// </summary>
         public static string RENTALS_QUANTITY {
             get {
@@ -772,7 +772,7 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rentas devueltas.
+        ///   Looks up a localized string similar to Alquileres devueltas.
         /// </summary>
         public static string RETURNED_RENTALS {
             get {

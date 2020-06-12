@@ -7,7 +7,7 @@ using MahApps.Metro.Controls;
 
 namespace VideoClub.WPF.Utils
 {
-    public class HelperWindow
+    public class WindowHelper
     {
         public static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         public static readonly string BlockedClientProcessAutomatic = "BlockedClientProcess";

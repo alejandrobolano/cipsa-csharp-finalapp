@@ -14,7 +14,7 @@ namespace VideoClub.WPF.Utils
             }
             catch (Exception e)
             {
-                HelperWindow.HandleLogError(e.Message + $"\nResource error: {key}");
+                WindowHelper.HandleLogError(e.Message + $"\nResource error: {key}");
             }
             return value;
         }

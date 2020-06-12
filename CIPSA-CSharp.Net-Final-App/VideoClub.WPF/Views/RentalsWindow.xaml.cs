@@ -152,7 +152,7 @@ namespace VideoClub.WPF.Views
             if (client == null || product == null)
             {
                 this.ShowGenericErrorDataMessage(_resourceManager);
-                HelperWindow.HandleLogError(string.Empty);
+                WindowHelper.HandleLogError(string.Empty);
                 return true;
             }
 
@@ -198,7 +198,7 @@ namespace VideoClub.WPF.Views
             else
             {
                 this.ShowGenericErrorMessage(_resourceManager);
-                HelperWindow.HandleLogError(string.Empty);
+                WindowHelper.HandleLogError(string.Empty);
             }
         }
 
@@ -242,7 +242,7 @@ namespace VideoClub.WPF.Views
             }
             catch (Exception exception)
             {
-                HelperWindow.HandleLogError($"{exception.InnerException} " +
+                WindowHelper.HandleLogError($"{exception.InnerException} " +
                                              $"\n {exception.Message} " +
                                              $"\n {exception.Source}");
             }
@@ -301,7 +301,7 @@ namespace VideoClub.WPF.Views
             else
             {
                 this.ShowGenericErrorDataMessage(_resourceManager);
-                HelperWindow.HandleLogError(string.Empty);
+                WindowHelper.HandleLogError(string.Empty);
             }
         }
 
@@ -339,7 +339,7 @@ namespace VideoClub.WPF.Views
         private void NewButton_OnClick(object sender, RoutedEventArgs e)
         {
             ChangeEnabledToButtons(false);
-            HelperWindow.ClearFields(MainPanel);
+            WindowHelper.ClearFields(MainPanel);
             MainPanel.IsEnabled = true;
         }
 

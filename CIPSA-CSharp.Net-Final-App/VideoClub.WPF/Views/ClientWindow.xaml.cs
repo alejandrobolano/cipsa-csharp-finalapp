@@ -242,7 +242,7 @@ namespace VideoClub.WPF.Views
         private void NewButton_OnClickButton_Click(object sender, RoutedEventArgs e)
         {
             ChangeEnabledToButtons(false);
-            HelperWindow.ClearFields(MainPanel);
+            WindowHelper.ClearFields(MainPanel);
             MainPanel.IsEnabled = true;
         }
 

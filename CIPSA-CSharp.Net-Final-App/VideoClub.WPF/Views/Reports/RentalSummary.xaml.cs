@@ -161,7 +161,7 @@ namespace VideoClub.WPF.Views.Settings
             }
             catch (Exception exception)
             {
-                HelperWindow.HandleLogError(exception.Message);
+                WindowHelper.HandleLogError(exception.Message);
             }
 
             return percent;

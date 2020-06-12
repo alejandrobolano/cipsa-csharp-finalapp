@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using MahApps.Metro.Controls;
+using VideoClub.Common.BusinessLogic.Dto;
 using VideoClub.Common.BusinessLogic.Implementations;
 using VideoClub.Common.Model.Enums;
 using VideoClub.WPF.Utils;
@@ -17,8 +19,10 @@ namespace VideoClub.WPF.Views
         public MainWindow()
         {
             InitializeComponent();
+            DataHelper.LoadData();
         }
 
+    
         private void ButtonMovieWindows_OnClick(object sender, RoutedEventArgs e)
         {
             var movieWindows = new MovieWindow(StateProductEnum.All);
@@ -51,7 +55,7 @@ namespace VideoClub.WPF.Views
 
         private async void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.BlockedClientProcessAutomatic), out var isBlockedAutomaticProcess);
+            bool.TryParse(WindowHelper.ReadSetting(WindowHelper.BlockedClientProcessAutomatic), out var isBlockedAutomaticProcess);
             if (isBlockedAutomaticProcess)
             {
                 await ProcessBlockedClientsInBackground();
@@ -61,7 +65,7 @@ namespace VideoClub.WPF.Views
                 VisibleTile(BlockedTile, BlockedUserProgress);
             }
 
-            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.VipClientProcessAutomatic), out var isVipAutomaticProcess);
+            bool.TryParse(WindowHelper.ReadSetting(WindowHelper.VipClientProcessAutomatic), out var isVipAutomaticProcess);
             if (isVipAutomaticProcess)
             {
                 await ProcessVipClientsInBackground();
@@ -71,7 +75,7 @@ namespace VideoClub.WPF.Views
                 VisibleTile(VipTile, VipUserProgress);
             }
 
-            bool.TryParse(HelperWindow.ReadSetting(HelperWindow.DiscountClientProcessAutomatic), out var isAutomaticProcess);
+            bool.TryParse(WindowHelper.ReadSetting(WindowHelper.DiscountClientProcessAutomatic), out var isAutomaticProcess);
             var today = DateTime.Today;
             var lastDayMonth = new DateTime(today.Year, today.Month, DateTime.DaysInMonth(today.Year, today.Month));
 

@@ -189,15 +189,15 @@ namespace VideoClub.WPF.Views
         private void NewButton_OnClick(object sender, RoutedEventArgs e)
         {
             ChangeEnabledToButtons(false);
-            HelperWindow.ClearFields(MainPanel);
+            WindowHelper.ClearFields(MainPanel);
             MainPanel.IsEnabled = true;
         }
         private bool CheckFields()
         {
-            if (HelperWindow.HasAnyEmptyFields(MainPanel))
+            if (WindowHelper.HasAnyEmptyFields(MainPanel))
             {
                 this.ShowGenericErrorDataMessage(_resourceManager);
-                HelperWindow.HandleLogError(string.Empty);
+                WindowHelper.HandleLogError(string.Empty);
                 return true;
             }
 
@@ -214,7 +214,7 @@ namespace VideoClub.WPF.Views
             else
             {
                 this.ShowGenericErrorMessage(_resourceManager);
-                HelperWindow.HandleLogError(string.Empty);
+                WindowHelper.HandleLogError(string.Empty);
             }
         }
 
@@ -233,7 +233,7 @@ namespace VideoClub.WPF.Views
             {
                 await LoadDataGrid();
             }
-            HelperWindow.ClearFields(MainPanel);
+            WindowHelper.ClearFields(MainPanel);
         }
 
         private void PlatformDropDown_OnLoadedDropDown_OnLoaded(object sender, RoutedEventArgs e)

@@ -154,7 +154,17 @@ namespace VideoClub.WPF.Views.Settings
 
         private decimal PercentEarnsByClients(decimal total, decimal earnings)
         {
-            return decimal.Round(100 * earnings / total, 2);
+            decimal percent = 0;
+            try
+            {
+                percent = decimal.Round(100 * earnings / total, 2);
+            }
+            catch (Exception exception)
+            {
+                HelperWindow.HandleLogError(exception.Message);
+            }
+
+            return percent;
         }
     }
 }

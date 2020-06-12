@@ -27,6 +27,7 @@ namespace VideoClub.WPF.Views
         private MovieDto _movieSelected;
         private readonly ResourceManager _resourceManager = Properties.Resources.ResourceManager;
         private IDictionary<StateProductEnum, string> _itemsStateProduct;
+        private Dictionary<StateProductEnum, string> _changeItemsStateProduct;
         private StateProductEnum _stateProduct;
         public MovieWindow(StateProductEnum stateProduct)
         {
@@ -42,7 +43,16 @@ namespace VideoClub.WPF.Views
 
             _itemsStateProduct = new Dictionary<StateProductEnum, string>
             {
-                {StateProductEnum.All, _resourceManager.GetResourceValue("ALL_MOVIES")},
+                {StateProductEnum.All, _resourceManager.GetResourceValue("ALL_MOVIES")}
+            };
+            _itemsStateProduct.Append(GetAllStateProductEnum());
+            _changeItemsStateProduct = GetAllStateProductEnum();
+        }
+
+        private Dictionary<StateProductEnum, string> GetAllStateProductEnum()
+        {
+            return new Dictionary<StateProductEnum, string>
+            {
                 {StateProductEnum.Available, StateProductEnum.Available.GetDescription()},
                 {StateProductEnum.BadState, StateProductEnum.BadState.GetDescription()},
                 {StateProductEnum.Lost, StateProductEnum.Lost.GetDescription()},
@@ -136,6 +146,7 @@ namespace VideoClub.WPF.Views
             HourDurationNumeric.Value = _movieSelected.Duration.Hours;
             MinuteDurationNumeric.Value = _movieSelected.Duration.Minutes;
             SecondDurationNumeric.Value = _movieSelected.Duration.Seconds;
+            ChangeProductStateComboBox.SelectedItem = _changeItemsStateProduct[_movieSelected.State];
         }
 
         private bool AddMovie()
@@ -160,6 +171,8 @@ namespace VideoClub.WPF.Views
                 Convert.ToInt32(SecondDurationNumeric?.Value)
                 );
             movie.Duration = durationTimeSpan;
+            var state = _changeItemsStateProduct.FirstOrDefault(valuePair => valuePair.Value.Equals(ChangeProductStateComboBox.SelectedValue)).Key;
+            movie.State = state;
         }
 
         private bool RemoveMovie(MovieDto movie)
@@ -248,6 +261,12 @@ namespace VideoClub.WPF.Views
             if (stateEnumSelected.Equals(_stateProduct)) return;
             _stateProduct = stateEnumSelected;
             await LoadDataGrid();
+        }
+
+        private void ChangeMovieStateComboBox_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var combo = (ComboBox)sender;
+            combo.ItemsSource = _changeItemsStateProduct.Values;
         }
     }
 }

@@ -28,6 +28,7 @@ namespace VideoClub.WPF.Views
         private ClientDto _clientSelected;
         private readonly string _prefixSpain = "34";
         private IDictionary<StateClientEnum, string> _itemsStateClient;
+        private Dictionary<StateClientEnum, string> _changeItemsStateClient;
         private StateClientEnum _stateClient;
         private readonly ResourceManager _resourceManager = Properties.Resources.ResourceManager;
         public ClientWindow(StateClientEnum stateClient)
@@ -53,7 +54,16 @@ namespace VideoClub.WPF.Views
             };
             _itemsStateClient = new Dictionary<StateClientEnum, string>
             {
-                {StateClientEnum.All, _resourceManager.GetResourceValue("ALL_CLIENTS")  },
+                {StateClientEnum.All, _resourceManager.GetResourceValue("ALL_CLIENTS")  }
+            };
+            _itemsStateClient.Append(GetAllStateClientEnum());
+            _changeItemsStateClient = GetAllStateClientEnum();
+        }
+
+        private Dictionary<StateClientEnum, string> GetAllStateClientEnum()
+        {
+            return new Dictionary<StateClientEnum, string>
+            {
                 {StateClientEnum.Activated, StateClientEnum.Activated.GetDescription()  },
                 {StateClientEnum.Blocked, StateClientEnum.Blocked.GetDescription()  },
                 {StateClientEnum.Leave, StateClientEnum.Leave.GetDescription() }
@@ -123,6 +133,8 @@ namespace VideoClub.WPF.Views
             client.PhoneContact = _prefixSpain + PhoneContactText?.Text;
             client.PhoneAux = string.IsNullOrEmpty(PhoneAuxText?.Text) ? string.Empty : _prefixSpain + PhoneAuxText?.Text;
             client.SubscriptionDate = _todayDateTime;
+            var state = _changeItemsStateClient.FirstOrDefault(valuePair => valuePair.Value.Equals(ChangeClientStateComboBox.SelectedValue)).Key;
+            client.State = state;
         }
 
         private bool UpdateClient()
@@ -145,6 +157,7 @@ namespace VideoClub.WPF.Views
                 ? string.Empty
                 : _clientSelected.PhoneAux.Replace(_prefixSpain, string.Empty);
             VipCheckBox.IsChecked = _clientSelected.IsVip;
+            ChangeClientStateComboBox.SelectedItem = _changeItemsStateClient[_clientSelected.State];
         }
 
         private bool RemoveClient(ClientDto client)
@@ -247,6 +260,12 @@ namespace VideoClub.WPF.Views
             var combo = (ComboBox)sender;
             combo.ItemsSource = _itemsStateClient.Values;
             combo.SelectedItem = _itemsStateClient[_stateClient];
+        }
+
+        private void ChangeClientStateComboBox_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var combo = (ComboBox)sender;
+            combo.ItemsSource = _changeItemsStateClient.Values;
         }
     }
 }
